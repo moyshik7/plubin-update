@@ -1,0 +1,12 @@
+{
+  "name": "plubin",
+  "version": "0.0.1",
+  "description": "This looks so Gay",
+  "main": "main.js",
+  "scripts": {
+    "start": "node .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "moyshik7",
+  "license": "UNLICENSED"
+}
