@@ -15,19 +15,21 @@ client.on("ready", () => {
 })
 
 client.on("interactionCreate", interaction => {
-    if(interaction.isCommand()){
-        /**
-         * Command use
-         */
-        if(interaction.commandName === "help"){
-            return interaction.reply("no")
+    try {
+        if(interaction.isCommand()){
+            /**
+             * Command use
+             */
+            if(interaction.commandName === "help"){
+                return interaction.reply("no")
+            }
         }
-    }
-    if(interaction.isButton()){
-        /**
-         * Button press
-         */
-    }
+        if(interaction.isButton()){
+            /**
+             * Button press
+             */
+        }
+    } catch (err){ console.log(err) }
 })
 
 client.login(process.env.BOT_TOKEN)
