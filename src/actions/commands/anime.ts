@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CommandInteraction, Interaction, MessageEmbed } from "discord.js";
+import { ColorResolvable, CommandInteraction, MessageEmbed } from "discord.js";
 import { AnilistAnimeResult } from "../../types";
 
 const Search = (searchString: string): Promise<AnilistAnimeResult> => {
@@ -53,6 +53,13 @@ const Search = (searchString: string): Promise<AnilistAnimeResult> => {
                 episodes: r.data.data.Media.episodes,
                 isAdult: r.data.data.Media.isAdult,
                 genres: r.data.data.Media.genres,
+                color: r.data.data.Media.coverImage.color,
+                cover: {
+                    large: r.data.data.Media.coverImage.extraLarge,
+                    medium: r.data.data.Media.coverImage.large,
+                    small: r.data.data.Media.coverImage.medium
+                },
+                banner: r.data.data.Media.bannerImage,
             }
 
             resolve(result)
@@ -75,13 +82,40 @@ export const AnimeCommand = async (interaction: CommandInteraction): Promise<voi
         await interaction.deferReply()
         const animeResult = await Search((name.value as string))
         console.log(animeResult)
+
+        /**
+         * Create blank message Embed
+         * Change to EmberBuilder() in later versions
+         */
         let embed = new MessageEmbed()
+
+        /**
+         * If no result show sorry 
+         * Else show result
+         */
         if(!animeResult){
             embed.setTitle("OOPSIE!!!")
             embed.setDescription("Could not find any animewith that name.\n\nTry searching with another term")
         } else {
             embed.setTitle(animeResult.title.english || animeResult.title.native)
             embed.setDescription(animeResult.description)
+            embed.addFields(
+                {
+                    name: "__**Episodes:**__",
+                    value: `${animeResult.episodes || "0" }`,
+                    inline: true
+                }, {
+                    name: "__**NSFW:**__",
+                    value: `${animeResult.isAdult ? "Yes" : "No" }`,
+                    inline: true
+                }, {
+                    name: "__**Genres:**__",
+                    value: animeResult.genres.join(", "),
+                    inline: false
+                }
+            )
+            embed.setImage(`https://img.anili.st/media/${animeResult.id}`)
+            embed.setColor(animeResult.color as ColorResolvable)
         }
         await interaction.editReply({
             embeds: [embed]
