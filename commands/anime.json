@@ -7,6 +7,6 @@
         "description": "Name of the anime to search",
         "type": 3,
         "required": true,
-        "autocomplete": true
+        "autocomplete": false
     }]
 }

@@ -45,6 +45,7 @@ export interface RedditResponse {
     nsfw: boolean;
     image: string;
     after?: string;
+    user?: string;
 }
 
 export interface RedditRawResponse {

@@ -8,7 +8,7 @@ import axios, { AxiosResponse } from "axios";
 import { RedditRawResponse, RedditResponse } from "./types";
 
 
-export const GetPosts = (sub: string, limit?: number, after?: string): Promise<void> => {
+export const GetRedditPosts = (sub: string, limit?: number, after?: string): Promise<RedditRawResponse> => {
     return new Promise((
         resolve: (any) => void,
         reject: (any) => void
