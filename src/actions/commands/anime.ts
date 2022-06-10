@@ -88,7 +88,6 @@ export const AnimeCommand = async (interaction: CommandInteraction): Promise<voi
         }
         await interaction.deferReply()
         const animeResult = await Search((name.value as string))
-        console.log(animeResult)
 
         /**
          * Create blank message Embed
@@ -105,9 +104,9 @@ export const AnimeCommand = async (interaction: CommandInteraction): Promise<voi
             embed.setDescription("Could not find any animewith that name.\n\nTry searching with another term")
         } else {
             embed.setTitle(animeResult.title.english || animeResult.title.native)
-            embed.addField("\u200B", animeResult.title.native)
             embed.setDescription(animeResult.description)
             embed.addField('\u200B', '\u200B')
+            embed.addField("Also searched for:", animeResult.title.native)
             embed.addFields(
                 {
                     name: "__**Episodes:**__",
@@ -117,10 +116,6 @@ export const AnimeCommand = async (interaction: CommandInteraction): Promise<voi
                     name: "__**NSFW:**__",
                     value: `${animeResult.isAdult ? "Yes" : "No" }`,
                     inline: true
-                }, {
-                    name: "__**Genres:**__",
-                    value: animeResult.genres.join(", "),
-                    inline: false
                 }, {
                     name: "\u200B",
                     value: "\u200B"
@@ -132,6 +127,10 @@ export const AnimeCommand = async (interaction: CommandInteraction): Promise<voi
                     name: "**Season**",
                     value: animeResult.season,
                     inline: true
+                }, {
+                    name: "__**Genres:**__",
+                    value: animeResult.genres.join(", "),
+                    inline: false
                 }
             )
             embed.setImage(`https://img.anili.st/media/${animeResult.id}`)
