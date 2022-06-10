@@ -25,6 +25,13 @@ const Search = (searchString: string): Promise<AnilistAnimeResult> => {
                 episodes
                 isAdult
                 genres
+                bannerImage
+                coverImage {
+                  extraLarge
+                  large
+                  medium
+                  color
+                }
             }
         }
         `
@@ -98,7 +105,9 @@ export const AnimeCommand = async (interaction: CommandInteraction): Promise<voi
             embed.setDescription("Could not find any animewith that name.\n\nTry searching with another term")
         } else {
             embed.setTitle(animeResult.title.english || animeResult.title.native)
+            embed.addField("\u200B", animeResult.title.native)
             embed.setDescription(animeResult.description)
+            embed.addField('\u200B', '\u200B')
             embed.addFields(
                 {
                     name: "__**Episodes:**__",
@@ -112,10 +121,21 @@ export const AnimeCommand = async (interaction: CommandInteraction): Promise<voi
                     name: "__**Genres:**__",
                     value: animeResult.genres.join(", "),
                     inline: false
+                }, {
+                    name: "\u200B",
+                    value: "\u200B"
+                }, {
+                    name: "**STATUS**",
+                    value: animeResult.status,
+                    inline: true
+                }, {
+                    name: "**Season**",
+                    value: animeResult.season,
+                    inline: true
                 }
             )
             embed.setImage(`https://img.anili.st/media/${animeResult.id}`)
-            embed.setColor(animeResult.color as ColorResolvable)
+            embed.setColor((animeResult.color as ColorResolvable))
         }
         await interaction.editReply({
             embeds: [embed]
