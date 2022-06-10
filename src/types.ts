@@ -30,3 +30,24 @@ export interface AnilistAnimeResult {
     cover: ImageURLSize;
     banner: string;
 }
+
+export interface RedditVote {
+    up?: number;
+    down?: number;
+    ratio?: number;
+}
+
+export interface RedditResponse {
+    subreddit: string;
+    title: string;
+    id: string;
+    votes: RedditVote;
+    nsfw: boolean;
+    image: string;
+    after?: string;
+}
+
+export interface RedditRawResponse {
+    after: string;
+    data: Array<RedditResponse>;
+}
