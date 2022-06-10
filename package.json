@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "description": "This looks so Gay",
   "main": "./build/main.js",
-  "type": "module",
   "scripts": {
     "start": "tsc && node .",
     "test": "echo \"Error: no test specified\" && exit 1"
