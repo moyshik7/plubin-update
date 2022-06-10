@@ -28,35 +28,35 @@ const Search = (searchString: string): Promise<AnilistAnimeResult> => {
             }
         }
         `
-        axios.post("https://graphql.anilist.co", {
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            data: JSON.stringify({
+        axios.post("https://graphql.anilist.co",
+            JSON.stringify({
                 query: query,
                 variables: {
                     search: searchString
                 }
-            })
+            }), {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
         }).then((r): void => {
             if(!r){
                 reject("No Anime found with this Query")
                 return;
             }
-            let result: AnilistAnimeResult;
-
-            result.id = r.data.data.Media.id
-            result.title = r.data.data.Media.title
-            result.description = r.data.data.Media.description.replace(/<[^>]*>?/gm, '')
-            result.season = r.data.data.Media.season
-            result.status = r.data.data.Media.status
-            result.episodes = r.data.data.Media.episodes
-            result.isAdult = r.data.data.Media.isAdult
-            result.genres = r.data.data.Media.genres
+            let result: AnilistAnimeResult = {
+                id: r.data.data.Media.id,
+                title: r.data.data.Media.title,
+                description: r.data.data.Media.description.replace(/<[^>]*>?/gm, ''),
+                season: r.data.data.Media.season,
+                status: r.data.data.Media.status,
+                episodes: r.data.data.Media.episodes,
+                isAdult: r.data.data.Media.isAdult,
+                genres: r.data.data.Media.genres,
+            }
 
             resolve(result)
-            reject;
+            return;
         }).catch(reject)
     })
 }
@@ -75,7 +75,7 @@ export const AnimeCommand = async (interaction: CommandInteraction): Promise<voi
         await interaction.deferReply()
         const animeResult = await Search((name.value as string))
         console.log(animeResult)
-        let embed: MessageEmbed;
+        let embed = new MessageEmbed()
         if(!animeResult){
             embed.setTitle("OOPSIE!!!")
             embed.setDescription("Could not find any animewith that name.\n\nTry searching with another term")
