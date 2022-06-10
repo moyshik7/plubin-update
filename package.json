@@ -2,10 +2,10 @@
   "name": "plubin",
   "version": "0.0.1",
   "description": "This looks so Gay",
-  "main": "main.js",
+  "main": "./build/main.js",
   "type": "module",
   "scripts": {
-    "start": "node .",
+    "start": "tsc && node .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "moyshik7",
@@ -13,6 +13,7 @@
   "dependencies": {
     "axios": "^0.27.2",
     "discord.js": "^13.8.0",
-    "dotenv": "^16.0.1"
+    "dotenv": "^16.0.1",
+    "typescript": "^4.7.3"
   }
 }

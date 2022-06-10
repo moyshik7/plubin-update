@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+      "target": "ESNext",
+      "module": "commonjs",
+      "rootDir": "src",
+      "allowJs": true,
+      "checkJs": true,
+      "declaration": true,
+      "outDir": "build",
+      "removeComments": true,
+      "newLine": "crlf",  
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+      "strict": true,
+      "noImplicitAny": false,
+      "strictNullChecks": false,
+      "skipLibCheck": true
+    }
+  }

@@ -1,7 +1,7 @@
 import dotenv from "dotenv"
 dotenv.config()
 
-import { Client, CommandInteractionOptionResolver } from "discord.js"
+import { Client, Interaction } from "discord.js"
 
 const client = new Client({
     intents: [
@@ -14,14 +14,15 @@ client.on("ready", () => {
     console.log("Bot ready")
 })
 
-client.on("interactionCreate", interaction => {
+client.on("interactionCreate", (interaction: Interaction): void => {
     try {
         if(interaction.isCommand()){
             /**
              * Command use
              */
             if(interaction.commandName === "help"){
-                return interaction.reply("no")
+                interaction.reply("no")
+                return;
             }
         }
         if(interaction.isButton()){
