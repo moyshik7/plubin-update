@@ -1,4 +1,5 @@
 import { Client, CommandInteraction } from "discord.js";
+import { Ping } from "./commands/ping";
 
 export class Commands {
     private client: Client;
@@ -10,6 +11,8 @@ export class Commands {
     }
     help(){
         this.interaction.reply("Ask your mom for help")
-        return;
+    }
+    ping(){
+        Ping(this.interaction)
     }
 }
