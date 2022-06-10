@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CommandInteraction, Interaction } from "discord.js";
+import { CommandInteraction, Interaction, MessageEmbed } from "discord.js";
 import { AnilistAnimeResult } from "../../types";
 
 const Search = (searchString: string): Promise<AnilistAnimeResult> => {
@@ -64,7 +64,27 @@ const Search = (searchString: string): Promise<AnilistAnimeResult> => {
 export const AnimeCommand = async (interaction: CommandInteraction): Promise<void> => {
     try {
         let name = interaction.options.get("anime_name")
-        if(!name){}
+        if(!name || !name.value){
+            /**
+             * No search term provided
+             * Send suggestion or something
+             * Remember to put return; at bottom
+             */
+            return;
+        }
         await interaction.deferReply()
+        const animeResult = await Search((name.value as string))
+        console.log(animeResult)
+        let embed: MessageEmbed;
+        if(!animeResult){
+            embed.setTitle("OOPSIE!!!")
+            embed.setDescription("Could not find any animewith that name.\n\nTry searching with another term")
+        } else {
+            embed.setTitle(animeResult.title.english || animeResult.title.native)
+            embed.setDescription(animeResult.description)
+        }
+        await interaction.editReply({
+            embeds: [embed]
+        })
     } catch (err){ console.log(err) }
 }

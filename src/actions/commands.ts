@@ -1,5 +1,7 @@
 import { Client, CommandInteraction } from "discord.js";
+
 import { Ping } from "./commands/ping";
+import { AnimeCommand } from "./commands/anime";
 
 export class Commands {
     private client: Client;
@@ -14,5 +16,8 @@ export class Commands {
     }
     ping(){
         Ping(this.interaction)
+    }
+    anime(){
+        AnimeCommand(this.interaction)
     }
 }
