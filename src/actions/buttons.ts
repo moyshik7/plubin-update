@@ -4,6 +4,7 @@ import { NextDankMemeButton } from "./commands/dank";
 import { NextGoodAniMemeButton } from "./commands/goodanimemes";
 
 import { NextMemeButton } from "./commands/memes";
+import { NextWallpaperButton } from "./commands/wallpaper";
 
 
 export class Buttons {
@@ -31,5 +32,8 @@ export class Buttons {
     }
     memes(){
         NextMemeButton(this.interaction, this.args)
+    }
+    wallpapers(){
+        NextWallpaperButton(this.interaction, this.args)
     }
 }

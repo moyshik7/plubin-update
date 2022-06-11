@@ -6,6 +6,7 @@ import { MemeCommand } from "./commands/memes";
 import { DankMemeCommand } from "./commands/dank";
 import { AniMemeCommand } from "./commands/animemes";
 import { GoodAniMemeCommand } from "./commands/goodanimemes";
+import { WallpaperCommand } from "./commands/wallpaper";
 
 export class Commands {
     private client: Client;
@@ -35,5 +36,8 @@ export class Commands {
     }
     memes(){
         MemeCommand(this.interaction)
+    }
+    wallpapers(){
+        WallpaperCommand(this.interaction)
     }
 }
