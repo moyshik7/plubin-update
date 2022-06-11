@@ -5,9 +5,9 @@ import { GetRedditPosts } from "../../reddit";
 export const DankMemeCommand = async (interaction: CommandInteraction): Promise<void> => {
     try {
         await interaction.deferReply()
-        const dank = await GetRedditPosts("dankdank", 5)
+        const dank = await GetRedditPosts("dankmemes", 10)
 
-        const entity = dank.data[dank.data.length - 1 ]
+        const entity = dank.data[dank.data.length - 1]
 
         const embed = new MessageEmbed()
             .setTitle(entity.title)
@@ -39,7 +39,7 @@ export const NextDankMemeButton = async (interaction: ButtonInteraction, args: A
     try {
         await interaction.deferUpdate()
         if(args.length < 2){ return }
-        const dank = await GetRedditPosts("dank", 2, args[0])
+        const dank = await GetRedditPosts("dankmemes", 2, args[0])
 
         const entity = dank.data[dank.data.length - 1 ]
 
