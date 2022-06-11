@@ -73,12 +73,9 @@ export const NextMemeButton = async (interaction: ButtonInteraction, args: Array
         /**
          * Edit the orginal message
          */
-        (interaction.message as Message).edit({
+        (interaction.message as Message<boolean>).edit({
             embeds: [ embed ],
             components: [ row ]
-        }).then(m => {
-            console.log(memes.after)
-            console.log(`memes-${memes.after}-${interaction.user.id}`)
         })
         return;
     } catch(err){ console.log(err) }
