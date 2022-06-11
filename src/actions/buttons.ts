@@ -1,5 +1,7 @@
 import { ButtonInteraction, Client } from "discord.js";
+import { NextAniMemeButton } from "./commands/animemes";
 import { NextDankMemeButton } from "./commands/dank";
+import { NextGoodAniMemeButton } from "./commands/goodanimemes";
 
 import { NextMemeButton } from "./commands/memes";
 
@@ -18,8 +20,14 @@ export class Buttons {
         this.args = args;
     }
 
+    animemes(){
+        NextAniMemeButton(this.interaction, this.args)
+    }
     dank(){
         NextDankMemeButton(this.interaction, this.args)
+    }
+    goodanimemes(){
+        NextGoodAniMemeButton(this.interaction, this.args)
     }
     memes(){
         NextMemeButton(this.interaction, this.args)
