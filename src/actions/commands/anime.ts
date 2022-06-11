@@ -1,5 +1,9 @@
 import axios from "axios";
-import { ColorResolvable, CommandInteraction, MessageEmbed } from "discord.js";
+import { 
+    ColorResolvable, 
+    CommandInteraction, 
+    MessageEmbed 
+} from "discord.js";
 import { AnilistAnimeResult } from "../../types";
 
 const Search = (searchString: string): Promise<AnilistAnimeResult> => {

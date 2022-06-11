@@ -1,4 +1,12 @@
-import { ButtonInteraction, CommandInteraction, Message, MessageActionRow, MessageButton, MessageEmbed } from "discord.js";
+import {
+    ButtonInteraction, 
+    CommandInteraction, 
+    Message, 
+    MessageActionRow, 
+    MessageButton, 
+    MessageEmbed, 
+    TextChannel 
+} from "discord.js";
 import { GetRedditPosts } from "../../reddit";
 
 
@@ -9,9 +17,11 @@ export const WallpaperCommand = async (interaction: CommandInteraction): Promise
 
         const entity = wallpapers.data[wallpapers.data.length - 1 ]
 
+        const nsfw = (entity.nsfw && !(interaction.channel as TextChannel).nsfw)
+
         const embed = new MessageEmbed()
             .setTitle(entity.title)
-            .setImage(entity.image)
+            .setImage(nsfw ? process.env.NO_NSFW : entity.image)
             .setColor("#ff6f61")
         
         const row = new MessageActionRow()
@@ -44,9 +54,11 @@ export const NextWallpaperButton = async (interaction: ButtonInteraction, args: 
 
         const entity = wallpapers.data[wallpapers.data.length - 1 ]
 
+        const nsfw = (entity.nsfw && !(interaction.channel as TextChannel).nsfw)
+
         const embed = new MessageEmbed()
             .setTitle(entity.title)
-            .setImage(entity.image)
+            .setImage(nsfw ? process.env.NO_NSFW : entity.image)
             .setColor("#ff6f61")
         
         /**
