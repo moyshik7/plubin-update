@@ -42,30 +42,32 @@ export const GetRedditPosts = (sub: string, limit?: number, after?: string): Pro
             }
             for(const a of data.data.data.children){
                 /**
-                 * If video then skip
+                 * If video and no image
                  */
-                //if(!a.data.is_video){
-                    /**
-                     * Clear up the response
-                     */
-                    let rear: RedditResponse = {
-                        id: a.data.id,
-                        subreddit: a.data.subreddit,
-                        title: a.data.title,
-                        votes: {
-                            up: a.data.ups,
-                            down: a.data.downs,
-                            ratio: a.data.upvote_ratio
-                        },
-                        nsfw: a.data.over_18,
-                        image: a.data.url || a.data.thumbnail,
-                        after: response.after
-                    }
-                    /**
-                     * Add item to array
-                     */
-                    response.data.push(rear);
-                //}
+                /**
+                 * Clear up the response
+                 */
+                let rear: RedditResponse = {
+                    id: a.data.id,
+                    subreddit: a.data.subreddit,
+                    title: a.data.title,
+                    votes: {
+                        up: a.data.ups,
+                        down: a.data.downs,
+                        ratio: a.data.upvote_ratio
+                    },
+                    nsfw: a.data.over_18,
+                    image: a.data.url || a.data.thumbnail,
+                    after: response.after
+                }
+                if(!a.data.is_video){
+                    rear.video = true;
+                    rear.image = a.data.thumbnail;
+                }
+                /**
+                 * Add item to array
+                 */
+                response.data.push(rear);
             }
             resolve(response)
             return;

@@ -44,6 +44,7 @@ export interface RedditResponse {
     votes: RedditVote;
     nsfw: boolean;
     image: string;
+    url?: string;
     after?: string;
     user?: string;
     video?: boolean;
