@@ -27,5 +27,10 @@ export const MemeCommand = async (interaction: CommandInteraction): Promise<void
                 .setStyle("SUCCESS")
         )
 
+        interaction.editReply({
+            embeds: [ embed ],
+            components: [ row ]
+        })
+        return;
     } catch(err){ console.log(err) }
 }
