@@ -13,6 +13,9 @@ export const AniMemeCommand = async (interaction: CommandInteraction): Promise<v
             .setTitle(entity.title)
             .setImage(entity.image)
             .setColor("#ff6f61")
+        if(entity.video){
+            embed.setDescription("This is a video\nTry opening the link in browser")
+        }
         const row = new MessageActionRow()
         row.addComponents(
             new MessageButton()
@@ -47,6 +50,9 @@ export const NextAniMemeButton = async (interaction: ButtonInteraction, args: Ar
             .setTitle(entity.title)
             .setImage(entity.image)
             .setColor("#ff6f61")
+        if(entity.video){
+            embed.setDescription("This is a video\nTry opening the link in browser")
+        }
         /**
          * Declare the button row
          */
