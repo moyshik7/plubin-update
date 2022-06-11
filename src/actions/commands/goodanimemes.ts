@@ -13,9 +13,7 @@ export const GoodAniMemeCommand = async (interaction: CommandInteraction): Promi
             .setTitle(entity.title)
             .setImage(entity.image)
             .setColor("#ff6f61")
-        if(entity.video){
-            embed.setDescription("This is a video\nTry opening the link in browser")
-        }
+        
         const row = new MessageActionRow()
         row.addComponents(
             new MessageButton()
@@ -50,9 +48,7 @@ export const NextGoodAniMemeButton = async (interaction: ButtonInteraction, args
             .setTitle(entity.title)
             .setImage(entity.image)
             .setColor("#ff6f61")
-        if(entity.video){
-            embed.setDescription("This is a video\nTry opening the link in browser")
-        }
+        
         /**
          * Declare the button row
          */

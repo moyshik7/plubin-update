@@ -13,9 +13,7 @@ export const MemeCommand = async (interaction: CommandInteraction): Promise<void
             .setTitle(entity.title)
             .setImage(entity.image)
             .setColor("#ff6f61")
-        if(entity.video){
-            embed.setDescription("This is a video\nTry opening the link in browser")
-        }
+        
         const row = new MessageActionRow()
         row.addComponents(
             new MessageButton()
@@ -50,9 +48,7 @@ export const NextMemeButton = async (interaction: ButtonInteraction, args: Array
             .setTitle(entity.title)
             .setImage(entity.image)
             .setColor("#ff6f61")
-        if(entity.video){
-            embed.setDescription("This is a video\nTry opening the link in browser")
-        }
+        
         /**
          * Declare the button row
          */
