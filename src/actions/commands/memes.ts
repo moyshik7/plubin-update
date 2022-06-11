@@ -1,4 +1,4 @@
-import { CommandInteraction, MessageActionRow, MessageButton, MessageEmbed } from "discord.js";
+import { ButtonInteraction, CommandInteraction, Message, MessageActionRow, MessageButton, MessageEmbed } from "discord.js";
 import { GetRedditPosts } from "../../reddit";
 
 
@@ -30,6 +30,55 @@ export const MemeCommand = async (interaction: CommandInteraction): Promise<void
         interaction.editReply({
             embeds: [ embed ],
             components: [ row ]
+        })
+        return;
+    } catch(err){ console.log(err) }
+}
+
+export const NextMemeButton = async (interaction: ButtonInteraction, args: Array<string>): Promise<void> => {
+    try {
+        await interaction.deferUpdate()
+        if(args.length < 2){ return }
+        const memes = await GetRedditPosts("memes", 2, args[0])
+
+        const entity = memes.data[memes.data.length - 1 ]
+
+        const embed = new MessageEmbed()
+            .setTitle(entity.title)
+            .setImage(entity.image)
+            .setColor("#ff6f61")
+        /**
+         * Declare the button row
+         */
+        const row = new MessageActionRow()
+        /**
+         * Add open in browser button
+         */
+        row.addComponents(
+            new MessageButton()
+                .setLabel("Open in Browser")
+                .setStyle("LINK")
+                .setURL(entity.image)
+        )
+        /**
+         * Add next button
+         */
+        row.addComponents(
+            new MessageButton()
+                .setCustomId(`memes_${memes.after}_${interaction.user.id}`)
+                .setLabel("Next")
+                .setStyle("SUCCESS")
+        );
+
+        /**
+         * Edit the orginal message
+         */
+        (interaction.message as Message).edit({
+            embeds: [ embed ],
+            components: [ row ]
+        }).then(m => {
+            console.log(memes.after)
+            console.log(`memes_${memes.after}_${interaction.user.id}`)
         })
         return;
     } catch(err){ console.log(err) }

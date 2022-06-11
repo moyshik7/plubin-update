@@ -44,7 +44,7 @@ export const GetRedditPosts = (sub: string, limit?: number, after?: string): Pro
                 /**
                  * If video then skip
                  */
-                if(!a.data.is_video){
+                //if(!a.data.is_video){
                     /**
                      * Clear up the response
                      */
@@ -65,7 +65,7 @@ export const GetRedditPosts = (sub: string, limit?: number, after?: string): Pro
                      * Add item to array
                      */
                     response.data.push(rear);
-                }
+                //}
             }
             resolve(response)
             return;
