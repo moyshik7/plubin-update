@@ -62,7 +62,7 @@ export const GetRedditPosts = (sub: string, limit?: number, after?: string): Pro
                 }
                 if(!a.data.is_video){
                     rear.video = true;
-                    rear.image = a.data.thumbnail;
+                    //rear.image = a.data.thumbnail;
                 }
                 /**
                  * Add item to array
