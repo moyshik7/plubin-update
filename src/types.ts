@@ -46,6 +46,7 @@ export interface RedditResponse {
     image: string;
     after?: string;
     user?: string;
+    video?: boolean;
 }
 
 export interface RedditRawResponse {
