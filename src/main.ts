@@ -61,7 +61,7 @@ client.on("interactionCreate", (interaction: Interaction): void => {
             /**
              * Separate arguments
              */
-            let args = interaction.customId.split("_")
+            let args = interaction.customId.split("-")
             if(args.length < 2){
                 /**
                  * args.length < 1: No command

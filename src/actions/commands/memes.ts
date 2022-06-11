@@ -22,7 +22,7 @@ export const MemeCommand = async (interaction: CommandInteraction): Promise<void
         )
         row.addComponents(
             new MessageButton()
-                .setCustomId(`memes_${memes.after}_${interaction.user.id}`)
+                .setCustomId(`memes-${memes.after}-${interaction.user.id}`)
                 .setLabel("Next")
                 .setStyle("SUCCESS")
         )
@@ -65,7 +65,7 @@ export const NextMemeButton = async (interaction: ButtonInteraction, args: Array
          */
         row.addComponents(
             new MessageButton()
-                .setCustomId(`memes_${memes.after}_${interaction.user.id}`)
+                .setCustomId(`memes-${memes.after}-${interaction.user.id}`)
                 .setLabel("Next")
                 .setStyle("SUCCESS")
         );
@@ -78,7 +78,7 @@ export const NextMemeButton = async (interaction: ButtonInteraction, args: Array
             components: [ row ]
         }).then(m => {
             console.log(memes.after)
-            console.log(`memes_${memes.after}_${interaction.user.id}`)
+            console.log(`memes-${memes.after}-${interaction.user.id}`)
         })
         return;
     } catch(err){ console.log(err) }
