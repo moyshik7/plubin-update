@@ -4,6 +4,8 @@ import { Ping } from "./commands/ping";
 import { AnimeCommand } from "./commands/anime";
 import { MemeCommand } from "./commands/memes";
 import { DankMemeCommand } from "./commands/dank";
+import { AniMemeCommand } from "./commands/animemes";
+import { GoodAniMemeCommand } from "./commands/goodanimemes";
 
 export class Commands {
     private client: Client;
@@ -22,8 +24,14 @@ export class Commands {
     anime(){
         AnimeCommand(this.interaction)
     }
+    animemes(){
+        AniMemeCommand(this.interaction)
+    }
     dank(){
         DankMemeCommand(this.interaction)
+    }
+    goodanimemes(){
+        GoodAniMemeCommand(this.interaction)
     }
     memes(){
         MemeCommand(this.interaction)
