@@ -5,6 +5,7 @@ import { NextGoodAniMemeButton } from "./commands/goodanimemes";
 
 import { NextMemeButton } from "./commands/memes";
 import { NextWallpaperButton } from "./commands/wallpaper";
+import { NextHentaiButton } from "./nsfw/hentai";
 
 
 export class Buttons {
@@ -35,5 +36,9 @@ export class Buttons {
     }
     wallpapers(){
         NextWallpaperButton(this.interaction, this.args)
+    }
+
+    hentai(){
+        NextHentaiButton(this.interaction, this.args)
     }
 }

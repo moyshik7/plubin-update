@@ -7,6 +7,7 @@ import { DankMemeCommand } from "./commands/dank";
 import { AniMemeCommand } from "./commands/animemes";
 import { GoodAniMemeCommand } from "./commands/goodanimemes";
 import { WallpaperCommand } from "./commands/wallpaper";
+import { HentaiCommand } from "./nsfw/hentai";
 
 export class Commands {
     private client: Client;
@@ -22,6 +23,7 @@ export class Commands {
     ping(){
         Ping(this.interaction)
     }
+
     anime(){
         AnimeCommand(this.interaction)
     }
@@ -39,5 +41,9 @@ export class Commands {
     }
     wallpapers(){
         WallpaperCommand(this.interaction)
+    }
+
+    hentai(){
+        HentaiCommand(this.interaction)
     }
 }
