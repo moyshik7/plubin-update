@@ -8,6 +8,10 @@ import { AniMemeCommand } from "./commands/animemes";
 import { GoodAniMemeCommand } from "./commands/goodanimemes";
 import { WallpaperCommand } from "./commands/wallpaper";
 import { HentaiCommand } from "./nsfw/hentai";
+import { TentaclesCommand } from "./nsfw/tentacles";
+import { YaoiCommand } from "./nsfw/yaoi";
+import { YuriCommand } from "./nsfw/yuri";
+import { FutaCommand } from "./nsfw/futa";
 
 export class Commands {
     private client: Client;
@@ -43,7 +47,19 @@ export class Commands {
         WallpaperCommand(this.interaction)
     }
 
+    futa(){
+        FutaCommand(this.interaction)
+    }
     hentai(){
         HentaiCommand(this.interaction)
+    }
+    tentacles(){
+        TentaclesCommand(this.interaction)
+    }
+    yaoi(){
+        YaoiCommand(this.interaction)
+    }
+    yuri(){
+        YuriCommand(this.interaction)
     }
 }
