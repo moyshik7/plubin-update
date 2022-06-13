@@ -13,6 +13,14 @@ import { YaoiCommand } from "./nsfw/yaoi";
 import { YuriCommand } from "./nsfw/yuri";
 import { FutaCommand } from "./nsfw/futa";
 import { OppaiCommand } from "./nsfw/oppai";
+import { AsianCommand } from "./nsfw/asian";
+import { AssCommand } from "./nsfw/ass";
+import { BlackCommand } from "./nsfw/black";
+import { BlondeCommand } from "./nsfw/blonde";
+import { BlowjobCommand } from "./nsfw/blowjob";
+import { BondageCommand } from "./nsfw/bondage";
+import { BoobCommand } from "./nsfw/boob";
+import { NekoCommand } from "./nsfw/neko";
 
 export class Commands {
     private client: Client;
@@ -48,11 +56,35 @@ export class Commands {
         WallpaperCommand(this.interaction)
     }
 
+    asian(){
+        AsianCommand(this.interaction)
+    }
+    ass(){
+        AssCommand(this.interaction)
+    }
+    black(){
+        BlackCommand(this.interaction)
+    }
+    blonde(){
+        BlondeCommand(this.interaction)
+    }
+    blowjob(){
+        BlowjobCommand(this.interaction)
+    }
+    bondage(){
+        BondageCommand(this.interaction)
+    }
+    boobs(){
+        BoobCommand(this.interaction)
+    }
     futa(){
         FutaCommand(this.interaction)
     }
     hentai(){
         HentaiCommand(this.interaction)
+    }
+    neko(){
+        NekoCommand(this.interaction)
     }
     oppai(){
         OppaiCommand(this.interaction)

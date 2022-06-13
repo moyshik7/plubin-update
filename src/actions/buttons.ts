@@ -5,8 +5,16 @@ import { NextGoodAniMemeButton } from "./commands/goodanimemes";
 
 import { NextMemeButton } from "./commands/memes";
 import { NextWallpaperButton } from "./commands/wallpaper";
+import { NextAsianButton } from "./nsfw/asian";
+import { NextAssButton } from "./nsfw/ass";
+import { NextBlackButton } from "./nsfw/black";
+import { NextBlondeButton } from "./nsfw/blonde";
+import { NextBlowjobButton } from "./nsfw/blowjob";
+import { NextBondageButton } from "./nsfw/bondage";
+import { NextBoobButton } from "./nsfw/boob";
 import { NextFutaButton } from "./nsfw/futa";
 import { NextHentaiButton } from "./nsfw/hentai";
+import { NextNekoButton } from "./nsfw/neko";
 import { NextOpppaiButton } from "./nsfw/oppai";
 import { NextTentaclesButton } from "./nsfw/tentacles";
 import { NextYaoiButton } from "./nsfw/yaoi";
@@ -43,11 +51,35 @@ export class Buttons {
         NextWallpaperButton(this.interaction, this.args)
     }
 
+    asian(){
+        NextAsianButton(this.interaction, this.args)
+    }
+    ass(){
+        NextAssButton(this.interaction, this.args)
+    }
+    black(){
+        NextBlackButton(this.interaction, this.args)
+    }
+    blonde(){
+        NextBlondeButton(this.interaction, this.args)
+    }
+    blowjob(){
+        NextBlowjobButton(this.interaction, this.args)
+    }
+    bondage(){
+        NextBondageButton(this.interaction, this.args)
+    }
+    boobs(){
+        NextBoobButton(this.interaction, this.args)
+    }
     futa(){
         NextFutaButton(this.interaction, this.args)
     }
     hentai(){
         NextHentaiButton(this.interaction, this.args)
+    }
+    neko(){
+        NextNekoButton(this.interaction, this.args)
     }
     oppai(){
         NextOpppaiButton(this.interaction, this.args)
