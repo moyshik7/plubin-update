@@ -8,6 +8,7 @@ import {
     TextChannel 
 } from "discord.js";
 import { GetRedditPosts } from "../../reddit";
+import { GetShiroRaw } from "../../shiroapi";
 
 
 export const NekoCommand = async (interaction: CommandInteraction): Promise<void> => {
@@ -15,12 +16,27 @@ export const NekoCommand = async (interaction: CommandInteraction): Promise<void
         await interaction.deferReply()
 
         if(!(interaction.channel as TextChannel).nsfw){
-            const emb = new MessageEmbed()
-                .setTitle("Horni bonk")
-                .setImage(process.env.NO_NSFW)
-                .setColor("RED")
+            const entity = await GetShiroRaw("/images/neko")
+            const embed = new MessageEmbed()
+                .setTitle("nya~~")
+                .setImage(entity)
+                .setColor("#ff6f61");
+            const row = new MessageActionRow()
+            row.addComponents(
+                new MessageButton()
+                    .setLabel("Open in Browser")
+                    .setStyle("LINK")
+                    .setURL(entity)
+            )
+            row.addComponents(
+                new MessageButton()
+                    .setCustomId(`nekosfw-${interaction.user.id}`)
+                    .setLabel("Next")
+                    .setStyle("SUCCESS")
+            )
             interaction.editReply({
-                embeds: [emb]
+                embeds: [embed],
+                components: [row]
             })
             return;
         }
@@ -32,7 +48,7 @@ export const NekoCommand = async (interaction: CommandInteraction): Promise<void
         const embed = new MessageEmbed()
             .setTitle(entity.title)
             .setImage(entity.image)
-            .setColor("#ff6f61")
+            .setColor("#ff6f61");
         
         const row = new MessageActionRow()
         row.addComponents(
@@ -59,18 +75,30 @@ export const NekoCommand = async (interaction: CommandInteraction): Promise<void
 export const NextNekoButton = async (interaction: ButtonInteraction, args: Array<string>): Promise<void> => {
     try {
         await interaction.deferUpdate()
-        if(args.length < 2){ return }
+        if(args.length < 1){ return }
 
-        /**
-         * If channel not nsfw show error
-         */
-        if(!(interaction.channel as TextChannel).nsfw){
-            const emb = new MessageEmbed()
-                .setTitle("Horni bonk")
-                .setImage(process.env.NO_NSFW)
-                .setColor("RED")
-            interaction.editReply({
-                embeds: [emb]
+         if(!(interaction.channel as TextChannel).nsfw){
+            const entity = await GetShiroRaw("/images/neko")
+            const embed = new MessageEmbed()
+                .setTitle("nya~~")
+                .setImage(entity)
+                .setColor("#ff6f61");
+            const row = new MessageActionRow()
+            row.addComponents(
+                new MessageButton()
+                    .setLabel("Open in Browser")
+                    .setStyle("LINK")
+                    .setURL(entity)
+            )
+            row.addComponents(
+                new MessageButton()
+                    .setCustomId(`nekosfw-${interaction.user.id}`)
+                    .setLabel("Next")
+                    .setStyle("SUCCESS")
+            );
+            (interaction.message as Message<boolean>).edit({
+                embeds: [embed],
+                components: [row]
             })
             return;
         }
@@ -113,6 +141,34 @@ export const NextNekoButton = async (interaction: ButtonInteraction, args: Array
         (interaction.message as Message<boolean>).edit({
             embeds: [ embed ],
             components: [ row ]
+        })
+        return;
+    } catch(err){ console.log(err) }
+}
+export const NextSFWNekoButton = async (interaction: ButtonInteraction, args: Array<string>): Promise<void> => {
+    try {
+        await interaction.deferUpdate()
+        const entity = await GetShiroRaw("/images/neko")
+        const embed = new MessageEmbed()
+            .setTitle("nya~~")
+            .setImage(entity)
+            .setColor("#ff6f61");
+        const row = new MessageActionRow()
+        row.addComponents(
+            new MessageButton()
+                .setLabel("Open in Browser")
+                .setStyle("LINK")
+                .setURL(entity)
+        )
+        row.addComponents(
+            new MessageButton()
+                .setCustomId(`nekosfw-${interaction.user.id}`)
+                .setLabel("Next")
+                .setStyle("SUCCESS")
+        );
+        (interaction.message as Message<boolean>).edit({
+            embeds: [embed],
+            components: [row]
         })
         return;
     } catch(err){ console.log(err) }

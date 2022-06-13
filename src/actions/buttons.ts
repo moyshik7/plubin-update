@@ -17,7 +17,7 @@ import { NextCelebrityButton } from "./nsfw/celebrity";
 import { NextCumslutButton } from "./nsfw/cumslut";
 import { NextFutaButton } from "./nsfw/futa";
 import { NextHentaiButton } from "./nsfw/hentai";
-import { NextNekoButton } from "./nsfw/neko";
+import { NextNekoButton, NextSFWNekoButton } from "./nsfw/neko";
 import { NextOpppaiButton } from "./nsfw/oppai";
 import { NextTentaclesButton } from "./nsfw/tentacles";
 import { NextVanilaButton } from "./nsfw/vanila";
@@ -50,6 +50,9 @@ export class Buttons {
     }
     memes(){
         NextMemeButton(this.interaction, this.args)
+    }
+    nekosfw(){
+        NextSFWNekoButton(this.interaction, this.args)
     }
     waifu(){
         NextWaifuButton(this.interaction, this.args)
