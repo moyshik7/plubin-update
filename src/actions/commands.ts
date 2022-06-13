@@ -25,6 +25,7 @@ import { WaifuCommand } from "./commands/waifu";
 import { VanilaCommand } from "./nsfw/vanila";
 import { CumslutCommand } from "./nsfw/cumslut";
 import { CelebrityCommand } from "./nsfw/celebrity";
+import { MangaCommand } from "./commands/manga";
 
 export class Commands {
     private client: Client;
@@ -52,6 +53,9 @@ export class Commands {
     }
     goodanimemes(){
         GoodAniMemeCommand(this.interaction)
+    }
+    manga(){
+        MangaCommand(this.interaction)
     }
     memes(){
         MemeCommand(this.interaction)

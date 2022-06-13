@@ -2,6 +2,7 @@ export type Snowflake = string;
 export type LongDescription = string;
 export type ShortDescription = string;
 export type ColorHex = string;
+export type Integer = number;
 
 export interface AnilistTitles {
     english: string;
@@ -29,6 +30,20 @@ export interface AnilistAnimeResult {
     color?: ColorHex;
     cover: ImageURLSize;
     banner: string;
+}
+export interface AnilistMangaResult {
+    id: number;
+    title: AnilistTitles;
+    description: LongDescription;
+    volumes: number;
+    chapters: number;
+    status?: string;
+    isAdult?: boolean;
+    genres?: Array<string>;
+    format?: string;
+    color?: ColorHex;
+    cover: ImageURLSize;
+    banner?: string;
 }
 
 export interface RedditVote {

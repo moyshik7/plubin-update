@@ -1,0 +1,12 @@
+{
+    "name": "manga",
+    "description": "Search for your favourite Manga / Comics, Add to wishlist / Share with friends",
+    "type": 1,
+    "options": [{
+        "name": "manga_name",
+        "description": "Name of the manga to search",
+        "type": 3,
+        "required": true,
+        "autocomplete": false
+    }]
+}

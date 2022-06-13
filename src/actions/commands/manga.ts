@@ -4,9 +4,9 @@ import {
     CommandInteraction, 
     MessageEmbed 
 } from "discord.js";
-import { AnilistAnimeResult } from "../../types";
+import { AnilistMangaResult } from "../../types";
 
-const Search = (searchString: string): Promise<AnilistAnimeResult> => {
+const Search = (searchString: string): Promise<AnilistMangaResult> => {
     return new Promise((
         resolve: (any) => void,
         reject: (any) => void
@@ -29,6 +29,10 @@ const Search = (searchString: string): Promise<AnilistAnimeResult> => {
                 status
                 isAdult
                 genres
+                coverImage {
+                    large
+                    color
+                }
             }
         }          
         `
@@ -48,22 +52,19 @@ const Search = (searchString: string): Promise<AnilistAnimeResult> => {
                 reject("No Anime found with this Query")
                 return;
             }
-            let result: AnilistAnimeResult = {
+            let result: AnilistMangaResult = {
                 id: r.data.data.Media.id,
                 title: r.data.data.Media.title,
                 description: r.data.data.Media.description.replace(/<[^>]*>?/gm, ''),
-                season: r.data.data.Media.season,
                 status: r.data.data.Media.status,
-                episodes: r.data.data.Media.episodes,
+                volumes: r.data.data.Media.volumes,
+                chapters: r.data.data.Media.chapters,
                 isAdult: r.data.data.Media.isAdult,
                 genres: r.data.data.Media.genres,
                 color: r.data.data.Media.coverImage.color,
                 cover: {
-                    large: r.data.data.Media.coverImage.extraLarge,
                     medium: r.data.data.Media.coverImage.large,
-                    small: r.data.data.Media.coverImage.medium
-                },
-                banner: r.data.data.Media.bannerImage,
+                }
             }
 
             resolve(result)
@@ -72,9 +73,9 @@ const Search = (searchString: string): Promise<AnilistAnimeResult> => {
     })
 }
 
-export const AnimeCommand = async (interaction: CommandInteraction): Promise<void> => {
+export const MangaCommand = async (interaction: CommandInteraction): Promise<void> => {
     try {
-        let name = interaction.options.get("anime_name")
+        let name = interaction.options.get("manga_name")
         if(!name || !name.value){
             /**
              * No search term provided
@@ -98,7 +99,7 @@ export const AnimeCommand = async (interaction: CommandInteraction): Promise<voi
          */
         if(!animeResult){
             embed.setTitle("OOPSIE!!!")
-            embed.setDescription("Could not find any animewith that name.\n\nTry searching with another term")
+            embed.setDescription("Could not find any manga with that name.\n\nTry searching with another term")
         } else {
             embed.setTitle(animeResult.title.english || animeResult.title.native)
             embed.setDescription(animeResult.description)
@@ -106,8 +107,8 @@ export const AnimeCommand = async (interaction: CommandInteraction): Promise<voi
             embed.addField("Also searched for:", animeResult.title.native)
             embed.addFields(
                 {
-                    name: "__**Episodes:**__",
-                    value: `${animeResult.episodes || "0" }`,
+                    name: "__**Chapters:**__",
+                    value: `${animeResult.chapters || "0" }`,
                     inline: true
                 }, {
                     name: "__**NSFW:**__",
@@ -121,8 +122,8 @@ export const AnimeCommand = async (interaction: CommandInteraction): Promise<voi
                     value: animeResult.status,
                     inline: true
                 }, {
-                    name: "**Season**",
-                    value: animeResult.season,
+                    name: "**Volumes**",
+                    value: `${animeResult.volumes || "0"}`,
                     inline: true
                 }, {
                     name: "__**Genres:**__",
