@@ -12,6 +12,7 @@ import { TentaclesCommand } from "./nsfw/tentacles";
 import { YaoiCommand } from "./nsfw/yaoi";
 import { YuriCommand } from "./nsfw/yuri";
 import { FutaCommand } from "./nsfw/futa";
+import { OppaiCommand } from "./nsfw/oppai";
 
 export class Commands {
     private client: Client;
@@ -52,6 +53,9 @@ export class Commands {
     }
     hentai(){
         HentaiCommand(this.interaction)
+    }
+    oppai(){
+        OppaiCommand(this.interaction)
     }
     tentacles(){
         TentaclesCommand(this.interaction)

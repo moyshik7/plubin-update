@@ -7,6 +7,7 @@ import { NextMemeButton } from "./commands/memes";
 import { NextWallpaperButton } from "./commands/wallpaper";
 import { NextFutaButton } from "./nsfw/futa";
 import { NextHentaiButton } from "./nsfw/hentai";
+import { NextOpppaiButton } from "./nsfw/oppai";
 import { NextTentaclesButton } from "./nsfw/tentacles";
 import { NextYaoiButton } from "./nsfw/yaoi";
 import { NextYuriButton } from "./nsfw/yuri";
@@ -47,6 +48,9 @@ export class Buttons {
     }
     hentai(){
         NextHentaiButton(this.interaction, this.args)
+    }
+    oppai(){
+        NextOpppaiButton(this.interaction, this.args)
     }
     tentacles(){
         NextTentaclesButton(this.interaction, this.args)
