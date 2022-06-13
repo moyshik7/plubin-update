@@ -25,7 +25,7 @@ export const BlowjobCommand = async (interaction: CommandInteraction): Promise<v
             return;
         }
 
-        const redditRresponse = await GetRedditPosts("blowjobhentai", 5)
+        const redditRresponse = await GetRedditPosts("blowjob", 5)
 
         const entity = redditRresponse.data[redditRresponse.data.length - 1 ]
 
@@ -75,7 +75,7 @@ export const NextBlowjobButton = async (interaction: ButtonInteraction, args: Ar
             return;
         }
 
-        const redditRresponse = await GetRedditPosts("blowjobhentai", 2, args[0])
+        const redditRresponse = await GetRedditPosts("blowjob", 2, args[0])
 
         const entity = redditRresponse.data[redditRresponse.data.length - 1 ]
 
