@@ -21,6 +21,10 @@ import { BlowjobCommand } from "./nsfw/blowjob";
 import { BondageCommand } from "./nsfw/bondage";
 import { BoobCommand } from "./nsfw/boob";
 import { NekoCommand } from "./nsfw/neko";
+import { WaifuCommand } from "./commands/waifu";
+import { VanilaCommand } from "./nsfw/vanila";
+import { CumslutCommand } from "./nsfw/cumslut";
+import { CelebrityCommand } from "./nsfw/celebrity";
 
 export class Commands {
     private client: Client;
@@ -52,6 +56,9 @@ export class Commands {
     memes(){
         MemeCommand(this.interaction)
     }
+    waifu(){
+        WaifuCommand(this.interaction)
+    }
     wallpapers(){
         WallpaperCommand(this.interaction)
     }
@@ -77,6 +84,12 @@ export class Commands {
     boobs(){
         BoobCommand(this.interaction)
     }
+    celebrity(){
+        CelebrityCommand(this.interaction)
+    }
+    cumslut(){
+        CumslutCommand(this.interaction)
+    }
     futa(){
         FutaCommand(this.interaction)
     }
@@ -91,6 +104,9 @@ export class Commands {
     }
     tentacles(){
         TentaclesCommand(this.interaction)
+    }
+    vanila(){
+        VanilaCommand(this.interaction)
     }
     yaoi(){
         YaoiCommand(this.interaction)
