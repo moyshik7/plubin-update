@@ -75,7 +75,6 @@ export const NekoCommand = async (interaction: CommandInteraction): Promise<void
 export const NextNekoButton = async (interaction: ButtonInteraction, args: Array<string>): Promise<void> => {
     try {
         await interaction.deferUpdate()
-        if(args.length < 1){ return }
 
          if(!(interaction.channel as TextChannel).nsfw){
             const entity = await GetShiroRaw("/images/neko")
@@ -102,6 +101,9 @@ export const NextNekoButton = async (interaction: ButtonInteraction, args: Array
             })
             return;
         }
+
+        
+        if(args.length < 2){ return }
 
         const redditRresponse = await GetRedditPosts("nekohentai", 2, args[0])
 
