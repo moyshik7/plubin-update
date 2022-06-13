@@ -4,10 +4,8 @@ import {
     Message, 
     MessageActionRow, 
     MessageButton, 
-    MessageEmbed, 
-    TextChannel 
+    MessageEmbed
 } from "discord.js";
-import { GetRedditPosts } from "../../reddit";
 import { GetShiroRaw } from "../../shiroapi";
 
 
@@ -19,8 +17,8 @@ export const WaifuCommand = async (interaction: CommandInteraction): Promise<voi
         const embed = new MessageEmbed()
             .setTitle("Your Waifu")
             .setImage(entity)
-            .setColor("#ff6f61")
-        
+            .setColor("#ff6f61");
+
         const row = new MessageActionRow()
         row.addComponents(
             new MessageButton()
