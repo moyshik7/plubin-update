@@ -9,6 +9,8 @@ import {
 } from "discord.js";
 import { GetRedditPosts } from "../../reddit";
 
+const getMetaData = require('metadata-scraper')
+
 
 export const BoobCommand = async (interaction: CommandInteraction): Promise<void> => {
     try {
