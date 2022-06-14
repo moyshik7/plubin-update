@@ -54,7 +54,7 @@ export const AssCommand = async (interaction: CommandInteraction): Promise<void>
             interaction.editReply({
                 embeds: [embed],
                 components: [row],
-                files: [ `${data.video}` ]
+                files: []
             })
             return;
         }
@@ -133,7 +133,7 @@ export const NextAssButton = async (interaction: ButtonInteraction, args: Array<
             (interaction.message as Message<boolean>).edit({
                 embeds: [embed],
                 components: [row],
-                files: [ `${data.video}` ]
+                files: []
             })
             return;
         }

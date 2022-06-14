@@ -54,7 +54,7 @@ export const BlowjobCommand = async (interaction: CommandInteraction): Promise<v
             interaction.editReply({
                 embeds: [embed],
                 components: [row],
-                files: [ `${data.video}` ]
+                files: []
             })
             return;
         }
@@ -133,7 +133,7 @@ export const NextBlowjobButton = async (interaction: ButtonInteraction, args: Ar
             (interaction.message as Message<boolean>).edit({
                 embeds: [embed],
                 components: [row],
-                files: [ `${data.video}` ]
+                files: []
             })
             return;
         }

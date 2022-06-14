@@ -54,7 +54,7 @@ export const BlondeCommand = async (interaction: CommandInteraction): Promise<vo
             interaction.editReply({
                 embeds: [embed],
                 components: [row],
-                files: [ `${data.video}` ]
+                files: []
             })
             return;
         }
@@ -133,7 +133,7 @@ export const NextBlondeButton = async (interaction: ButtonInteraction, args: Arr
             (interaction.message as Message<boolean>).edit({
                 embeds: [embed],
                 components: [row],
-                files: [ `${data.video}` ]
+                files: []
             })
             return;
         }

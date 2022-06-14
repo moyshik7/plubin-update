@@ -54,7 +54,7 @@ export const BlackCommand = async (interaction: CommandInteraction): Promise<voi
             interaction.editReply({
                 embeds: [embed],
                 components: [row],
-                files: [ `${data.video}` ]
+                files: []
             })
             return;
         }
@@ -133,7 +133,7 @@ export const NextBlackButton = async (interaction: ButtonInteraction, args: Arra
             (interaction.message as Message<boolean>).edit({
                 embeds: [embed],
                 components: [row],
-                files: [ `${data.video}` ]
+                files: []
             })
             return;
         }

@@ -58,7 +58,7 @@ export const AsianCommand = async (interaction: CommandInteraction): Promise<voi
             interaction.editReply({
                 embeds: [embed],
                 components: [row],
-                files: [ `${data.video}` ]
+                files: []
             })
             return;
         }
@@ -137,7 +137,7 @@ export const NextAsianButton = async (interaction: ButtonInteraction, args: Arra
             (interaction.message as Message<boolean>).edit({
                 embeds: [embed],
                 components: [row],
-                files: [ `${data.video}` ]
+                files: []
             })
             return;
         }
