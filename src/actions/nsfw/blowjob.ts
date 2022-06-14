@@ -31,6 +31,33 @@ export const BlowjobCommand = async (interaction: CommandInteraction): Promise<v
 
         const entity = redditRresponse.data[redditRresponse.data.length - 1 ]
 
+        if(/(http|https)\:\/\/(www\.)?redgifs\.com\/watch\/[a-zA-Z]{3,35}(\/)?/g.test(entity.image)){
+            const data = await getMetaData(entity.image)
+            const embed = new MessageEmbed()
+                .setTitle(entity.title)
+                .setColor("#ff6f61")
+                .setDescription("This is a video");
+            const row = new MessageActionRow()
+            row.addComponents(
+                new MessageButton()
+                    .setLabel("Open in Browser")
+                    .setStyle("LINK")
+                    .setURL(data.video || entity.image)
+            )
+            row.addComponents(
+                new MessageButton()
+                    .setCustomId(`blowjob-${redditRresponse.after}-${interaction.user.id}`)
+                    .setLabel("Next")
+                    .setStyle("SUCCESS")
+            )
+            interaction.editReply({
+                embeds: [embed],
+                components: [row],
+                files: [ `${data.video}` ]
+            })
+            return;
+        }
+
         const embed = new MessageEmbed()
             .setTitle(entity.title)
             .setImage(entity.image)
@@ -52,7 +79,8 @@ export const BlowjobCommand = async (interaction: CommandInteraction): Promise<v
 
         interaction.editReply({
             embeds: [ embed ],
-            components: [ row ]
+            components: [ row ],
+            files: []
         })
         return;
     } catch(err){ console.log(err) }
@@ -80,6 +108,33 @@ export const NextBlowjobButton = async (interaction: ButtonInteraction, args: Ar
         const redditRresponse = await GetRedditPosts("blowjobpics", 2, args[0])
 
         const entity = redditRresponse.data[redditRresponse.data.length - 1 ]
+
+        if(/(http|https)\:\/\/(www\.)?redgifs\.com\/watch\/[a-zA-Z]{3,35}(\/)?/g.test(entity.image)){
+            const data = await getMetaData(entity.image)
+            const embed = new MessageEmbed()
+                .setTitle(entity.title)
+                .setColor("#ff6f61")
+                .setDescription("[This is a video]");
+            const row = new MessageActionRow()
+            row.addComponents(
+                new MessageButton()
+                    .setLabel("Open in Browser")
+                    .setStyle("LINK")
+                    .setURL( `${data.video || entity.image}`)
+            )
+            row.addComponents(
+                new MessageButton()
+                    .setCustomId(`blowjob-${redditRresponse.after}-${interaction.user.id}`)
+                    .setLabel("Next")
+                    .setStyle("SUCCESS")
+            );
+            (interaction.message as Message<boolean>).edit({
+                embeds: [embed],
+                components: [row],
+                files: [ `${data.video}` ]
+            })
+            return;
+        }
 
         const embed = new MessageEmbed()
             .setTitle(entity.title)
@@ -114,7 +169,8 @@ export const NextBlowjobButton = async (interaction: ButtonInteraction, args: Ar
          */
         (interaction.message as Message<boolean>).edit({
             embeds: [ embed ],
-            components: [ row ]
+            components: [ row ],
+            files: []
         })
         return;
     } catch(err){ console.log(err) }
