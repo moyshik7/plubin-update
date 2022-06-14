@@ -3,6 +3,7 @@ import {
     CommandInteraction, 
     Message, 
     MessageActionRow, 
+    MessageAttachment, 
     MessageButton, 
     MessageEmbed, 
     TextChannel 
@@ -46,7 +47,7 @@ export const AsianCommand = async (interaction: CommandInteraction): Promise<voi
                 new MessageButton()
                     .setLabel("Open in Browser")
                     .setStyle("LINK")
-                    .setURL(entity.image)
+                    .setURL(data.video || entity.image)
             )
             row.addComponents(
                 new MessageButton()
@@ -55,9 +56,9 @@ export const AsianCommand = async (interaction: CommandInteraction): Promise<voi
                     .setStyle("SUCCESS")
             )
             interaction.editReply({
-                content: `${data.video}`,
                 embeds: [embed],
-                components: [row]
+                components: [row],
+                files: [ `${data.video}` ]
             })
             return;
         }
@@ -117,13 +118,13 @@ export const NextAsianButton = async (interaction: ButtonInteraction, args: Arra
             const embed = new MessageEmbed()
                 .setTitle(entity.title)
                 .setColor("#ff6f61")
-                .setDescription("This is a video");
+                .setDescription("[This is a video]");
             const row = new MessageActionRow()
             row.addComponents(
                 new MessageButton()
                     .setLabel("Open in Browser")
                     .setStyle("LINK")
-                    .setURL(entity.image)
+                    .setURL( `${data.video || entity.image}`)
             )
             row.addComponents(
                 new MessageButton()
@@ -132,9 +133,9 @@ export const NextAsianButton = async (interaction: ButtonInteraction, args: Arra
                     .setStyle("SUCCESS")
             );
             (interaction.message as Message<boolean>).edit({
-                content: `${data.video}`,
                 embeds: [embed],
-                components: [row]
+                components: [row],
+                files: [ `${data.video}` ]
             })
             return;
         }
