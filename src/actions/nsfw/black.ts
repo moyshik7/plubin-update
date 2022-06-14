@@ -36,11 +36,12 @@ export const BlackCommand = async (interaction: CommandInteraction): Promise<voi
             const embed = new MessageEmbed()
                 .setTitle(entity.title)
                 .setColor("#ff6f61")
-                .setDescription("This is a video");
+                .setDescription("This is a video")
+                .setImage(data.image)
             const row = new MessageActionRow()
             row.addComponents(
                 new MessageButton()
-                    .setLabel("Open in Browser")
+                    .setLabel("Watch in Browser")
                     .setStyle("LINK")
                     .setURL(data.video || entity.image)
             )
@@ -114,13 +115,14 @@ export const NextBlackButton = async (interaction: ButtonInteraction, args: Arra
             const embed = new MessageEmbed()
                 .setTitle(entity.title)
                 .setColor("#ff6f61")
-                .setDescription("[This is a video]");
+                .setDescription("[This is a video]")
+                .setImage(data.image)
             const row = new MessageActionRow()
             row.addComponents(
                 new MessageButton()
-                    .setLabel("Open in Browser")
+                    .setLabel("Watch in Browser")
                     .setStyle("LINK")
-                    .setURL( `${data.video || entity.image}`)
+                    .setURL(data.video || entity.image)
             )
             row.addComponents(
                 new MessageButton()
