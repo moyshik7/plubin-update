@@ -12,7 +12,7 @@ export const SmugCommand = async (interaction: CommandInteraction): Promise<void
         const image = await GetShiroRaw("/images/smug")
 
         const embed = new MessageEmbed()
-            .setTitle(`z z z`)
+            .setTitle(`¬‿¬`)
             .setImage(image)
             .setColor("#ff6f61")
 
