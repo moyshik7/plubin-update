@@ -33,6 +33,7 @@ import { KoreanCommand } from "./nsfw/korean";
 import { BlushCommand } from "./commands/blush";
 import { CryCommand } from "./commands/cry";
 import { NomCommand } from "./commands/nom";
+import { PoutCommand } from "./commands/pout";
 
 export class Commands {
     private client: Client;
@@ -82,6 +83,9 @@ export class Commands {
     }
     nom(){
         NomCommand(this.interaction)
+    }
+    pout(){
+        PoutCommand(this.interaction)
     }
 
     asian(){
