@@ -26,6 +26,8 @@ import { VanilaCommand } from "./nsfw/vanila";
 import { CumslutCommand } from "./nsfw/cumslut";
 import { CelebrityCommand } from "./nsfw/celebrity";
 import { MangaCommand } from "./commands/manga";
+import { IndianCommand } from "./nsfw/indian";
+import { JapaneseCommand } from "./nsfw/japanese";
 
 export class Commands {
     private client: Client;
@@ -99,6 +101,12 @@ export class Commands {
     }
     hentai(){
         HentaiCommand(this.interaction)
+    }
+    indian(){
+        IndianCommand(this.interaction)
+    }
+    japanese(){
+        JapaneseCommand(this.interaction)
     }
     neko(){
         NekoCommand(this.interaction)
