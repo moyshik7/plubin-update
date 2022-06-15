@@ -28,6 +28,8 @@ import { CelebrityCommand } from "./nsfw/celebrity";
 import { MangaCommand } from "./commands/manga";
 import { IndianCommand } from "./nsfw/indian";
 import { JapaneseCommand } from "./nsfw/japanese";
+import { FilipinoCommand } from "./nsfw/filipino";
+import { KoreanCommand } from "./nsfw/korean";
 
 export class Commands {
     private client: Client;
@@ -96,6 +98,9 @@ export class Commands {
     cumslut(){
         CumslutCommand(this.interaction)
     }
+    filipino(){
+        FilipinoCommand(this.interaction)
+    }
     futa(){
         FutaCommand(this.interaction)
     }
@@ -107,6 +112,9 @@ export class Commands {
     }
     japanese(){
         JapaneseCommand(this.interaction)
+    }
+    korean(){
+        KoreanCommand(this.interaction)
     }
     neko(){
         NekoCommand(this.interaction)

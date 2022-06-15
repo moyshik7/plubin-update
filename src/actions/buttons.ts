@@ -15,10 +15,12 @@ import { NextBondageButton } from "./nsfw/bondage";
 import { NextBoobButton } from "./nsfw/boob";
 import { NextCelebrityButton } from "./nsfw/celebrity";
 import { NextCumslutButton } from "./nsfw/cumslut";
+import { NextFilipinoButton } from "./nsfw/filipino";
 import { NextFutaButton } from "./nsfw/futa";
 import { NextHentaiButton } from "./nsfw/hentai";
 import { NextIndianButton } from "./nsfw/indian";
 import { NextJapaneseButton } from "./nsfw/japanese";
+import { NextKoreanButton } from "./nsfw/korean";
 import { NextNekoButton, NextSFWNekoButton } from "./nsfw/neko";
 import { NextOpppaiButton } from "./nsfw/oppai";
 import { NextTentaclesButton } from "./nsfw/tentacles";
@@ -90,6 +92,9 @@ export class Buttons {
     cumslut(){
         NextCumslutButton(this.interaction, this.args)
     }
+    filipino(){
+        NextFilipinoButton(this.interaction, this.args)
+    }
     futa(){
         NextFutaButton(this.interaction, this.args)
     }
@@ -101,6 +106,9 @@ export class Buttons {
     }
     japanese(){
         NextJapaneseButton(this.interaction, this.args)
+    }
+    korean(){
+        NextKoreanButton(this.interaction, this.args)
     }
     neko(){
         NextNekoButton(this.interaction, this.args)
