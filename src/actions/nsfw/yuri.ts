@@ -9,6 +9,8 @@ import {
 } from "discord.js";
 import { GetRedditPosts } from "../../reddit";
 
+const getMetaData = require('metadata-scraper')
+
 
 export const YuriCommand = async (interaction: CommandInteraction): Promise<void> => {
     try {
@@ -28,6 +30,33 @@ export const YuriCommand = async (interaction: CommandInteraction): Promise<void
         const redditRresponse = await GetRedditPosts("yuri", 5)
 
         const entity = redditRresponse.data[redditRresponse.data.length - 1 ]
+
+        if(/(http|https)\:\/\/(www\.)?redgifs\.com\/watch\/[a-zA-Z]{3,35}(\/)?/g.test(entity.image)){
+            const data = await getMetaData(entity.image)
+            const embed = new MessageEmbed()
+                .setTitle(entity.title)
+                .setColor("#ff6f61")
+                .setDescription("This is a video")
+                .setImage(data.image)
+            const row = new MessageActionRow()
+            row.addComponents(
+                new MessageButton()
+                    .setLabel("Watch in Browser")
+                    .setStyle("LINK")
+                    .setURL(data.video || entity.image)
+            )
+            row.addComponents(
+                new MessageButton()
+                    .setCustomId(`blonde-${redditRresponse.after}-${interaction.user.id}`)
+                    .setLabel("Next")
+                    .setStyle("SUCCESS")
+            )
+            interaction.editReply({
+                embeds: [embed],
+                components: [row],
+            })
+            return;
+        }
 
         const embed = new MessageEmbed()
             .setTitle(entity.title)
@@ -78,6 +107,33 @@ export const NextYuriButton = async (interaction: ButtonInteraction, args: Array
         const redditRresponse = await GetRedditPosts("yuri", 2, args[0])
 
         const entity = redditRresponse.data[redditRresponse.data.length - 1 ]
+
+        if(/(http|https)\:\/\/(www\.)?redgifs\.com\/watch\/[a-zA-Z]{3,35}(\/)?/g.test(entity.image)){
+            const data = await getMetaData(entity.image)
+            const embed = new MessageEmbed()
+                .setTitle(entity.title)
+                .setColor("#ff6f61")
+                .setDescription("[This is a video]")
+                .setImage(data.image)
+            const row = new MessageActionRow()
+            row.addComponents(
+                new MessageButton()
+                    .setLabel("Watch in Browser")
+                    .setStyle("LINK")
+                    .setURL(data.video || entity.image)
+            )
+            row.addComponents(
+                new MessageButton()
+                    .setCustomId(`blonde-${redditRresponse.after}-${interaction.user.id}`)
+                    .setLabel("Next")
+                    .setStyle("SUCCESS")
+            );
+            (interaction.message as Message<boolean>).edit({
+                embeds: [embed],
+                components: [row]
+            })
+            return;
+        }
 
         const embed = new MessageEmbed()
             .setTitle(entity.title)
