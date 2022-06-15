@@ -119,7 +119,7 @@ export const MangaCommand = async (interaction: CommandInteraction): Promise<voi
                     value: "\u200B"
                 }, {
                     name: "**STATUS**",
-                    value: animeResult.status,
+                    value: animeResult.status || "N/A",
                     inline: true
                 }, {
                     name: "**Volumes**",
@@ -127,7 +127,7 @@ export const MangaCommand = async (interaction: CommandInteraction): Promise<voi
                     inline: true
                 }, {
                     name: "__**Genres:**__",
-                    value: animeResult.genres.join(", "),
+                    value: ` ${animeResult.genres.join(", ")} `,
                     inline: false
                 }
             )

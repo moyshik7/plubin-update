@@ -125,15 +125,15 @@ export const AnimeCommand = async (interaction: CommandInteraction): Promise<voi
                     value: "\u200B"
                 }, {
                     name: "**STATUS**",
-                    value: animeResult.status,
+                    value: animeResult.status || "N/A",
                     inline: true
                 }, {
                     name: "**Season**",
-                    value: animeResult.season,
+                    value: animeResult.season || "N/A",
                     inline: true
                 }, {
                     name: "__**Genres:**__",
-                    value: animeResult.genres.join(", "),
+                    value: ` ${animeResult.genres.join(", ")} `,
                     inline: false
                 }
             )
