@@ -30,6 +30,7 @@ import { IndianCommand } from "./nsfw/indian";
 import { JapaneseCommand } from "./nsfw/japanese";
 import { FilipinoCommand } from "./nsfw/filipino";
 import { KoreanCommand } from "./nsfw/korean";
+import { BlushCommand } from "./commands/blush";
 
 export class Commands {
     private client: Client;
@@ -69,6 +70,10 @@ export class Commands {
     }
     wallpapers(){
         WallpaperCommand(this.interaction)
+    }
+
+    blush(){
+        BlushCommand(this.interaction)
     }
 
     asian(){
