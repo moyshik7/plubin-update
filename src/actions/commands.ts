@@ -37,6 +37,7 @@ import { PoutCommand } from "./commands/pout";
 import { SmugCommand } from "./commands/smug";
 import { SleepCommand } from "./commands/sleep";
 import { TrapCommand } from "./commands/trap";
+import { HugCommand } from "./commands/hug";
 
 export class Commands {
     private client: Client;
@@ -86,6 +87,9 @@ export class Commands {
     }
     cry(){
         CryCommand(this.interaction)
+    }
+    hug(){
+        HugCommand(this.interaction)
     }
     nom(){
         NomCommand(this.interaction)
