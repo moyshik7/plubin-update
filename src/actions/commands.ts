@@ -36,6 +36,7 @@ import { NomCommand } from "./commands/nom";
 import { PoutCommand } from "./commands/pout";
 import { SmugCommand } from "./commands/smug";
 import { SleepCommand } from "./commands/sleep";
+import { TrapCommand } from "./commands/trap";
 
 export class Commands {
     private client: Client;
@@ -69,6 +70,9 @@ export class Commands {
     }
     memes(){
         MemeCommand(this.interaction)
+    }
+    trap(){
+        TrapCommand(this.interaction)
     }
     waifu(){
         WaifuCommand(this.interaction)
