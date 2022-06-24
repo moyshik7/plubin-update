@@ -39,6 +39,8 @@ import { SleepCommand } from "./commands/sleep";
 import { TrapCommand } from "./commands/trap";
 import { HugCommand } from "./commands/hug";
 import { KissCommand } from "./commands/kiss";
+import { LickCommand } from "./commands/lick";
+import { PatCommand } from "./commands/pat";
 
 export class Commands {
     private client: Client;
@@ -94,6 +96,12 @@ export class Commands {
     }
     kiss(){
         KissCommand(this.interaction)
+    }
+    lick(){
+        LickCommand(this.interaction)
+    }
+    pat(){
+        PatCommand(this.interaction)
     }
     nom(){
         NomCommand(this.interaction)
