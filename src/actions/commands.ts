@@ -44,6 +44,7 @@ import { PatCommand } from "./commands/pat";
 import { PokeCommand } from "./commands/poke";
 import { PunchCommand } from "./commands/punch";
 import { SlapCommand } from "./commands/slap";
+import { TickleCommand } from "./commands/tickle";
 
 export class Commands {
     private client: Client;
@@ -126,6 +127,9 @@ export class Commands {
     }
     smug(){
         SmugCommand(this.interaction)
+    }
+    tickle(){
+        TickleCommand(this.interaction)
     }
 
     asian(){
