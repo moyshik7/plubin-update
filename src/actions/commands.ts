@@ -102,20 +102,20 @@ export class Commands {
     lick(){
         LickCommand(this.interaction)
     }
+    nom(){
+        NomCommand(this.interaction)
+    }
     pat(){
         PatCommand(this.interaction)
     }
     poke(){
         PokeCommand(this.interaction)
     }
-    punch(){
-        PunchCommand(this.interaction)
-    }
-    nom(){
-        NomCommand(this.interaction)
-    }
     pout(){
         PoutCommand(this.interaction)
+    }
+    punch(){
+        PunchCommand(this.interaction)
     }
     sleep(){
         SleepCommand(this.interaction)
