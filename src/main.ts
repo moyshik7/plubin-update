@@ -26,27 +26,29 @@ client.on("messageCreate", (message: Message) => {
     const oldcommands: Array<string> = ["anal","anime","animeme","asian","asians","avatar","baka","bbc","bdsm","bj","black","blonde","blowjob","boob","boobs","butt","butts","cat","catgirl","celebrity","christmas","classic","comic","comics","cs","cuddle","cumslut","cumsluts","dank","define","dickgirl","dickgirls","dog","ebony","emojis","ero","erotic","feed","feet","femdom","filipino","fox","foxgirl","gasm","gay","glass","glasses","goose","h","hal","halloween","hardcore","heel","heels","help","hentai","holo","hug","indian","invite","japanese","kick","kill","kiss","kitty","korean","kuni","lewd","lizard","long","longhair","lyric","lyrics","manga","massporn","meme","meow","milf","milfs","mom","moms","neko","oil","orgasm","pat","pawg","ping","peanus","penis","poke","porn","pp","puppy","pussy","qr","red","redhead","redheads","say","server","short","shorthair","slap","smug","solo","spank","status","tan","tentacle","tentacles","thick","tickle","tiny","tits","trap","vote","waifu","wallpaper","woof","wp","xmas","yaoi","yuri"];
 
     if(oldcommands.includes(args[0])){
-        const embed = new MessageEmbed()
-            .setTitle("Please use slash commands")
-            .setDescription(`Last month discord introduced a new feature called Text in Voice and made some api changes
+        try {
+            const embed = new MessageEmbed()
+                .setTitle("Please use slash commands")
+                .setDescription(`Last month discord introduced a new feature called Text in Voice and made some api changes
 Which seems to have broken this bot(Plubin) along with a few others
 And because of this after a long waitiing I decided to write the entire bot (I know it's dumb but bear with me)
 Righ now I have migrated and released most of the slash commands and will be releasing the normal commands soon
 While you wait you can try using the slash commands
 If you haven't already allow thhe bot to create slash command in your guild you can do that with [this link](${process.env.BOT_INVITE})`)
-            .setColor("#ff6f61");
+                .setColor("#ff6f61");
 
-            const row = new MessageActionRow();
-            row.addComponents(new MessageButton()
-                .setLabel("Invite with Shash command")
-                .setStyle("LINK")
-                .setURL(process.env.BOT_INVITE)
-            )
+                const row = new MessageActionRow();
+                row.addComponents(new MessageButton()
+                    .setLabel("Invite with Shash command")
+                    .setStyle("LINK")
+                    .setURL(process.env.BOT_INVITE)
+                )
 
-        message.reply({
-            embeds: [embed],
-            components: [row]
-        })
+            message.reply({
+                embeds: [embed],
+                components: [row]
+            })
+        } catch(err){console.log(err)}
     }
 })
 
