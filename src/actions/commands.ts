@@ -42,6 +42,7 @@ import { KissCommand } from "./commands/kiss";
 import { LickCommand } from "./commands/lick";
 import { PatCommand } from "./commands/pat";
 import { PokeCommand } from "./commands/poke";
+import { PunchCommand } from "./commands/punch";
 
 export class Commands {
     private client: Client;
@@ -106,6 +107,9 @@ export class Commands {
     }
     poke(){
         PokeCommand(this.interaction)
+    }
+    punch(){
+        PunchCommand(this.interaction)
     }
     nom(){
         NomCommand(this.interaction)
