@@ -1,0 +1,11 @@
+{
+    "name": "hug",
+    "description": "Hug someone",
+    "type": 1,
+    "options": [{
+        "type": 6,
+        "name": "user",
+        "description": "The victim",
+        "required": false
+    }]
+}
