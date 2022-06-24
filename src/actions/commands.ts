@@ -43,6 +43,7 @@ import { LickCommand } from "./commands/lick";
 import { PatCommand } from "./commands/pat";
 import { PokeCommand } from "./commands/poke";
 import { PunchCommand } from "./commands/punch";
+import { SlapCommand } from "./commands/slap";
 
 export class Commands {
     private client: Client;
@@ -116,6 +117,9 @@ export class Commands {
     }
     punch(){
         PunchCommand(this.interaction)
+    }
+    slap(){
+        SlapCommand(this.interaction)
     }
     sleep(){
         SleepCommand(this.interaction)
