@@ -15,7 +15,7 @@ export const PatCommand = async (interaction: CommandInteraction): Promise<void>
         let message: string;
 
         if(!victim || (victim.id === user.id)){
-            message = `${user.username} litries to pat themself\n(Get some friends you damn loner)`
+            message = `${user.username} tries to pat themself\n(Get some friends you damn loner)`
         } else {
             message = `${user.username} pats ${victim.username}\n${victim.username} is blushing`
         }
