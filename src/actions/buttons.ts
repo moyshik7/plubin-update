@@ -26,6 +26,7 @@ import { NextJapaneseButton } from "./nsfw/japanese";
 import { NextKoreanButton } from "./nsfw/korean";
 import { NextNekoButton, NextSFWNekoButton } from "./nsfw/neko";
 import { NextOpppaiButton } from "./nsfw/oppai";
+import { NextPAWGButton } from "./nsfw/pawg";
 import { NextRedheadButton } from "./nsfw/redhead";
 import { NextShortHairButton } from "./nsfw/shorthair";
 import { NextSpankButton } from "./nsfw/spank";
@@ -133,6 +134,9 @@ export class Buttons {
     }
     oppai(){
         NextOpppaiButton(this.interaction, this.args)
+    }
+    pawg(){
+        NextPAWGButton(this.interaction, this.args)
     }
     redhead(){
         NextRedheadButton(this.interaction, this.args)
