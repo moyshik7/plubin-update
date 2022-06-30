@@ -49,6 +49,7 @@ import { FeetCommand } from "./nsfw/feet";
 import { FemdomCommand } from "./nsfw/femdom";
 import { RedheadCommand } from "./nsfw/redhead";
 import { XmasCommand } from "./nsfw/xmas";
+import { AnalCommand } from "./nsfw/anal";
 
 export class Commands {
     private client: Client;
@@ -136,6 +137,9 @@ export class Commands {
         TickleCommand(this.interaction)
     }
 
+    anal(){
+        AnalCommand(this.interaction)
+    }
     asian(){
         AsianCommand(this.interaction)
     }
