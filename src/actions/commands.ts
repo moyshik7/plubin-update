@@ -47,6 +47,7 @@ import { SlapCommand } from "./commands/slap";
 import { TickleCommand } from "./commands/tickle";
 import { FeetCommand } from "./nsfw/feet";
 import { FemdomCommand } from "./nsfw/femdom";
+import { RedheadCommand } from "./nsfw/redhead";
 
 export class Commands {
     private client: Client;
@@ -190,6 +191,9 @@ export class Commands {
     }
     oppai(){
         OppaiCommand(this.interaction)
+    }
+    redhead(){
+        RedheadCommand(this.interaction)
     }
     tentacles(){
         TentaclesCommand(this.interaction)
