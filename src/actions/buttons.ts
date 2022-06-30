@@ -2,7 +2,6 @@ import { ButtonInteraction, Client } from "discord.js";
 import { NextAniMemeButton } from "./commands/animemes";
 import { NextDankMemeButton } from "./commands/dank";
 import { NextGoodAniMemeButton } from "./commands/goodanimemes";
-
 import { NextMemeButton } from "./commands/memes";
 import { NextWaifuButton } from "./commands/waifu";
 import { NextWallpaperButton } from "./commands/wallpaper";
