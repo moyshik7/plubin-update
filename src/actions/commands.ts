@@ -50,6 +50,7 @@ import { FemdomCommand } from "./nsfw/femdom";
 import { RedheadCommand } from "./nsfw/redhead";
 import { XmasCommand } from "./nsfw/xmas";
 import { AnalCommand } from "./nsfw/anal";
+import { TinyCommand } from "./nsfw/tiny";
 
 export class Commands {
     private client: Client;
@@ -202,6 +203,9 @@ export class Commands {
     }
     tentacles(){
         TentaclesCommand(this.interaction)
+    }
+    tiny(){
+        TinyCommand(this.interaction)
     }
     vanila(){
         VanilaCommand(this.interaction)
