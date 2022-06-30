@@ -46,6 +46,7 @@ import { PunchCommand } from "./commands/punch";
 import { SlapCommand } from "./commands/slap";
 import { TickleCommand } from "./commands/tickle";
 import { FeetCommand } from "./nsfw/feet";
+import { FemdomCommand } from "./nsfw/femdom";
 
 export class Commands {
     private client: Client;
@@ -162,6 +163,9 @@ export class Commands {
     }
     feet(){
         FeetCommand(this.interaction)
+    }
+    femdom(){
+        FemdomCommand(this.interaction)
     }
     filipino(){
         FilipinoCommand(this.interaction)
