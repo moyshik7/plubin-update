@@ -27,6 +27,7 @@ import { NextKoreanButton } from "./nsfw/korean";
 import { NextNekoButton, NextSFWNekoButton } from "./nsfw/neko";
 import { NextOpppaiButton } from "./nsfw/oppai";
 import { NextRedheadButton } from "./nsfw/redhead";
+import { NextSpankButton } from "./nsfw/spank";
 import { NextTanButton } from "./nsfw/tan";
 import { NextTentaclesButton } from "./nsfw/tentacles";
 import { NextTinyButton } from "./nsfw/tiny";
@@ -134,6 +135,9 @@ export class Buttons {
     }
     redhead(){
         NextRedheadButton(this.interaction, this.args)
+    }
+    spank(){
+        NextSpankButton(this.interaction, this.args)
     }
     tan(){
         NextTanButton(this.interaction, this.args)
