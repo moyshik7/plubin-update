@@ -54,6 +54,7 @@ import { TinyCommand } from "./nsfw/tiny";
 import { TanCommand } from "./nsfw/tan";
 import { SpankCommand } from "./nsfw/spank";
 import { ShortHairCommand } from "./nsfw/shorthair";
+import { PAWGCommand } from "./nsfw/pawg";
 
 export class Commands {
     private client: Client;
@@ -200,6 +201,9 @@ export class Commands {
     }
     oppai(){
         OppaiCommand(this.interaction)
+    }
+    pawg(){
+        PAWGCommand(this.interaction)
     }
     redhead(){
         RedheadCommand(this.interaction)
