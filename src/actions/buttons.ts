@@ -15,6 +15,7 @@ import { NextBondageButton } from "./nsfw/bondage";
 import { NextBoobButton } from "./nsfw/boob";
 import { NextCelebrityButton } from "./nsfw/celebrity";
 import { NextCumslutButton } from "./nsfw/cumslut";
+import { NextFeetButton } from "./nsfw/feet";
 import { NextFilipinoButton } from "./nsfw/filipino";
 import { NextFutaButton } from "./nsfw/futa";
 import { NextHentaiButton } from "./nsfw/hentai";
@@ -91,6 +92,9 @@ export class Buttons {
     }
     cumslut(){
         NextCumslutButton(this.interaction, this.args)
+    }
+    feet(){
+        NextFeetButton(this.interaction, this.args)
     }
     filipino(){
         NextFilipinoButton(this.interaction, this.args)
