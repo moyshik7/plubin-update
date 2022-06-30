@@ -53,6 +53,7 @@ import { AnalCommand } from "./nsfw/anal";
 import { TinyCommand } from "./nsfw/tiny";
 import { TanCommand } from "./nsfw/tan";
 import { SpankCommand } from "./nsfw/spank";
+import { ShortHairCommand } from "./nsfw/shorthair";
 
 export class Commands {
     private client: Client;
@@ -202,6 +203,9 @@ export class Commands {
     }
     redhead(){
         RedheadCommand(this.interaction)
+    }
+    shorthair(){
+        ShortHairCommand(this.interaction)
     }
     spank(){
         SpankCommand(this.interaction)
