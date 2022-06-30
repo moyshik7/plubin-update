@@ -48,6 +48,7 @@ import { TickleCommand } from "./commands/tickle";
 import { FeetCommand } from "./nsfw/feet";
 import { FemdomCommand } from "./nsfw/femdom";
 import { RedheadCommand } from "./nsfw/redhead";
+import { XmasCommand } from "./nsfw/xmas";
 
 export class Commands {
     private client: Client;
@@ -200,6 +201,9 @@ export class Commands {
     }
     vanila(){
         VanilaCommand(this.interaction)
+    }
+    xmas(){
+        XmasCommand(this.interaction)
     }
     yaoi(){
         YaoiCommand(this.interaction)
