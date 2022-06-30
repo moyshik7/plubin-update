@@ -6,6 +6,7 @@ import { NextGoodAniMemeButton } from "./commands/goodanimemes";
 import { NextMemeButton } from "./commands/memes";
 import { NextWaifuButton } from "./commands/waifu";
 import { NextWallpaperButton } from "./commands/wallpaper";
+import { NextAnalButton } from "./nsfw/anal";
 import { NextAsianButton } from "./nsfw/asian";
 import { NextAssButton } from "./nsfw/ass";
 import { NextBlackButton } from "./nsfw/black";
@@ -69,6 +70,9 @@ export class Buttons {
         NextWallpaperButton(this.interaction, this.args)
     }
 
+    anal(){
+        NextAnalButton(this.interaction, this.args)
+    }
     asian(){
         NextAsianButton(this.interaction, this.args)
     }
