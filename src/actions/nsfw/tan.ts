@@ -43,7 +43,7 @@ export const TanCommand = async (interaction: CommandInteraction): Promise<void>
         )
         row.addComponents(
             new MessageButton()
-                .setCustomId(`tiny-${redditRresponse.after}-${interaction.user.id}`)
+                .setCustomId(`tan-${redditRresponse.after}-${interaction.user.id}`)
                 .setLabel("Next")
                 .setStyle("SUCCESS")
         )
