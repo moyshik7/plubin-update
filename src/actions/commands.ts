@@ -63,6 +63,7 @@ import { GlassesCommand } from "./nsfw/glasses";
 import { OilCommand } from "./nsfw/oil";
 import { OrgasmCommand } from "./nsfw/orgasm";
 import { HeelsCommand } from "./nsfw/heels";
+import { LongHairCommand } from "./nsfw/longhair";
 
 export class Commands {
     private client: Client;
@@ -212,6 +213,9 @@ export class Commands {
     }
     korean(){
         KoreanCommand(this.interaction)
+    }
+    longhair(){
+        LongHairCommand(this.interaction)
     }
     milf(){
         MilfCommand(this.interaction)
