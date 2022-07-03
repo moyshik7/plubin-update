@@ -57,6 +57,7 @@ import { ShortHairCommand } from "./nsfw/shorthair";
 import { PAWGCommand } from "./nsfw/pawg";
 import { MilfCommand } from "./nsfw/milf";
 import { MomCommand } from "./nsfw/mom";
+import { PussyCommand } from "./nsfw/pussy";
 
 export class Commands {
     private client: Client;
@@ -212,6 +213,9 @@ export class Commands {
     }
     pawg(){
         PAWGCommand(this.interaction)
+    }
+    pussy(){
+        PussyCommand(this.interaction)
     }
     redhead(){
         RedheadCommand(this.interaction)
