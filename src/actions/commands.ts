@@ -59,6 +59,7 @@ import { MilfCommand } from "./nsfw/milf";
 import { MomCommand } from "./nsfw/mom";
 import { PussyCommand } from "./nsfw/pussy";
 import { ThiccCommand } from "./nsfw/thicc";
+import { GlassesCommand } from "./nsfw/glasses";
 
 export class Commands {
     private client: Client;
@@ -190,6 +191,9 @@ export class Commands {
     }
     futa(){
         FutaCommand(this.interaction)
+    }
+    glasses(){
+        GlassesCommand(this.interaction)
     }
     hentai(){
         HentaiCommand(this.interaction)
