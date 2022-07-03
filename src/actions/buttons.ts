@@ -25,6 +25,7 @@ import { NextHentaiButton } from "./nsfw/hentai";
 import { NextIndianButton } from "./nsfw/indian";
 import { NextJapaneseButton } from "./nsfw/japanese";
 import { NextKoreanButton } from "./nsfw/korean";
+import { NextLongHairButton } from "./nsfw/longhair";
 import { MilfCommand, NextMilfButton } from "./nsfw/milf";
 import { NextMomButton } from "./nsfw/mom";
 import { NextNekoButton, NextSFWNekoButton } from "./nsfw/neko";
@@ -141,6 +142,9 @@ export class Buttons {
     }
     korean(){
         NextKoreanButton(this.interaction, this.args)
+    }
+    longhair(){
+        NextLongHairButton(this.interaction, this.args)
     }
     milf(){
         NextMilfButton(this.interaction, this.args)
