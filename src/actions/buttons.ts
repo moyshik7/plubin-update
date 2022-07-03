@@ -27,6 +27,7 @@ import { NextKoreanButton } from "./nsfw/korean";
 import { MilfCommand, NextMilfButton } from "./nsfw/milf";
 import { NextMomButton } from "./nsfw/mom";
 import { NextNekoButton, NextSFWNekoButton } from "./nsfw/neko";
+import { NextOilButton } from "./nsfw/oil";
 import { NextOpppaiButton } from "./nsfw/oppai";
 import { NextPAWGButton } from "./nsfw/pawg";
 import { NextPussyButton } from "./nsfw/pussy";
@@ -144,6 +145,9 @@ export class Buttons {
     }
     neko(){
         NextNekoButton(this.interaction, this.args)
+    }
+    oil(){
+        NextOilButton(this.interaction, this.args)
     }
     oppai(){
         NextOpppaiButton(this.interaction, this.args)
