@@ -1,14 +1,23 @@
 import dotenv from "dotenv"
 dotenv.config()
 
-import { Client, Interaction, Message, MessageActionRow, MessageButton, MessageEmbed } from "discord.js"
+import { 
+    Client, 
+    Interaction,
+    Message, 
+    MessageActionRow, 
+    MessageButton, 
+    MessageEmbed, 
+    Intents
+} from "discord.js"
 import { Commands } from "./actions/commands"
 import { Buttons } from "./actions/buttons"
 
 const client = new Client({
     intents: [
-        "GUILDS",
-        "GUILD_MESSAGES"
+        Intents.FLAGS.GUILDS,
+        Intents.FLAGS.GUILD_MESSAGES,
+        1 << 15 // Message Content
     ]
 })
 
@@ -25,7 +34,7 @@ client.on("messageCreate", (message: Message) => {
     if(args.length < 1){ return }
     const oldcommands: Array<string> = ["anal","anime","animeme","asian","asians","avatar","baka","bbc","bdsm","bj","black","blonde","blowjob","boob","boobs","butt","butts","cat","catgirl","celebrity","christmas","classic","comic","comics","cs","cuddle","cumslut","cumsluts","dank","define","dickgirl","dickgirls","dog","ebony","emojis","ero","erotic","feed","feet","femdom","filipino","fox","foxgirl","gasm","gay","glass","glasses","goose","h","hal","halloween","hardcore","heel","heels","help","hentai","holo","hug","indian","invite","japanese","kick","kill","kiss","kitty","korean","kuni","lewd","lizard","long","longhair","lyric","lyrics","manga","massporn","meme","meow","milf","milfs","mom","moms","neko","oil","orgasm","pat","pawg","ping","peanus","penis","poke","porn","pp","puppy","pussy","qr","red","redhead","redheads","say","server","short","shorthair","slap","smug","solo","spank","status","tan","tentacle","tentacles","thick","tickle","tiny","tits","trap","vote","waifu","wallpaper","woof","wp","xmas","yaoi","yuri"];
 
-    if(oldcommands.includes(args[0])){
+    if(oldcommands.includes(args[0].slice(1))){
         try {
             const embed = new MessageEmbed()
                 .setTitle("Please use slash commands")
