@@ -58,6 +58,7 @@ import { PAWGCommand } from "./nsfw/pawg";
 import { MilfCommand } from "./nsfw/milf";
 import { MomCommand } from "./nsfw/mom";
 import { PussyCommand } from "./nsfw/pussy";
+import { ThiccCommand } from "./nsfw/thicc";
 
 export class Commands {
     private client: Client;
@@ -140,6 +141,9 @@ export class Commands {
     }
     smug(){
         SmugCommand(this.interaction)
+    }
+    thicc(){
+        ThiccCommand(this.interaction)
     }
     tickle(){
         TickleCommand(this.interaction)
