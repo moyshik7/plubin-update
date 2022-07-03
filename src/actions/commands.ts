@@ -62,6 +62,7 @@ import { ThiccCommand } from "./nsfw/thicc";
 import { GlassesCommand } from "./nsfw/glasses";
 import { OilCommand } from "./nsfw/oil";
 import { OrgasmCommand } from "./nsfw/orgasm";
+import { HeelsCommand } from "./nsfw/heels";
 
 export class Commands {
     private client: Client;
@@ -196,6 +197,9 @@ export class Commands {
     }
     glasses(){
         GlassesCommand(this.interaction)
+    }
+    heels(){
+        HeelsCommand(this.interaction)
     }
     hentai(){
         HentaiCommand(this.interaction)
