@@ -55,6 +55,7 @@ import { TanCommand } from "./nsfw/tan";
 import { SpankCommand } from "./nsfw/spank";
 import { ShortHairCommand } from "./nsfw/shorthair";
 import { PAWGCommand } from "./nsfw/pawg";
+import { MilfCommand } from "./nsfw/milf";
 
 export class Commands {
     private client: Client;
@@ -195,6 +196,9 @@ export class Commands {
     }
     korean(){
         KoreanCommand(this.interaction)
+    }
+    milf(){
+        MilfCommand(this.interaction)
     }
     neko(){
         NekoCommand(this.interaction)
