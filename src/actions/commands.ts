@@ -61,6 +61,7 @@ import { PussyCommand } from "./nsfw/pussy";
 import { ThiccCommand } from "./nsfw/thicc";
 import { GlassesCommand } from "./nsfw/glasses";
 import { OilCommand } from "./nsfw/oil";
+import { OrgasmCommand } from "./nsfw/orgasm";
 
 export class Commands {
     private client: Client;
@@ -222,6 +223,9 @@ export class Commands {
     }
     oppai(){
         OppaiCommand(this.interaction)
+    }
+    orgasm(){
+        OrgasmCommand(this.interaction)
     }
     pawg(){
         PAWGCommand(this.interaction)
