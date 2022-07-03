@@ -28,6 +28,7 @@ import { NextMomButton } from "./nsfw/mom";
 import { NextNekoButton, NextSFWNekoButton } from "./nsfw/neko";
 import { NextOpppaiButton } from "./nsfw/oppai";
 import { NextPAWGButton } from "./nsfw/pawg";
+import { NextPussyButton } from "./nsfw/pussy";
 import { NextRedheadButton } from "./nsfw/redhead";
 import { NextShortHairButton } from "./nsfw/shorthair";
 import { NextSpankButton } from "./nsfw/spank";
@@ -144,6 +145,9 @@ export class Buttons {
     }
     pawg(){
         NextPAWGButton(this.interaction, this.args)
+    }
+    pussy(){
+        NextPussyButton(this.interaction, this.args)
     }
     redhead(){
         NextRedheadButton(this.interaction, this.args)
