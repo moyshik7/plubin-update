@@ -60,6 +60,7 @@ import { MomCommand } from "./nsfw/mom";
 import { PussyCommand } from "./nsfw/pussy";
 import { ThiccCommand } from "./nsfw/thicc";
 import { GlassesCommand } from "./nsfw/glasses";
+import { OilCommand } from "./nsfw/oil";
 
 export class Commands {
     private client: Client;
@@ -215,6 +216,9 @@ export class Commands {
     }
     neko(){
         NekoCommand(this.interaction)
+    }
+    oil(){
+        OilCommand(this.interaction)
     }
     oppai(){
         OppaiCommand(this.interaction)
