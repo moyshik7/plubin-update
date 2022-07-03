@@ -56,6 +56,7 @@ import { SpankCommand } from "./nsfw/spank";
 import { ShortHairCommand } from "./nsfw/shorthair";
 import { PAWGCommand } from "./nsfw/pawg";
 import { MilfCommand } from "./nsfw/milf";
+import { MomCommand } from "./nsfw/mom";
 
 export class Commands {
     private client: Client;
@@ -199,6 +200,9 @@ export class Commands {
     }
     milf(){
         MilfCommand(this.interaction)
+    }
+    mom(){
+        MomCommand(this.interaction)
     }
     neko(){
         NekoCommand(this.interaction)
