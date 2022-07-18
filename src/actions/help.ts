@@ -5,7 +5,7 @@ import {
     SelectMenuInteraction
 } from "discord.js";
 import { HelpOptions } from "./helpassets";
-import { BaseHelpEmbed } from "./helpmessages";
+import { BaseHelpEmbed, NSFWHelpEmbed } from "./helpmessages";
 
 export const HelpCommand = async (
     interaction: CommandInteraction
@@ -21,7 +21,7 @@ export const HelpCommand = async (
                 .addOptions(HelpOptions.anime)
                 .addOptions(HelpOptions.waifu)
                 .setCustomId(`help-${interaction.user.id}`)
-                .setPlaceholder("What do yoou need help with?")
+                .setPlaceholder("What do you need help with?")
         );
         interaction.reply({
             embeds: [BaseHelpEmbed],
@@ -55,7 +55,7 @@ export const HelpSelectCommand = async (
                     .addOptions(HelpOptions.waifu)
                     .setCustomId(`help-${interaction.user.id}`)
                     .setDisabled(false)
-                    .setPlaceholder("What do yoou need help with?")
+                    .setPlaceholder("What do you need help with?")
             );
             interaction.message.edit({
                 embeds: [BaseHelpEmbed],
@@ -71,9 +71,10 @@ export const HelpSelectCommand = async (
                     .addOptions(HelpOptions.waifu)
                     .setCustomId(`help-${interaction.user.id}`)
                     .setDisabled(false)
-                    .setPlaceholder("What do yoou need help with?")
+                    .setPlaceholder("What do you need help with?")
             );
             interaction.message.edit({
+                embeds: [NSFWHelpEmbed],
                 components: [HelpSelectRow]
             });
             return;
