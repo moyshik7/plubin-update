@@ -64,6 +64,7 @@ import { OilCommand } from "./nsfw/oil";
 import { OrgasmCommand } from "./nsfw/orgasm";
 import { HeelsCommand } from "./nsfw/heels";
 import { LongHairCommand } from "./nsfw/longhair";
+import { HelpCommand } from "./help";
 
 export class Commands {
     private client: Client;
@@ -74,7 +75,7 @@ export class Commands {
         this.interaction = interaction;
     }
     help(){
-        this.interaction.reply("Ask your mom for help")
+        HelpCommand(this.interaction)
     }
     ping(){
         Ping(this.interaction)

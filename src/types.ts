@@ -69,3 +69,8 @@ export interface RedditRawResponse {
     after: string;
     data: Array<RedditResponse>;
 }
+
+export interface HelpMessageType {
+    title?: string;
+    message: LongDescription;
+}
