@@ -2,60 +2,83 @@ import {
     CommandInteraction,
     ActionRowBuilder,
     SelectMenuBuilder,
-    SelectMenuOptionBuilder
+    SelectMenuInteraction
 } from "discord.js";
+import { HelpOptions } from "./helpassets";
 import { BaseHelpEmbed } from "./helpmessages";
 
 export const HelpCommand = async (
-  interaction: CommandInteraction
+    interaction: CommandInteraction
 ): Promise<void> => {
-  try {
-    const HelpSelectRow: ActionRowBuilder<SelectMenuBuilder> = new ActionRowBuilder();
+    try {
+        const HelpSelectRow: ActionRowBuilder<SelectMenuBuilder> =
+            new ActionRowBuilder();
 
-    HelpSelectRow.addComponents(
-      new SelectMenuBuilder()
-        .addOptions(
-          new SelectMenuOptionBuilder()
-            .setLabel(`Home`)
-            .setValue(`help_home`)
-            .setDescription(`Where you came from`)
-        )
-        .addOptions(
-          new SelectMenuOptionBuilder()
-            .setLabel(`Command List`)
-            .setValue(`help_cmd`)
-            .setDescription(
-              `can't remember all the commands? No-one is expecting you to`
-            )
-        )
-        .addOptions(
-          new SelectMenuOptionBuilder()
-            .setLabel(`NSFW Commands`)
-            .setValue(`help_nsfw`)
-            .setDescription(`Incognito mode on`)
-        )
-        .addOptions(
-          new SelectMenuOptionBuilder()
-            .setLabel(`Waifu Features`)
-            .setValue(`help_waifu`)
-            .setDescription(
-              `Having trouble with your waifu? We got you covered`
-            )
-        )
-        .addOptions(
-          new SelectMenuOptionBuilder()
-            .setLabel(`Anime Features`)
-            .setValue(`help_waifu`)
-            .setDescription(
-              `Help about the anime / manga featues and wishlist system`
-            )
-        )
-    );
-    interaction.reply({
-      embeds: [BaseHelpEmbed],
-      components: [HelpSelectRow]
-    });
-  } catch (err) {
-    console.log(err);
-  }
+        HelpSelectRow.addComponents(
+            new SelectMenuBuilder()
+                .addOptions(HelpOptions.cmd)
+                .addOptions(HelpOptions.nsfw)
+                .addOptions(HelpOptions.anime)
+                .addOptions(HelpOptions.waifu)
+                .setCustomId(`help-${interaction.user.id}`)
+                .setPlaceholder("What do yoou need help with?")
+        );
+        interaction.reply({
+            embeds: [BaseHelpEmbed],
+            components: [HelpSelectRow]
+        });
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+export const HelpSelectCommand = async (
+    interaction: SelectMenuInteraction
+): Promise<void> => {
+    try {
+        const value = interaction.values[0];
+        if (!value) {
+            return;
+        }
+        await interaction.deferUpdate();
+
+        /**
+         * The dropdown row
+         */
+        const HelpSelectRow: ActionRowBuilder<SelectMenuBuilder> =new ActionRowBuilder();
+        if(value === `help-home`) {
+            HelpSelectRow.addComponents(
+                new SelectMenuBuilder()
+                    .addOptions(HelpOptions.cmd)
+                    .addOptions(HelpOptions.nsfw)
+                    .addOptions(HelpOptions.anime)
+                    .addOptions(HelpOptions.waifu)
+                    .setCustomId(`help-${interaction.user.id}`)
+                    .setDisabled(false)
+                    .setPlaceholder("What do yoou need help with?")
+            );
+            interaction.message.edit({
+                embeds: [BaseHelpEmbed],
+                components: [HelpSelectRow]
+            });
+            return;
+        } else if(value === `help-nsfw`) {
+            HelpSelectRow.addComponents(
+                new SelectMenuBuilder()
+                    .addOptions(HelpOptions.home)
+                    .addOptions(HelpOptions.cmd)
+                    .addOptions(HelpOptions.anime)
+                    .addOptions(HelpOptions.waifu)
+                    .setCustomId(`help-${interaction.user.id}`)
+                    .setDisabled(false)
+                    .setPlaceholder("What do yoou need help with?")
+            );
+            interaction.message.edit({
+                components: [HelpSelectRow]
+            });
+            return;
+        }
+    } catch (err) {
+        console.log(err);
+    }
 };
