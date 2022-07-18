@@ -168,20 +168,15 @@ client.on("interactionCreate", (interaction: Interaction): void => {
             /**
              * We only have one select menu so no need to build a builder
              */
-            if((Date.now() - interaction.message.createdAt.getTime()) > 10 * 60 * 1000){
-                console.log((Date.now() - interaction.message.createdAt.getTime()))
-                console.log("Too old")
+            if((Date.now() - interaction.message.createdAt.getTime()) > 5 * 60 * 1000){
                 return;
             }
             if(!interaction.customId || interaction.customId.length < 1){ return }
             let args = interaction.customId.split("-")
             if(args.length < 2){ return }
             if(args[args.length - 1] !== interaction.user.id){ return }
-
             const command = args[0]
-
             args = args.slice(1)
-
 
             if(command === "help"){
                 HelpSelectCommand(interaction)
