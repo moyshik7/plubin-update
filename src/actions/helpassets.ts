@@ -1,5 +1,26 @@
-import { SelectMenuOptionBuilder } from "discord.js";
+import { ActionRowBuilder, ButtonBuilder, ButtonStyle, SelectMenuOptionBuilder } from "discord.js";
 
+const HelpButtonRow: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
+HelpButtonRow.addComponents(new ButtonBuilder()
+    .setStyle(ButtonStyle.Link)
+    .setURL("https://plubin.xyz/invite")
+    .setLabel("Invite")
+)
+HelpButtonRow.addComponents(new ButtonBuilder()
+    .setStyle(ButtonStyle.Link)
+    .setURL("https://discord.gg/UDZqY4xJ6J")
+    .setLabel("Support Server")
+)
+HelpButtonRow.addComponents(new ButtonBuilder()
+    .setStyle(ButtonStyle.Link)
+    .setURL("https://plubin.xyz/")
+    .setLabel("Website")
+)
+HelpButtonRow.addComponents(new ButtonBuilder()
+    .setStyle(ButtonStyle.Link)
+    .setURL("https://top.gg/bot/748160981766635540/vote")
+    .setLabel("Vote")
+)
 
 const HomeOption = new SelectMenuOptionBuilder()
     .setLabel(`Home`)
@@ -30,3 +51,5 @@ export const HelpOptions = {
     waifu: WaifuOption,
     anime: AnimeOption
 }
+
+export { HelpButtonRow }

@@ -4,7 +4,7 @@ import {
     SelectMenuBuilder,
     SelectMenuInteraction
 } from "discord.js";
-import { HelpOptions } from "./helpassets";
+import { HelpButtonRow, HelpOptions } from "./helpassets";
 import { BaseHelpEmbed, NSFWHelpEmbed } from "./helpmessages";
 
 export const HelpCommand = async (
@@ -25,7 +25,7 @@ export const HelpCommand = async (
         );
         interaction.reply({
             embeds: [BaseHelpEmbed],
-            components: [HelpSelectRow]
+            components: [HelpSelectRow, HelpButtonRow]
         });
     } catch (err) {
         console.log(err);
@@ -59,7 +59,7 @@ export const HelpSelectCommand = async (
             );
             interaction.message.edit({
                 embeds: [BaseHelpEmbed],
-                components: [HelpSelectRow]
+                components: [HelpSelectRow, HelpButtonRow]
             });
             return;
         } else if(value === `help-nsfw`) {
@@ -75,7 +75,7 @@ export const HelpSelectCommand = async (
             );
             interaction.message.edit({
                 embeds: [NSFWHelpEmbed],
-                components: [HelpSelectRow]
+                components: [HelpSelectRow, HelpButtonRow]
             });
             return;
         }
