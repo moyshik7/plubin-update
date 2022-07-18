@@ -7,7 +7,7 @@ export const TopggStatusHandler = (client: Client): void => {
     try {
         setInterval(() => {
         try {
-            if(process.env.PRODUCTION !== "T"){
+            if(process.env.PRODUCTION !== "N"){
                 /**
                  * Don't post status for demo bot
                  */

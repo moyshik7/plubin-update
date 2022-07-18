@@ -11,8 +11,7 @@ export const HelpCommand = async (
     interaction: CommandInteraction
 ): Promise<void> => {
     try {
-        const HelpSelectRow: ActionRowBuilder<SelectMenuBuilder> =
-            new ActionRowBuilder();
+        const HelpSelectRow: ActionRowBuilder<SelectMenuBuilder> = new ActionRowBuilder();
 
         HelpSelectRow.addComponents(
             new SelectMenuBuilder()
