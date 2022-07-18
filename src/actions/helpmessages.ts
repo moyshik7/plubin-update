@@ -14,10 +14,9 @@ Still need help? Join our [support server](https://discord.gg/UDZqY4xJ6J) and as
 
 let NSFWMessages = ""
 NSFWMessages += "For you convinience we decided to split the commands in  multiple categories."
-NSFWMessages += "A complete version of these commands with detailed usage is available on [our website](https://plubin.xyz/nsfw)\n"
+NSFWMessages += "A complete version of these commands with detailed usage is available on [our website](https://plubin.xyz/nsfw/)\n"
 NSFWMessages += "Note: **All commands have been switched to slash commands** "
 NSFWMessages += "[Learn more about slash commands](https://support.discord.com/hc/en-us/articles/1500000368501-Slash-Commands-FAQ)\n\n\n"
-
 NSFWMessages += "**2D / Anime** \n\n"
 NSFWMessages += "`oppai`  `hentai`  `tentacles`  `yuri`  `yaoi`  `femdom`  `futa`  `neko`\n\n\n"
 NSFWMessages += "**3D / IRL** \n\n"
@@ -28,6 +27,18 @@ NSFWMessages += "`xmas`  `halloween`\n\n\n"
 NSFWMessages += "**Race** \n\n"
 NSFWMessages += "`asian`  `black`  `blonde`  `filipino`  `indian`  `japanese`  `korean`  `redhead`"
 
+let CommandHelpMessage = ""
+CommandHelpMessage += "For you convinience we decided to split the commands in  multiple categories."
+CommandHelpMessage += "A complete version of these commands with detailed usage is available on [our website](https://plubin.xyz/commands/)\n"
+CommandHelpMessage += "Note: **All commands have been switched to slash commands** "
+CommandHelpMessage += "[Learn more about slash commands](https://support.discord.com/hc/en-us/articles/1500000368501-Slash-Commands-FAQ)\n\n\n"
+CommandHelpMessage += "**Anime**\n"
+CommandHelpMessage += "`anime` `manga` `waifu` `animeme` `goodanimeme` `wholesomehentai` `catgirl` `foxgirl` `watchlist`\n\n\n"
+CommandHelpMessage += "**Memes**\n"
+CommandHelpMessage += "`meme` `dank` `animemes` `goodanimemes`\n\n\n"
+CommandHelpMessage += "**Emotions**\n"
+CommandHelpMessage += "`pat` `poke` `tickle` `punch` `pout` `slap` `nom` `lick` `kiss` `hug` `cry` `blush` `sleep` `smug`"
+
 const BaseHelpEmbed = new EmbedBuilder()
     .setTitle("Plubin")
     .setDescription(BaseHelpmessage)
@@ -36,4 +47,8 @@ const NSFWHelpEmbed = new EmbedBuilder()
     .setTitle("NSFW Commands")
     .setDescription(NSFWMessages)
     .setColor(0xff6f61);
-export { BaseHelpEmbed, NSFWHelpEmbed }
+const CommandHelpEmbed = new EmbedBuilder()
+    .setTitle("Command List")
+    .setDescription(CommandHelpMessage)
+    .setColor(0xff6f61);
+export { BaseHelpEmbed, NSFWHelpEmbed, CommandHelpEmbed }

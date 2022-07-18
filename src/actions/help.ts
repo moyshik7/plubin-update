@@ -5,7 +5,7 @@ import {
     SelectMenuInteraction
 } from "discord.js";
 import { HelpButtonRow, HelpOptions } from "./helpassets";
-import { BaseHelpEmbed, NSFWHelpEmbed } from "./helpmessages";
+import { BaseHelpEmbed, CommandHelpEmbed, NSFWHelpEmbed } from "./helpmessages";
 
 export const HelpCommand = async (
     interaction: CommandInteraction
@@ -54,7 +54,6 @@ export const HelpSelectCommand = async (
                     .addOptions(HelpOptions.anime)
                     .addOptions(HelpOptions.waifu)
                     .setCustomId(`help-${interaction.user.id}`)
-                    .setDisabled(false)
                     .setPlaceholder("What do you need help with?")
             );
             interaction.message.edit({
@@ -70,11 +69,25 @@ export const HelpSelectCommand = async (
                     .addOptions(HelpOptions.anime)
                     .addOptions(HelpOptions.waifu)
                     .setCustomId(`help-${interaction.user.id}`)
-                    .setDisabled(false)
                     .setPlaceholder("What do you need help with?")
             );
             interaction.message.edit({
                 embeds: [NSFWHelpEmbed],
+                components: [HelpSelectRow, HelpButtonRow]
+            });
+            return;
+        } else if(value === `help-cmd`) {
+            HelpSelectRow.addComponents(
+                new SelectMenuBuilder()
+                    .addOptions(HelpOptions.home)
+                    .addOptions(HelpOptions.cmd)
+                    .addOptions(HelpOptions.anime)
+                    .addOptions(HelpOptions.waifu)
+                    .setCustomId(`help-${interaction.user.id}`)
+                    .setPlaceholder("What do you need help with?")
+            );
+            interaction.message.edit({
+                embeds: [CommandHelpEmbed],
                 components: [HelpSelectRow, HelpButtonRow]
             });
             return;
