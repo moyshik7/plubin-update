@@ -6,7 +6,9 @@ const api = new Api(process.env.TOPGG_API)
 export const TopggStatusHandler = (client: Client): void => {
     try {
         if(process.env.PRODUCTION === "N"){
-            PostTopggStats(client).catch(console.log)
+            PostTopggStats(client)
+                .then(console.log)
+                .catch(console.log)
         }
         setInterval(() => {
         try {
