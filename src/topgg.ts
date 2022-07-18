@@ -18,7 +18,7 @@ export const TopggStatusHandler = (client: Client): void => {
                 serverCount: client.guilds.cache.size
             }).then((stats) => {
                 console.log(`Posted status on top.gg Servers: ${stats.serverCount}`)
-            })
+            }).catch(console.log)
         }catch(err){console.log(err)}
         }, 30 * 60 * 1000)
     } catch (err){
