@@ -80,7 +80,7 @@ export const HelpSelectCommand = async (
             HelpSelectRow.addComponents(
                 new SelectMenuBuilder()
                     .addOptions(HelpOptions.home)
-                    .addOptions(HelpOptions.cmd)
+                    .addOptions(HelpOptions.nsfw)
                     .addOptions(HelpOptions.anime)
                     .addOptions(HelpOptions.waifu)
                     .setCustomId(`help-${interaction.user.id}`)
