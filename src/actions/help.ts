@@ -5,7 +5,7 @@ import {
     SelectMenuInteraction
 } from "discord.js";
 import { HelpButtonRow, HelpOptions } from "./helpassets";
-import { BaseHelpEmbed, CommandHelpEmbed, NSFWHelpEmbed } from "./helpmessages";
+import { AnimeHelpEmbed, BaseHelpEmbed, CommandHelpEmbed, NSFWHelpEmbed, WaifuHelpEmbed } from "./helpmessages";
 
 export const HelpCommand = async (
     interaction: CommandInteraction
@@ -88,6 +88,36 @@ export const HelpSelectCommand = async (
             );
             interaction.message.edit({
                 embeds: [CommandHelpEmbed],
+                components: [HelpSelectRow, HelpButtonRow]
+            });
+            return;
+        } else if(value === `help-waifu`) {
+            HelpSelectRow.addComponents(
+                new SelectMenuBuilder()
+                    .addOptions(HelpOptions.home)
+                    .addOptions(HelpOptions.cmd)
+                    .addOptions(HelpOptions.nsfw)
+                    .addOptions(HelpOptions.anime)
+                    .setCustomId(`help-${interaction.user.id}`)
+                    .setPlaceholder("What do you need help with?")
+            );
+            interaction.message.edit({
+                embeds: [WaifuHelpEmbed],
+                components: [HelpSelectRow, HelpButtonRow]
+            });
+            return;
+         }else if(value === `help-anime`) {
+            HelpSelectRow.addComponents(
+                new SelectMenuBuilder()
+                    .addOptions(HelpOptions.home)
+                    .addOptions(HelpOptions.cmd)
+                    .addOptions(HelpOptions.nsfw)
+                    .addOptions(HelpOptions.waifu)
+                    .setCustomId(`help-${interaction.user.id}`)
+                    .setPlaceholder("What do you need help with?")
+            );
+            interaction.message.edit({
+                embeds: [AnimeHelpEmbed],
                 components: [HelpSelectRow, HelpButtonRow]
             });
             return;

@@ -51,4 +51,12 @@ const CommandHelpEmbed = new EmbedBuilder()
     .setTitle("Command List")
     .setDescription(CommandHelpMessage)
     .setColor(0xff6f61);
-export { BaseHelpEmbed, NSFWHelpEmbed, CommandHelpEmbed }
+const WaifuHelpEmbed = new EmbedBuilder()
+    .setTitle("Waifu Feature")
+    .setDescription(`Coming Soon`)
+    .setColor(0xff6f61);
+const AnimeHelpEmbed = new EmbedBuilder()
+    .setTitle("Anime Features")
+    .setDescription("Coming Soon")
+    .setColor(0xff6f61);
+export { BaseHelpEmbed, NSFWHelpEmbed, CommandHelpEmbed, WaifuHelpEmbed, AnimeHelpEmbed }
