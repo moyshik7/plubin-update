@@ -2,10 +2,12 @@ import {
     ButtonInteraction, 
     CommandInteraction, 
     Message, 
-    MessageActionRow, 
-    MessageButton, 
-    MessageEmbed, 
-    TextChannel 
+    ActionRowBuilder, 
+    ButtonBuilder, 
+    EmbedBuilder, 
+    TextChannel,
+    ButtonStyle,
+    Colors
 } from "discord.js";
 import { GetRedditPosts } from "../../reddit";
 
@@ -17,10 +19,10 @@ export const XmasCommand = async (interaction: CommandInteraction): Promise<void
         await interaction.deferReply()
 
         if(!(interaction.channel as TextChannel).nsfw){
-            const emb = new MessageEmbed()
+            const emb = new EmbedBuilder()
                 .setTitle("Horni bonk")
                 .setImage(process.env.NO_NSFW)
-                .setColor("RED")
+                .setColor(Colors.Red)
             interaction.editReply({
                 embeds: [emb]
             })
@@ -33,23 +35,23 @@ export const XmasCommand = async (interaction: CommandInteraction): Promise<void
 
         if(/(http|https)\:\/\/(www\.)?redgifs\.com\/watch\/[a-zA-Z]{3,35}(\/)?/g.test(entity.image)){
             const data = await getMetaData(entity.image)
-            const embed = new MessageEmbed()
+            const embed = new EmbedBuilder()
                 .setTitle(entity.title)
                 .setColor("#ff6f61")
                 .setDescription("This is a video")
                 .setImage(data.image)
-            const row = new MessageActionRow()
+            const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
             row.addComponents(
-                new MessageButton()
+                new ButtonBuilder()
                     .setLabel("Watch in Browser")
-                    .setStyle("LINK")
+                    .setStyle(ButtonStyle.Link)
                     .setURL(data.video || entity.image)
             )
             row.addComponents(
-                new MessageButton()
+                new ButtonBuilder()
                     .setCustomId(`xmas-${redditRresponse.after}-${interaction.user.id}`)
                     .setLabel("Next")
-                    .setStyle("SUCCESS")
+                    .setStyle(ButtonStyle.Success)
             )
             interaction.editReply({
                 embeds: [embed],
@@ -59,23 +61,23 @@ export const XmasCommand = async (interaction: CommandInteraction): Promise<void
             return;
         }
 
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder()
             .setTitle(entity.title)
             .setImage(entity.image)
             .setColor("#ff6f61")
         
-        const row = new MessageActionRow()
+        const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
         row.addComponents(
-            new MessageButton()
+            new ButtonBuilder()
                 .setLabel("Open in Browser")
-                .setStyle("LINK")
+                .setStyle(ButtonStyle.Link)
                 .setURL(entity.image)
         )
         row.addComponents(
-            new MessageButton()
+            new ButtonBuilder()
                 .setCustomId(`xmas-${redditRresponse.after}-${interaction.user.id}`)
                 .setLabel("Next")
-                .setStyle("SUCCESS")
+                .setStyle(ButtonStyle.Success)
         )
 
         interaction.editReply({
@@ -96,10 +98,10 @@ export const NextXmasButton = async (interaction: ButtonInteraction, args: Array
          * If channel not nsfw show error
          */
         if(!(interaction.channel as TextChannel).nsfw){
-            const emb = new MessageEmbed()
+            const emb = new EmbedBuilder()
                 .setTitle("Horni bonk")
                 .setImage(process.env.NO_NSFW)
-                .setColor("RED")
+                .setColor(Colors.Red)
             interaction.editReply({
                 embeds: [emb]
             })
@@ -112,23 +114,23 @@ export const NextXmasButton = async (interaction: ButtonInteraction, args: Array
 
         if(/(http|https)\:\/\/(www\.)?redgifs\.com\/watch\/[a-zA-Z]{3,35}(\/)?/g.test(entity.image)){
             const data = await getMetaData(entity.image)
-            const embed = new MessageEmbed()
+            const embed = new EmbedBuilder()
                 .setTitle(entity.title)
                 .setColor("#ff6f61")
                 .setDescription("[This is a video]")
                 .setImage(data.image)
-            const row = new MessageActionRow()
+            const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
             row.addComponents(
-                new MessageButton()
+                new ButtonBuilder()
                     .setLabel("Watch in Browser")
-                    .setStyle("LINK")
+                    .setStyle(ButtonStyle.Link)
                     .setURL(data.video || entity.image)
             )
             row.addComponents(
-                new MessageButton()
+                new ButtonBuilder()
                     .setCustomId(`xmas-${redditRresponse.after}-${interaction.user.id}`)
                     .setLabel("Next")
-                    .setStyle("SUCCESS")
+                    .setStyle(ButtonStyle.Success)
             );
             (interaction.message as Message<boolean>).edit({
                 embeds: [embed],
@@ -138,7 +140,7 @@ export const NextXmasButton = async (interaction: ButtonInteraction, args: Array
             return;
         }
 
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder()
             .setTitle(entity.title)
             .setImage(entity.image)
             .setColor("#ff6f61");
@@ -146,24 +148,24 @@ export const NextXmasButton = async (interaction: ButtonInteraction, args: Array
         /**
          * Declare the button row
          */
-        const row = new MessageActionRow()
+        const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
         /**
          * Add open in browser button
          */
         row.addComponents(
-            new MessageButton()
+            new ButtonBuilder()
                 .setLabel("Open in Browser")
-                .setStyle("LINK")
+                .setStyle(ButtonStyle.Link)
                 .setURL(entity.image)
         )
         /**
          * Add next button
          */
         row.addComponents(
-            new MessageButton()
+            new ButtonBuilder()
                 .setCustomId(`xmas-${redditRresponse.after}-${interaction.user.id}`)
                 .setLabel("Next")
-                .setStyle("SUCCESS")
+                .setStyle(ButtonStyle.Success)
         );
 
         /**

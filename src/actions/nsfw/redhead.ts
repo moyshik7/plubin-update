@@ -2,10 +2,12 @@ import {
     ButtonInteraction, 
     CommandInteraction, 
     Message, 
-    MessageActionRow, 
-    MessageButton, 
-    MessageEmbed, 
-    TextChannel 
+    ActionRowBuilder, 
+    ButtonBuilder, 
+    EmbedBuilder, 
+    TextChannel,
+    ButtonStyle,
+    Colors
 } from "discord.js";
 import { GetRedditPosts } from "../../reddit";
 
@@ -15,10 +17,10 @@ export const RedheadCommand = async (interaction: CommandInteraction): Promise<v
         await interaction.deferReply()
 
         if(!(interaction.channel as TextChannel).nsfw){
-            const emb = new MessageEmbed()
+            const emb = new EmbedBuilder()
                 .setTitle("Horni bonk")
                 .setImage(process.env.NO_NSFW)
-                .setColor("RED")
+                .setColor(Colors.Red)
             interaction.editReply({
                 embeds: [emb]
             })
@@ -29,23 +31,23 @@ export const RedheadCommand = async (interaction: CommandInteraction): Promise<v
 
         const entity = redditRresponse.data[redditRresponse.data.length - 1 ]
 
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder()
             .setTitle(entity.title)
             .setImage(entity.image)
             .setColor("#ff6f61")
         
-        const row = new MessageActionRow()
+        const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
         row.addComponents(
-            new MessageButton()
+            new ButtonBuilder()
                 .setLabel("Open in Browser")
-                .setStyle("LINK")
+                .setStyle(ButtonStyle.Link)
                 .setURL(entity.image)
         )
         row.addComponents(
-            new MessageButton()
+            new ButtonBuilder()
                 .setCustomId(`redhead-${redditRresponse.after}-${interaction.user.id}`)
                 .setLabel("Next")
-                .setStyle("SUCCESS")
+                .setStyle(ButtonStyle.Success)
         )
 
         interaction.editReply({
@@ -65,10 +67,10 @@ export const NextRedheadButton = async (interaction: ButtonInteraction, args: Ar
          * If channel not nsfw show error
          */
         if(!(interaction.channel as TextChannel).nsfw){
-            const emb = new MessageEmbed()
+            const emb = new EmbedBuilder()
                 .setTitle("Horni bonk")
                 .setImage(process.env.NO_NSFW)
-                .setColor("RED")
+                .setColor(Colors.Red)
             interaction.editReply({
                 embeds: [emb]
             })
@@ -79,7 +81,7 @@ export const NextRedheadButton = async (interaction: ButtonInteraction, args: Ar
 
         const entity = redditRresponse.data[redditRresponse.data.length - 1 ]
 
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder()
             .setTitle(entity.title)
             .setImage(entity.image)
             .setColor("#ff6f61")
@@ -87,24 +89,24 @@ export const NextRedheadButton = async (interaction: ButtonInteraction, args: Ar
         /**
          * Declare the button row
          */
-        const row = new MessageActionRow()
+        const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
         /**
          * Add open in browser button
          */
         row.addComponents(
-            new MessageButton()
+            new ButtonBuilder()
                 .setLabel("Open in Browser")
-                .setStyle("LINK")
+                .setStyle(ButtonStyle.Link)
                 .setURL(entity.image)
         )
         /**
          * Add next button
          */
         row.addComponents(
-            new MessageButton()
+            new ButtonBuilder()
                 .setCustomId(`redhead-${redditRresponse.after}-${interaction.user.id}`)
                 .setLabel("Next")
-                .setStyle("SUCCESS")
+                .setStyle(ButtonStyle.Success)
         );
 
         /**

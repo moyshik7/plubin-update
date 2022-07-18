@@ -2,10 +2,12 @@ import {
     ButtonInteraction, 
     CommandInteraction, 
     Message, 
-    MessageActionRow, 
-    MessageButton, 
-    MessageEmbed, 
-    TextChannel 
+    ActionRowBuilder, 
+    ButtonBuilder, 
+    EmbedBuilder, 
+    TextChannel,
+    ButtonStyle,
+    Colors
 } from "discord.js";
 import { GetRedditPosts } from "../../reddit";
 import { GetShiroRaw } from "../../shiroapi";
@@ -17,22 +19,22 @@ export const NekoCommand = async (interaction: CommandInteraction): Promise<void
 
         if(!(interaction.channel as TextChannel).nsfw){
             const entity = await GetShiroRaw("/images/neko")
-            const embed = new MessageEmbed()
+            const embed = new EmbedBuilder()
                 .setTitle("nya~~")
                 .setImage(entity)
                 .setColor("#ff6f61");
-            const row = new MessageActionRow()
+            const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
             row.addComponents(
-                new MessageButton()
+                new ButtonBuilder()
                     .setLabel("Open in Browser")
-                    .setStyle("LINK")
+                    .setStyle(ButtonStyle.Link)
                     .setURL(entity)
             )
             row.addComponents(
-                new MessageButton()
+                new ButtonBuilder()
                     .setCustomId(`nekosfw-${interaction.user.id}`)
                     .setLabel("Next")
-                    .setStyle("SUCCESS")
+                    .setStyle(ButtonStyle.Success)
             )
             interaction.editReply({
                 embeds: [embed],
@@ -45,23 +47,23 @@ export const NekoCommand = async (interaction: CommandInteraction): Promise<void
 
         const entity = redditRresponse.data[redditRresponse.data.length - 1 ]
 
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder()
             .setTitle(entity.title)
             .setImage(entity.image)
             .setColor("#ff6f61");
         
-        const row = new MessageActionRow()
+        const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
         row.addComponents(
-            new MessageButton()
+            new ButtonBuilder()
                 .setLabel("Open in Browser")
-                .setStyle("LINK")
+                .setStyle(ButtonStyle.Link)
                 .setURL(entity.image)
         )
         row.addComponents(
-            new MessageButton()
+            new ButtonBuilder()
                 .setCustomId(`neko-${redditRresponse.after}-${interaction.user.id}`)
                 .setLabel("Next")
-                .setStyle("SUCCESS")
+                .setStyle(ButtonStyle.Success)
         )
 
         interaction.editReply({
@@ -78,22 +80,22 @@ export const NextNekoButton = async (interaction: ButtonInteraction, args: Array
 
          if(!(interaction.channel as TextChannel).nsfw){
             const entity = await GetShiroRaw("/images/neko")
-            const embed = new MessageEmbed()
+            const embed = new EmbedBuilder()
                 .setTitle("nya~~")
                 .setImage(entity)
                 .setColor("#ff6f61");
-            const row = new MessageActionRow()
+            const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
             row.addComponents(
-                new MessageButton()
+                new ButtonBuilder()
                     .setLabel("Open in Browser")
-                    .setStyle("LINK")
+                    .setStyle(ButtonStyle.Link)
                     .setURL(entity)
             )
             row.addComponents(
-                new MessageButton()
+                new ButtonBuilder()
                     .setCustomId(`nekosfw-${interaction.user.id}`)
                     .setLabel("Next")
-                    .setStyle("SUCCESS")
+                    .setStyle(ButtonStyle.Success)
             );
             (interaction.message as Message<boolean>).edit({
                 embeds: [embed],
@@ -109,7 +111,7 @@ export const NextNekoButton = async (interaction: ButtonInteraction, args: Array
 
         const entity = redditRresponse.data[redditRresponse.data.length - 1 ]
 
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder()
             .setTitle(entity.title)
             .setImage(entity.image)
             .setColor("#ff6f61")
@@ -117,24 +119,24 @@ export const NextNekoButton = async (interaction: ButtonInteraction, args: Array
         /**
          * Declare the button row
          */
-        const row = new MessageActionRow()
+        const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
         /**
          * Add open in browser button
          */
         row.addComponents(
-            new MessageButton()
+            new ButtonBuilder()
                 .setLabel("Open in Browser")
-                .setStyle("LINK")
+                .setStyle(ButtonStyle.Link)
                 .setURL(entity.image)
         )
         /**
          * Add next button
          */
         row.addComponents(
-            new MessageButton()
+            new ButtonBuilder()
                 .setCustomId(`neko-${redditRresponse.after}-${interaction.user.id}`)
                 .setLabel("Next")
-                .setStyle("SUCCESS")
+                .setStyle(ButtonStyle.Success)
         );
 
         /**
@@ -151,22 +153,22 @@ export const NextSFWNekoButton = async (interaction: ButtonInteraction, args: Ar
     try {
         await interaction.deferUpdate()
         const entity = await GetShiroRaw("/images/neko")
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder()
             .setTitle("nya~~")
             .setImage(entity)
             .setColor("#ff6f61");
-        const row = new MessageActionRow()
+        const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
         row.addComponents(
-            new MessageButton()
+            new ButtonBuilder()
                 .setLabel("Open in Browser")
-                .setStyle("LINK")
+                .setStyle(ButtonStyle.Link)
                 .setURL(entity)
         )
         row.addComponents(
-            new MessageButton()
+            new ButtonBuilder()
                 .setCustomId(`nekosfw-${interaction.user.id}`)
                 .setLabel("Next")
-                .setStyle("SUCCESS")
+                .setStyle(ButtonStyle.Success)
         );
         (interaction.message as Message<boolean>).edit({
             embeds: [embed],

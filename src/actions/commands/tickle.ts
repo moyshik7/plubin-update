@@ -1,6 +1,6 @@
 import {
     CommandInteraction,
-    MessageEmbed
+    EmbedBuilder
 } from "discord.js";
 import { GetShiroRaw } from "../../shiroapi";
 
@@ -22,7 +22,7 @@ export const TickleCommand = async (interaction: CommandInteraction): Promise<vo
 
         const image = await GetShiroRaw("/images/tickle")
 
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder()
             .setDescription(message)
             .setImage(image)
             .setColor("#ff6f61")

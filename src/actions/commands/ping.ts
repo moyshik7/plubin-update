@@ -1,10 +1,10 @@
-import { CommandInteraction, MessageEmbed } from "discord.js"
+import { CommandInteraction, EmbedBuilder } from "discord.js"
 
 export const Ping = (interaction: CommandInteraction) => {
     try {
         const time = Date.now() - interaction.createdAt.getTime()
 
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder()
             .setTitle("Pong")
             .setDescription(` 
 Latency: ${time} ms

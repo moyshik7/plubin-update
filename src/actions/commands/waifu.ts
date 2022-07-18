@@ -1,10 +1,11 @@
 import {
-    ButtonInteraction, 
-    CommandInteraction, 
-    Message, 
-    MessageActionRow, 
-    MessageButton, 
-    MessageEmbed
+    ButtonInteraction,
+    CommandInteraction,
+    Message,
+    ActionRowBuilder,
+    ButtonBuilder,
+    EmbedBuilder,
+    ButtonStyle
 } from "discord.js";
 import { GetShiroRaw } from "../../shiroapi";
 
@@ -14,23 +15,23 @@ export const WaifuCommand = async (interaction: CommandInteraction): Promise<voi
         await interaction.deferReply()
         const entity = await GetShiroRaw("/images/anime")
 
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder()
             .setTitle("Your Waifu")
             .setImage(entity)
             .setColor("#ff6f61");
 
-        const row = new MessageActionRow()
+        const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
         row.addComponents(
-            new MessageButton()
+            new ButtonBuilder()
                 .setLabel("Open in Browser")
-                .setStyle("LINK")
+                .setStyle(ButtonStyle.Link)
                 .setURL(entity)
         )
         row.addComponents(
-            new MessageButton()
+            new ButtonBuilder()
                 .setCustomId(`waifu-${interaction.user.id}`)
                 .setLabel("Next")
-                .setStyle("SUCCESS")
+                .setStyle(ButtonStyle.Success)
         )
 
         interaction.editReply({
@@ -47,7 +48,7 @@ export const NextWaifuButton = async (interaction: ButtonInteraction, args: Arra
         if(args.length < 1){ return }
         const entity = await GetShiroRaw("/images/anime")
 
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder()
             .setTitle("Your Waifu")
             .setImage(entity)
             .setColor("#ff6f61")
@@ -55,24 +56,24 @@ export const NextWaifuButton = async (interaction: ButtonInteraction, args: Arra
         /**
          * Declare the button row
          */
-        const row = new MessageActionRow()
+        const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
         /**
          * Add open in browser button
          */
         row.addComponents(
-            new MessageButton()
+            new ButtonBuilder()
                 .setLabel("Open in Browser")
-                .setStyle("LINK")
+                .setStyle(ButtonStyle.Link)
                 .setURL(entity)
         )
         /**
          * Add next button
          */
         row.addComponents(
-            new MessageButton()
+            new ButtonBuilder()
                 .setCustomId(`waifu-${interaction.user.id}`)
                 .setLabel("Next")
-                .setStyle("SUCCESS")
+                .setStyle(ButtonStyle.Success)
         );
 
         /**

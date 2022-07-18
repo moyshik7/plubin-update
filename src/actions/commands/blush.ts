@@ -1,6 +1,6 @@
 import {
     CommandInteraction,
-    MessageEmbed
+    EmbedBuilder
 } from "discord.js";
 import { GetShiroRaw } from "../../shiroapi";
 
@@ -11,7 +11,7 @@ export const BlushCommand = async (interaction: CommandInteraction): Promise<voi
 
         const image = await GetShiroRaw("/images/blush")
 
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder()
             .setTitle(`${interaction.user.username}`)
             .setImage(image)
             .setColor("#ff6f61")

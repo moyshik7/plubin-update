@@ -5,19 +5,21 @@ import {
     Client, 
     Interaction,
     Message, 
-    MessageActionRow, 
-    MessageButton, 
-    MessageEmbed, 
-    Intents
+    ActionRowBuilder, 
+    ButtonBuilder, 
+    EmbedBuilder, 
+    GatewayIntentBits,
+    InteractionType,
+    ButtonStyle
 } from "discord.js"
 import { Commands } from "./actions/commands"
 import { Buttons } from "./actions/buttons"
 
 const client = new Client({
     intents: [
-        Intents.FLAGS.GUILDS,
-        Intents.FLAGS.GUILD_MESSAGES,
-        1 << 15 // Message Content
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent
     ]
 })
 
@@ -36,7 +38,7 @@ client.on("messageCreate", (message: Message) => {
 
     if(oldcommands.includes(args[0].slice(1))){
         try {
-            const embed = new MessageEmbed()
+            const embed = new EmbedBuilder()
                 .setTitle("Please use slash commands")
                 .setDescription(`Last month discord introduced a new feature called Text in Voice and made some api changes
 Which seems to have broken this bot(Plubin) along with a few others
@@ -46,10 +48,10 @@ While you wait you can try using the slash commands
 If you haven't already allow thhe bot to create slash command in your guild you can do that with [this link](${process.env.BOT_INVITE})`)
                 .setColor("#ff6f61");
 
-                const row = new MessageActionRow();
-                row.addComponents(new MessageButton()
+                const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder();
+                row.addComponents(new ButtonBuilder()
                     .setLabel("Invite with Shash command")
-                    .setStyle("LINK")
+                    .setStyle(ButtonStyle.Link)
                     .setURL(process.env.BOT_INVITE)
                 )
 
@@ -69,7 +71,7 @@ client.on("interactionCreate", (interaction: Interaction): void => {
          * aka
          * Slah command
          */
-        if(interaction.isCommand()){
+        if(interaction.type === InteractionType.ApplicationCommand){
             /**
              * Create new instance of commandhandler class
              */

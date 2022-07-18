@@ -1,6 +1,6 @@
 import {
     CommandInteraction,
-    MessageEmbed
+    EmbedBuilder
 } from "discord.js";
 import { GetShiroRaw } from "../../shiroapi";
 
@@ -11,7 +11,7 @@ export const CryCommand = async (interaction: CommandInteraction): Promise<void>
 
         const image = await GetShiroRaw("/images/cry")
 
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder()
             .setTitle(`sob sob`)
             .setImage(image)
             .setColor("#ff6f61")

@@ -2,7 +2,7 @@ import axios from "axios";
 import { 
     ColorResolvable, 
     CommandInteraction, 
-    MessageEmbed 
+    EmbedBuilder 
 } from "discord.js";
 import { AnilistMangaResult } from "../../types";
 
@@ -91,7 +91,7 @@ export const MangaCommand = async (interaction: CommandInteraction): Promise<voi
          * Create blank message Embed
          * Change to EmberBuilder() in later versions
          */
-        let embed = new MessageEmbed()
+        let embed = new EmbedBuilder()
 
         /**
          * If no result show sorry 
@@ -103,9 +103,14 @@ export const MangaCommand = async (interaction: CommandInteraction): Promise<voi
         } else {
             embed.setTitle(animeResult.title.english || animeResult.title.native)
             embed.setDescription(animeResult.description)
-            embed.addField('\u200B', '\u200B')
-            embed.addField("Also searched for:", animeResult.title.native)
-            embed.addFields(
+            embed.addFields([{
+                name: '\u200B',
+                value:'\u200B'
+            }, {
+                name: "Also searched for:",
+                value: `${animeResult.title.native}`
+            }])
+            embed.addFields([
                 {
                     name: "__**Chapters:**__",
                     value: `${animeResult.chapters || "0" }`,
@@ -130,7 +135,7 @@ export const MangaCommand = async (interaction: CommandInteraction): Promise<voi
                     value: ` ${animeResult.genres.join(", ")} `,
                     inline: false
                 }
-            )
+            ])
             embed.setImage(`https://img.anili.st/media/${animeResult.id}`)
             embed.setColor((animeResult.color as ColorResolvable))
         }
