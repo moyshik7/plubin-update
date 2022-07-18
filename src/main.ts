@@ -15,6 +15,7 @@ import {
 import { Commands } from "./actions/commands"
 import { Buttons } from "./actions/buttons"
 import { HelpSelectCommand } from "./actions/help"
+import { TopggStatusHandler } from "./topgg"
 
 const client = new Client({
     intents: [
@@ -26,6 +27,7 @@ const client = new Client({
 
 client.on("ready", () => {
     console.log("Bot ready")
+    TopggStatusHandler(client)
 })
 
 client.on("messageCreate", (message: Message) => {
