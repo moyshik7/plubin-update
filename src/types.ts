@@ -3,6 +3,10 @@ export type LongDescription = string;
 export type ShortDescription = string;
 export type ColorHex = string;
 export type Integer = number;
+export type AnilistID = number;
+export type WaifuID = number;
+export type TimeInteger = number;
+export type WaifuRelationshipStatus = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
 
 export interface AnilistTitles {
     english: string;
@@ -73,4 +77,35 @@ export interface RedditRawResponse {
 export interface HelpMessageType {
     title?: string;
     message: LongDescription;
+}
+
+export interface  DatabaseAnimeSaveType {
+    id: AnilistID;
+    name: string;
+    watched: boolean;
+}
+export interface WaifuData {
+    id: WaifuID;
+    name: string;
+    points: Integer;
+    status: WaifuRelationshipStatus;
+    lastInteract?: TimeInteger;
+}
+export interface DatabaseUserWaifu {
+    waifu: WaifuData,
+    harem: Array<WaifuData>,
+    points: Integer,
+    lastDrop?: TimeInteger;
+    limit: Integer;
+}
+export interface UserTier {
+    tier: Integer;
+    validity: TimeInteger,
+    paid: boolean;
+}
+export interface DatabaseUser {
+    id: Snowflake;
+    watchlist: Array<DatabaseAnimeSaveType>;
+    waifu: DatabaseUserWaifu;
+    tier: UserTier;
 }
