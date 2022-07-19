@@ -138,7 +138,7 @@ Database.connect(process.env.DB_USER, process.env.DB_PASS, process.env.DB_NAME, 
                 /**
                  * Create new instance of button press handler class
                  */
-                const buttonHandler = new Buttons(client, interaction, args)
+                const buttonHandler = new Buttons(client, interaction, args, db)
     
                 /**
                  * Get action by name

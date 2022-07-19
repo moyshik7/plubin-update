@@ -76,7 +76,7 @@ export class Database {
         })
     }
 
-    async get(query, projection?: any){
+    async get(query, projection?: any): Promise<any> {
         return new Promise((resolve, reject) => {
             if(!projection){
                 projection = { _id: 0 }

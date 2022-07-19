@@ -1,4 +1,5 @@
 import { ButtonInteraction, Client } from "discord.js";
+import { Database } from "../database";
 import { NextAniMemeButton } from "./commands/animemes";
 import { NextDankMemeButton } from "./commands/dank";
 import { NextGoodAniMemeButton } from "./commands/goodanimemes";
@@ -45,20 +46,27 @@ import { NextVanilaButton } from "./nsfw/vanila";
 import { NextXmasButton } from "./nsfw/xmas";
 import { NextYaoiButton } from "./nsfw/yaoi";
 import { NextYuriButton } from "./nsfw/yuri";
+import { WatchlistAdd } from "./watchlist.ts/add";
 
 
 export class Buttons {
     private client: Client;
     private interaction: ButtonInteraction;
     private args: Array<string>
+    private db: Database;
 
-    constructor(client: Client, interaction: ButtonInteraction, args: Array<string>){
+    constructor(client: Client, interaction: ButtonInteraction, args: Array<string>, db: Database){
         /**
          * Save client and interaction
          */
         this.client = client
         this.interaction = interaction
         this.args = args;
+        this.db = db;
+    }
+
+    watchlistadd(){
+        WatchlistAdd(this.interaction, this.db, this.args)
     }
 
     animemes(){

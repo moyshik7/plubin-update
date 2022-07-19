@@ -92,7 +92,7 @@ export interface WaifuData {
     lastInteract?: TimeInteger;
 }
 export interface DatabaseUserWaifu {
-    waifu: WaifuData,
+    waifu?: WaifuData,
     harem: Array<WaifuData>,
     points: Integer,
     lastDrop?: TimeInteger;
@@ -105,6 +105,7 @@ export interface UserTier {
 }
 export interface DatabaseUser {
     id: Snowflake;
+    name: string;
     watchlist: Array<DatabaseAnimeSaveType>;
     waifu: DatabaseUserWaifu;
     tier: UserTier;
