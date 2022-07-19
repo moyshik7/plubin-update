@@ -16,6 +16,7 @@ import { Commands } from "./actions/commands"
 import { Buttons } from "./actions/buttons"
 import { HelpSelectCommand } from "./actions/help"
 import { TopggStatusHandler } from "./topgg"
+import { Database } from "./database"
 
 const client = new Client({
     intents: [
@@ -66,125 +67,126 @@ If you haven't already allow thhe bot to create slash command in your guild you 
     }
 })
 
-client.on("interactionCreate", (interaction: Interaction): void => {
-    try {
-        /**
-         * Command used
-         * Chat Input command
-         * aka
-         * Slah command
-         */
-        if(interaction.type === InteractionType.ApplicationCommand){
+Database.connect(process.env.DB_USER, process.env.DB_PASS, process.env.DB_NAME, "users").then((db) => {
+    client.on("interactionCreate", (interaction: Interaction): void => {
+        try {
             /**
-             * Create new instance of commandhandler class
+             * Command used
+             * Chat Input command
+             * aka
+             * Slah command
              */
-            const commandsCollector = new Commands(client, interaction)
-            /**
-             * Get the command by name
-             */
-            let command = commandsCollector[interaction.commandName]
-            /**
-             * If commands exists,
-             * Execute it
-             * Else 
-             * Leave it
-             */
-            if(command){
+            if(interaction.type === InteractionType.ApplicationCommand){
                 /**
-                 * Bind the parent class
+                 * Create new instance of commandhandler class
                  */
-                command = command.bind(commandsCollector)
+                const commandsCollector = new Commands(client, interaction)
                 /**
-                 * Execute command
+                 * Get the command by name
                  */
-                command()
-            }
-            /**
-             * Stop the function here
-             */
-            return;
-        }
-        /**
-         * Button press
-         */
-        if(interaction.isButton()){
-            /**
-             * Separate arguments
-             */
-            let args = interaction.customId.split("-")
-            if(args.length < 2){
+                let command = commandsCollector[interaction.commandName]
                 /**
-                 * args.length < 1: No command
-                 * args.length < 2: No user id attached.
-                 * Not executed
+                 * If commands exists,
+                 * Execute it
+                 * Else 
+                 * Leave it
                  */
-                interaction.deferUpdate()
+                if(command){
+                    /**
+                     * Bind the parent class
+                     */
+                    command = command.bind(commandsCollector)
+                    /**
+                     * Execute command
+                     */
+                    command()
+                }
+                /**
+                 * Stop the function here
+                 */
                 return;
             }
             /**
-             * Remove whitespaces
+             * Button press
              */
-            args = args.map(item => item.trim())
-
-            /**
-             * The first argument is the command it
-             * Remove it from args array 
-             * and store in a new variable
-             */
-            const name = args.shift()
-
-            /**
-             * Create new instance of button press handler class
-             */
-            const buttonHandler = new Buttons(client, interaction, args)
-
-            /**
-             * Get action by name
-             */
-            let button = buttonHandler[name]
-
-            /**
-             * If that button is registered
-             */
-            if(button){
+            if(interaction.isButton()){
                 /**
-                 * Bind button withparent object
-                 * So it doesn't lose values
+                 * Separate arguments
                  */
-                button = button.bind(buttonHandler)
+                let args = interaction.customId.split("-")
+                if(args.length < 2){
+                    /**
+                     * args.length < 1: No command
+                     * args.length < 2: No user id attached.
+                     * Not executed
+                     */
+                    interaction.deferUpdate()
+                    return;
+                }
                 /**
-                 * Execute the button
+                 * Remove whitespaces
                  */
-                button()
-            }
-            /**
-             * Stop the function here
-             */
-            return;
-        }
-        /**
-         * Select menu
-         * [Dropdowns]
-         */
-        if(interaction.isSelectMenu()){
-            /**
-             * We only have one select menu so no need to build a builder
-             */
-            if((Date.now() - interaction.message.createdAt.getTime()) > 5 * 60 * 1000){
+                args = args.map(item => item.trim())
+    
+                /**
+                 * The first argument is the command it
+                 * Remove it from args array 
+                 * and store in a new variable
+                 */
+                const name = args.shift()
+    
+                /**
+                 * Create new instance of button press handler class
+                 */
+                const buttonHandler = new Buttons(client, interaction, args)
+    
+                /**
+                 * Get action by name
+                 */
+                let button = buttonHandler[name]
+    
+                /**
+                 * If that button is registered
+                 */
+                if(button){
+                    /**
+                     * Bind button withparent object
+                     * So it doesn't lose values
+                     */
+                    button = button.bind(buttonHandler)
+                    /**
+                     * Execute the button
+                     */
+                    button()
+                }
+                /**
+                 * Stop the function here
+                 */
                 return;
             }
-            if(!interaction.customId || interaction.customId.length < 1){ return }
-            let args = interaction.customId.split("-")
-            if(args.length < 2){ return }
-            if(args[args.length - 1] !== interaction.user.id){ return }
-            const command = args[0]
-            args = args.slice(1)
-
-            if(command === "help"){
-                HelpSelectCommand(interaction)
+            /**
+             * Select menu
+             * [Dropdowns]
+             */
+            if(interaction.isSelectMenu()){
+                /**
+                 * We only have one select menu so no need to build a builder
+                 */
+                if((Date.now() - interaction.message.createdAt.getTime()) > 5 * 60 * 1000){
+                    return;
+                }
+                if(!interaction.customId || interaction.customId.length < 1){ return }
+                let args = interaction.customId.split("-")
+                if(args.length < 2){ return }
+                if(args[args.length - 1] !== interaction.user.id){ return }
+                const command = args[0]
+                args = args.slice(1)
+    
+                if(command === "help"){
+                    HelpSelectCommand(interaction)
+                }
             }
-        }
-    } catch (err){ console.log(err) }
+        } catch (err){ console.log(err) }
+    })
+    client.login(process.env.BOT_TOKEN)
 })
-
-client.login(process.env.BOT_TOKEN)
