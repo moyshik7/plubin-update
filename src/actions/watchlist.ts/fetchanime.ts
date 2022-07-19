@@ -11,8 +11,8 @@ export const FetchAnimeByID = (id: number) => {
             return;
         }
         const query: string = `
-        query ($id: id) {
-            Media(search: $search, type: ANIME) {
+        query ($id: Int) {
+            Media(id: $id, type: ANIME) {
                 id
                 title {
                     english
