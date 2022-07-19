@@ -1,27 +1,26 @@
-import { Client } from "discord.js";
-import { MongoClient } from "mongodb"
+import { Collection, Db, DeleteResult, InsertOneResult, MongoClient, UpdateResult, WithId } from "mongodb"
 
 export class Database {
-    private client: Client
-    constructor(client, db, collection){
+    private client: MongoClient;
+    private db: Db;
+    private collection: Collection;
+    constructor(client: MongoClient, db: Db, collection: string){
         this.client = client;
         this.db = db;
         this.collection = db.collection(collection)
     }
 
-    /**
-     * Create a new database instance
-     * @param {string} username Database username
-     * @param {string} password Database Password
-     * @param {string} database Database name
-     * @returns {Promise<Database>} A database object
-     */
-    static async connect(username, password, database, collection){
+    static async connect(
+        username: string,
+        password: string,
+        database: string,
+        collection: string
+    ): Promise<Database> {
         return new Promise((resolve, reject) => {
             const uri = `mongodb+srv://${username}:${password}@cluster0.hgpml.mongodb.net/`
             const client = new MongoClient(uri, {
-                useNewUrlParser: true,
-                useUnifiedTopology: true
+                keepAlive: true,
+                retryWrites: true
             })
             client.connect()
             .then(() => {
@@ -37,7 +36,7 @@ export class Database {
      * @param {any} value The value to add
      * @returns {InsertOneResult<Document>} The result data
      */
-    async add(value){
+    async add(value): Promise<InsertOneResult<typeof value>> {
         return new Promise((resolve, reject) => {
             this.collection.insertOne(value)
             .then((res) => {
@@ -52,7 +51,7 @@ export class Database {
      * @param {any} value The value to add
      * @returns {InsertOneResult<Document>} The result data
      */
-    async create(value){
+    async create(value): Promise<InsertOneResult<typeof value>>{
         return this.add(value)
     }
 
@@ -62,7 +61,7 @@ export class Database {
      * @param {any} value The value to add
      * @returns {InsertOneResult<Document>} The result data
      */
-    async append(value){
+    async append(value): Promise<InsertOneResult<typeof value>>{
         return this.add(value)
     }
 
@@ -71,7 +70,7 @@ export class Database {
      * @param {any} query The query
      * @returns {void}
      */
-    async delete(query){
+    async delete(query): Promise<DeleteResult>{
         return new Promise((resolve, reject) => {
             this.collection.deleteOne(query)
             .then((res) => {
@@ -86,11 +85,11 @@ export class Database {
      * @param {any} query The query
      * @returns {void}
      */
-    remove(query){
+    remove(query): Promise<DeleteResult>{
         return this.delete(query)
     }
 
-    async update(query, value){
+    async update(query, value): Promise<UpdateResult> {
         return new Promise((resolve, reject) => {
             this.collection.updateOne(
                 query,
