@@ -27,7 +27,7 @@ const client = new Client({
 })
 
 client.on("ready", () => {
-    console.log("Bot ready")
+    console.log(`Bot online in ${client.guilds.cache.size} servers`)
     TopggStatusHandler(client)
 })
 
