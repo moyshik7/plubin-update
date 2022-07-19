@@ -1,5 +1,8 @@
 import axios from "axios";
 import { 
+    ActionRowBuilder,
+    ButtonBuilder,
+    ButtonStyle,
     ColorResolvable, 
     CommandInteraction, 
     EmbedBuilder 
@@ -145,8 +148,17 @@ export const AnimeCommand = async (interaction: CommandInteraction): Promise<voi
             embed.setImage(`https://img.anili.st/media/${animeResult.id}`)
             embed.setColor((animeResult.color as ColorResolvable))
         }
+
+        const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
+
+        row.addComponents(new ButtonBuilder()
+            .setCustomId(`watchlistadd_${animeResult.id}_${interaction.user.id}`)
+            .setLabel("Add to Watchlist")
+            .setStyle(ButtonStyle.Success)
+        )
         await interaction.editReply({
-            embeds: [embed]
+            embeds: [embed],
+            components: [row]
         })
     } catch (err){ console.log(err) }
 }
