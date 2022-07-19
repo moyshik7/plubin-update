@@ -152,7 +152,7 @@ export const AnimeCommand = async (interaction: CommandInteraction): Promise<voi
         const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
 
         row.addComponents(new ButtonBuilder()
-            .setCustomId(`watchlistadd_${animeResult.id}_${interaction.user.id}`)
+            .setCustomId(`watchlistadd-${animeResult.id}-${interaction.user.id}`)
             .setLabel("Add to Watchlist")
             .setStyle(ButtonStyle.Success)
         )
