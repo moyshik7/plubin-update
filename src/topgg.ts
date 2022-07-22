@@ -1,5 +1,15 @@
 import { Api, BotStats } from "@top-gg/sdk"
 import { Client } from "discord.js"
+import process from 'node:process'
+
+const Sentry = require("@sentry/node")
+const Tracing = require("@sentry/tracing")
+
+Sentry.init({
+    dsn: "https://c61b574a11f84636bea6ebbdbddbf872@o1330674.ingest.sentry.io/6593650",
+    tracesSampleRate: 1.0
+})
+
 
 const api = new Api(process.env.TOPGG_API)
 
@@ -8,7 +18,9 @@ export const TopggStatusHandler = (client: Client): void => {
         if(process.env.PRODUCTION === "N"){
             PostTopggStats(client)
                 .then(console.log)
-                .catch(console.log)
+                .catch(err => {
+                    Sentry.captureException(err);
+                })
         }
         setInterval(() => {
         try {
@@ -23,7 +35,9 @@ export const TopggStatusHandler = (client: Client): void => {
                 .then((stats) => {
                     console.log(`Posted status on top.gg Servers: ${stats.serverCount}`)
                 })
-                .catch(console.log)
+                .catch(err => {
+                    Sentry.captureException(err);
+                })
         }catch(err){console.log(err)}
         }, 30 * 60 * 1000)
     } catch (err){

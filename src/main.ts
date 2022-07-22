@@ -1,6 +1,29 @@
 import dotenv from "dotenv"
 dotenv.config()
 
+const Sentry = require("@sentry/node")
+const Tracing = require("@sentry/tracing")
+
+Sentry.init({
+    dsn: "https://c61b574a11f84636bea6ebbdbddbf872@o1330674.ingest.sentry.io/6593650",
+    tracesSampleRate: 1.0
+})
+
+process.on("warning", warning => {
+    Sentry.captureException(warning)
+})
+process.on("uncaughtException", e => {
+    Sentry.captureException(e)
+})
+process.on("unhandledRejection", e => {
+    Sentry.captureException(e)
+})
+const transaction = Sentry.startTransaction({
+    op: "test",
+    name: "Bot Deployed",
+});
+
+
 import { 
     Client, 
     Interaction,
