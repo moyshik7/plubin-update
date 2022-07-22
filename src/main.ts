@@ -18,10 +18,6 @@ process.on("uncaughtException", e => {
 process.on("unhandledRejection", e => {
     Sentry.captureException(e)
 })
-const transaction = Sentry.startTransaction({
-    op: "test",
-    name: "Bot Deployed",
-});
 
 
 import { 
