@@ -4,18 +4,14 @@
 let production: boolean;
 if(process.env.PRODUCTION==="F"){production=false}else{production=true}
 
-import axios, { AxiosResponse } from "axios";
+import axios, { AxiosError, AxiosResponse } from "axios";
 import { RedditRawResponse, RedditResponse } from "./types";
+import { Sentry } from "./sentry";
 
 
 export const GetRedditPosts = (sub: string, limit?: number, after?: string): Promise<RedditRawResponse> => {
-    return new Promise((
-        resolve: (any) => void,
-        reject: (any) => void
-    ) => {
-        if(!limit){
-            limit = 10;
-        }
+    return new Promise((resolve: (any) => void, reject: (any) => void) => {
+        if(!limit){ limit = 10;}
         if(!after){
             after = ""
             limit += 3
@@ -71,6 +67,9 @@ export const GetRedditPosts = (sub: string, limit?: number, after?: string): Pro
             }
             resolve(response)
             return;
+        }).catch((err: AxiosError) => {
+            Sentry.captureMessage(`Error occured when fetching r/${sub}\nCode: ${err.code}\nMessage: ${err.message}`)
+            Sentry.captureException(err)
         })
     })
 }
