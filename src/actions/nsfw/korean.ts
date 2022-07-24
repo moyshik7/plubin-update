@@ -28,7 +28,7 @@ export const KoreanCommand = async (interaction: CommandInteraction): Promise<vo
             return;
         }
 
-        const redditRresponse = await GetRedditPosts("koreanhotties", 5)
+        const redditRresponse = await GetRedditPosts("NSFW_Korea", 5)
 
         const entity = redditRresponse.data[redditRresponse.data.length - 1 ]
 
@@ -110,7 +110,7 @@ export const NextKoreanButton = async (interaction: ButtonInteraction, args: Arr
             return;
         }
 
-        const redditRresponse = await GetRedditPosts("koreanhotties", 2, args[0])
+        const redditRresponse = await GetRedditPosts("NSFW_Korea", 2, args[0])
 
         const entity = redditRresponse.data[redditRresponse.data.length - 1 ]
 
@@ -149,7 +149,7 @@ export const NextKoreanButton = async (interaction: ButtonInteraction, args: Arr
         /**
          * Declare the button row
          */
-        const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
+        const row: ActionRowBuilder<ButtonBuilder> =git new ActionRowBuilder()
         /**
          * Add open in browser button
          */
