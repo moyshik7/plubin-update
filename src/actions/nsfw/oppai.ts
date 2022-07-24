@@ -29,7 +29,7 @@ export const OppaiCommand = async (interaction: CommandInteraction): Promise<voi
             return;
         }
 
-        const redditRresponse = await GetRedditPosts("oppai", 5)
+        const redditRresponse = await GetRedditPosts("newfaceinboobs", 5)
 
         const entity = redditRresponse.data[redditRresponse.data.length - 1 ]
 
@@ -79,7 +79,7 @@ export const NextOpppaiButton = async (interaction: ButtonInteraction, args: Arr
             return;
         }
 
-        const redditRresponse = await GetRedditPosts("oppai", 2, args[0])
+        const redditRresponse = await GetRedditPosts("newfaceinboobs", 2, args[0])
 
         const entity = redditRresponse.data[redditRresponse.data.length - 1 ]
 
