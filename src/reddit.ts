@@ -19,7 +19,7 @@ export const GetRedditPosts = (sub: string, limit?: number, after?: string): Pro
         if(!sub){
             return reject(new Error("No subreddit name provided"))
         }
-        let url = `https://reddit.com/r/${sub}.json?limit=${limit}&after=${after}`
+        let url = `https://www.reddit.com/r/${sub}.json?limit=${limit}&after=${after}`
 
         /**
          * If not on production, 
