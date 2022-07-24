@@ -149,7 +149,7 @@ export const NextKoreanButton = async (interaction: ButtonInteraction, args: Arr
         /**
          * Declare the button row
          */
-        const row: ActionRowBuilder<ButtonBuilder> =git new ActionRowBuilder()
+        const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
         /**
          * Add open in browser button
          */
