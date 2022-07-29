@@ -29,7 +29,7 @@ export const GlassesCommand = async (interaction: CommandInteraction): Promise<v
             return;
         }
 
-        const redditRresponse = await GetRedditPosts("glassesgonewild", 5)
+        const redditRresponse = await GetRedditPosts("cumonglasses", 5)
 
         const entity = redditRresponse.data[redditRresponse.data.length - 1 ]
 
@@ -108,7 +108,7 @@ export const NextGlassesButton = async (interaction: ButtonInteraction, args: Ar
             return;
         }
 
-        const redditRresponse = await GetRedditPosts("glassesgonewild", 2, args[0])
+        const redditRresponse = await GetRedditPosts("cumonglasses", 2, args[0])
 
         const entity = redditRresponse.data[redditRresponse.data.length - 1 ]
 
