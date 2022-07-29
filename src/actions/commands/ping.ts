@@ -27,7 +27,7 @@ export const Ping = async (interaction: CommandInteraction): Promise<void> => {
                 value: `${Math.floor(process.memoryUsage().heapUsed / 10000)/ 100}mb`,
                 inline: true
             }, {
-                name: "Max Usage:",
+                name: "Max Memory Usage:",
                 value: `${Math.floor(process.memoryUsage().heapTotal / 10000)/ 100}mb`,
                 inline: true
             }, {
@@ -39,7 +39,7 @@ export const Ping = async (interaction: CommandInteraction): Promise<void> => {
                 value: `<t:${Date.now() - interaction.client.uptime}:R>`,
                 inline: true
             }, {
-                name: "Random number:",
+                name: "Server Hash:",
                 value:`${Math.floor(Math.random() * 10000)}`,
                 inline: true
             }])

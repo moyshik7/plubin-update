@@ -68,7 +68,7 @@ export const GetRedditPosts = (sub: string, limit?: number, after?: string): Pro
             resolve(response)
             return;
         }).catch((err: AxiosError) => {
-            Sentry.captureMessage(`Error occured when fetching r/${sub}\nCode: ${err.code}\nMessage: ${err.message}`)
+            Sentry.captureMessage(`[Reddit] Error occured when fetching r/${sub}\nCode: ${err.code}\nMessage: ${err.message}`)
             Sentry.captureException(err)
         })
     })
