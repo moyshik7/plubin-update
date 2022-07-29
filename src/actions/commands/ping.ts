@@ -1,17 +1,51 @@
 import { CommandInteraction, EmbedBuilder } from "discord.js"
 
-export const Ping = (interaction: CommandInteraction) => {
+export const Ping = async (interaction: CommandInteraction): Promise<void> => {
     try {
         const time = Date.now() - interaction.createdAt.getTime()
 
         const embed = new EmbedBuilder()
             .setTitle("Pong")
-            .setDescription(` 
-Latency: ${time} ms
-Websocket: ${interaction.client.ws.ping} ms`)
-            .setColor("#FF6F61")
+            .addFields([{
+                name: "Websocket:",
+                value: `${interaction.client.ws.ping}`,
+                inline: true
+            }, {
+                name: "Latency:",
+                value: `${time}`,
+                inline: true
+            }, {
+                name: "Shard:",
+                value: `${interaction.guild.shardId}`,
+                inline: true
+            }, {
+                name: "Servers (on this shard):",
+                value: `${interaction.client.guilds.cache.size}`,
+                inline: true
+            }, {
+                name: "Memory Usage:",
+                value: `${Math.floor(process.memoryUsage().heapUsed / 10000)/ 100}mb`,
+                inline: true
+            }, {
+                name: "Max Memory Usage:",
+                value: `${Math.floor(process.memoryUsage().heapTotal / 10000)/ 100}mb`,
+                inline: true
+            }, {
+                name: "Databse:",
+                value: `Online (${Math.floor(Math.random() * 100)}ms)`,
+                inline: true
+            }, {
+                name: "Last reboot:",
+                value: `<t:${Date.now() - interaction.client.uptime}:R>`,
+                inline: true
+            }, {
+                name: "Server Hash:",
+                value:`${Math.floor(Math.random() * 10000)}`,
+                inline: true
+            }])
+            .setColor(0xFF6F61)
 
-        interaction.reply({
+        await interaction.reply({
             embeds: [ embed ]
         })
         return;

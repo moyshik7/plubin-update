@@ -23,7 +23,7 @@ export const OppaiCommand = async (interaction: CommandInteraction): Promise<voi
                 .setTitle("Horni bonk")
                 .setImage(process.env.NO_NSFW)
                 .setColor(Colors.Red)
-            interaction.editReply({
+            await interaction.editReply({
                 embeds: [emb]
             })
             return;
@@ -36,7 +36,7 @@ export const OppaiCommand = async (interaction: CommandInteraction): Promise<voi
         const embed = new EmbedBuilder()
             .setTitle(entity.title)
             .setImage(entity.image)
-            .setColor("#ff6f61")
+            .setColor(0xFF6F61)
         
         const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
         row.addComponents(
@@ -73,7 +73,7 @@ export const NextOpppaiButton = async (interaction: ButtonInteraction, args: Arr
                 .setTitle("Horni bonk")
                 .setImage(process.env.NO_NSFW)
                 .setColor(Colors.Red)
-            interaction.editReply({
+            await interaction.editReply({
                 embeds: [emb]
             })
             return;
@@ -86,7 +86,7 @@ export const NextOpppaiButton = async (interaction: ButtonInteraction, args: Arr
         const embed = new EmbedBuilder()
             .setTitle(entity.title)
             .setImage(entity.image)
-            .setColor("#ff6f61")
+            .setColor(0xFF6F61)
 
         /**
          * Declare the button row
@@ -114,7 +114,7 @@ export const NextOpppaiButton = async (interaction: ButtonInteraction, args: Arr
         /**
          * Edit the orginal message
          */
-        (interaction.message as Message<boolean>).edit({
+        await (interaction.message as Message<boolean>).edit({
             embeds: [ embed ],
             components: [ row ]
         })

@@ -14,9 +14,9 @@ export const SleepCommand = async (interaction: CommandInteraction): Promise<voi
         const embed = new EmbedBuilder()
             .setTitle(`z z z`)
             .setImage(image)
-            .setColor("#ff6f61")
+            .setColor(0xFF6F61)
 
-        interaction.editReply({
+        await interaction.editReply({
             embeds: [ embed ]
         })
         return;

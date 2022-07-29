@@ -63,7 +63,7 @@ And because of this after a long waitiing I decided to write the entire bot (I k
 Righ now I have migrated and released most of the slash commands and will be releasing the normal commands soon
 While you wait you can try using the slash commands
 If you haven't already allow thhe bot to create slash command in your guild you can do that with [this link](${process.env.BOT_INVITE})`)
-                .setColor("#ff6f61");
+                .setColor(0xFF6F61);
 
                 const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder();
                 row.addComponents(new ButtonBuilder()

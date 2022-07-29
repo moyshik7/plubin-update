@@ -21,7 +21,7 @@ export const RedheadCommand = async (interaction: CommandInteraction): Promise<v
                 .setTitle("Horni bonk")
                 .setImage(process.env.NO_NSFW)
                 .setColor(Colors.Red)
-            interaction.editReply({
+            await interaction.editReply({
                 embeds: [emb]
             })
             return;
@@ -34,7 +34,7 @@ export const RedheadCommand = async (interaction: CommandInteraction): Promise<v
         const embed = new EmbedBuilder()
             .setTitle(entity.title)
             .setImage(entity.image)
-            .setColor("#ff6f61")
+            .setColor(0xFF6F61)
         
         const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
         row.addComponents(
@@ -71,7 +71,7 @@ export const NextRedheadButton = async (interaction: ButtonInteraction, args: Ar
                 .setTitle("Horni bonk")
                 .setImage(process.env.NO_NSFW)
                 .setColor(Colors.Red)
-            interaction.editReply({
+            await interaction.editReply({
                 embeds: [emb]
             })
             return;
@@ -84,7 +84,7 @@ export const NextRedheadButton = async (interaction: ButtonInteraction, args: Ar
         const embed = new EmbedBuilder()
             .setTitle(entity.title)
             .setImage(entity.image)
-            .setColor("#ff6f61")
+            .setColor(0xFF6F61)
 
         /**
          * Declare the button row
@@ -112,7 +112,7 @@ export const NextRedheadButton = async (interaction: ButtonInteraction, args: Ar
         /**
          * Edit the orginal message
          */
-        (interaction.message as Message<boolean>).edit({
+        await (interaction.message as Message<boolean>).edit({
             embeds: [ embed ],
             components: [ row ]
         })

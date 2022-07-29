@@ -14,9 +14,9 @@ export const SmugCommand = async (interaction: CommandInteraction): Promise<void
         const embed = new EmbedBuilder()
             .setTitle(`¬‿¬`)
             .setImage(image)
-            .setColor("#ff6f61")
+            .setColor(0xFF6F61)
 
-        interaction.editReply({
+        await interaction.editReply({
             embeds: [ embed ]
         })
         return;

@@ -22,7 +22,7 @@ export const AsianCommand = async (interaction: CommandInteraction): Promise<voi
                 .setTitle("Horni bonk")
                 .setImage(process.env.NO_NSFW)
                 .setColor(Colors.Red)
-            interaction.editReply({
+            await interaction.editReply({
                 embeds: [emb]
             })
             return;
@@ -41,7 +41,7 @@ export const AsianCommand = async (interaction: CommandInteraction): Promise<voi
             const data = await getMetaData(entity.image)
             const embed = new EmbedBuilder()
                 .setTitle(entity.title)
-                .setColor("#ff6f61")
+                .setColor(0xFF6F61)
                 .setDescription("This is a video")
                 .setImage(data.image)
             const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
@@ -57,7 +57,7 @@ export const AsianCommand = async (interaction: CommandInteraction): Promise<voi
                     .setLabel("Next")
                     .setStyle(ButtonStyle.Success)
             )
-            interaction.editReply({
+            await interaction.editReply({
                 embeds: [embed],
                 components: [row],
                 files: []
@@ -68,7 +68,7 @@ export const AsianCommand = async (interaction: CommandInteraction): Promise<voi
         const embed = new EmbedBuilder()
             .setTitle(entity.title)
             .setImage(entity.image)
-            .setColor("#ff6f61")
+            .setColor(0xFF6F61)
         
         const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
         row.addComponents(
@@ -106,7 +106,7 @@ export const NextAsianButton = async (interaction: ButtonInteraction, args: Arra
                 .setTitle("Horni bonk")
                 .setImage(process.env.NO_NSFW)
                 .setColor(Colors.Red)
-            interaction.editReply({
+            await interaction.editReply({
                 embeds: [emb]
             })
             return;
@@ -120,7 +120,7 @@ export const NextAsianButton = async (interaction: ButtonInteraction, args: Arra
             const data = await getMetaData(entity.image)
             const embed = new EmbedBuilder()
                 .setTitle(entity.title)
-                .setColor("#ff6f61")
+                .setColor(0xFF6F61)
                 .setDescription("[This is a video]")
                 .setImage(data.image)
             const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
@@ -136,7 +136,7 @@ export const NextAsianButton = async (interaction: ButtonInteraction, args: Arra
                     .setLabel("Next")
                     .setStyle(ButtonStyle.Success)
             );
-            (interaction.message as Message<boolean>).edit({
+            await (interaction.message as Message<boolean>).edit({
                 embeds: [embed],
                 components: [row],
                 files: []
@@ -147,7 +147,7 @@ export const NextAsianButton = async (interaction: ButtonInteraction, args: Arra
         const embed = new EmbedBuilder()
             .setTitle(entity.title)
             .setImage(entity.image)
-            .setColor("#ff6f61")
+            .setColor(0xFF6F61)
 
         /**
          * Declare the button row
@@ -175,7 +175,7 @@ export const NextAsianButton = async (interaction: ButtonInteraction, args: Arra
         /**
          * Edit the orginal message
          */
-        (interaction.message as Message<boolean>).edit({
+         await (interaction.message as Message<boolean>).edit({
             embeds: [ embed ],
             components: [ row ],
             files: []

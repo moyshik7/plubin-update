@@ -19,7 +19,7 @@ export const GetRedditPosts = (sub: string, limit?: number, after?: string): Pro
         if(!sub){
             return reject(new Error("No subreddit name provided"))
         }
-        let url = `https://reddit.com/r/${sub}.json?limit=${limit}&after=${after}`
+        let url = `https://www.reddit.com/r/${sub}.json?limit=${limit}&after=${after}`
 
         /**
          * If not on production, 
@@ -68,7 +68,7 @@ export const GetRedditPosts = (sub: string, limit?: number, after?: string): Pro
             resolve(response)
             return;
         }).catch((err: AxiosError) => {
-            Sentry.captureMessage(`Error occured when fetching r/${sub}\nCode: ${err.code}\nMessage: ${err.message}`)
+            Sentry.captureMessage(`[Reddit] Error occured when fetching r/${sub}\nCode: ${err.code}\nMessage: ${err.message}`)
             Sentry.captureException(err)
         })
     })

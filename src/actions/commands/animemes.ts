@@ -23,7 +23,7 @@ export const AniMemeCommand = async (interaction: CommandInteraction): Promise<v
         const embed = new EmbedBuilder()
             .setTitle(entity.title)
             .setImage(nsfw ? process.env.NO_NSFW : entity.image)
-            .setColor("#ff6f61")
+            .setColor(0xFF6F61)
         
         const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
         row.addComponents(
@@ -39,7 +39,7 @@ export const AniMemeCommand = async (interaction: CommandInteraction): Promise<v
                 .setStyle(ButtonStyle.Success)
         )
 
-        interaction.editReply({
+        await interaction.editReply({
             embeds: [ embed ],
             components: [ row ]
         })
@@ -60,7 +60,7 @@ export const NextAniMemeButton = async (interaction: ButtonInteraction, args: Ar
         const embed = new EmbedBuilder()
             .setTitle(entity.title)
             .setImage(nsfw ? process.env.NO_NSFW : entity.image)
-            .setColor("#ff6f61")
+            .setColor(0xFF6F61)
         
         /**
          * Declare the button row
@@ -88,7 +88,7 @@ export const NextAniMemeButton = async (interaction: ButtonInteraction, args: Ar
         /**
          * Edit the orginal message
          */
-        (interaction.message as Message<boolean>).edit({
+        await (interaction.message as Message<boolean>).edit({
             embeds: [ embed ],
             components: [ row ]
         })

@@ -22,7 +22,7 @@ export const NekoCommand = async (interaction: CommandInteraction): Promise<void
             const embed = new EmbedBuilder()
                 .setTitle("nya~~")
                 .setImage(entity)
-                .setColor("#ff6f61");
+                .setColor(0xFF6F61);
             const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
             row.addComponents(
                 new ButtonBuilder()
@@ -36,7 +36,7 @@ export const NekoCommand = async (interaction: CommandInteraction): Promise<void
                     .setLabel("Next")
                     .setStyle(ButtonStyle.Success)
             )
-            interaction.editReply({
+            await interaction.editReply({
                 embeds: [embed],
                 components: [row]
             })
@@ -50,7 +50,7 @@ export const NekoCommand = async (interaction: CommandInteraction): Promise<void
         const embed = new EmbedBuilder()
             .setTitle(entity.title)
             .setImage(entity.image)
-            .setColor("#ff6f61");
+            .setColor(0xFF6F61);
         
         const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
         row.addComponents(
@@ -83,7 +83,7 @@ export const NextNekoButton = async (interaction: ButtonInteraction, args: Array
             const embed = new EmbedBuilder()
                 .setTitle("nya~~")
                 .setImage(entity)
-                .setColor("#ff6f61");
+                .setColor(0xFF6F61);
             const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
             row.addComponents(
                 new ButtonBuilder()
@@ -97,7 +97,7 @@ export const NextNekoButton = async (interaction: ButtonInteraction, args: Array
                     .setLabel("Next")
                     .setStyle(ButtonStyle.Success)
             );
-            (interaction.message as Message<boolean>).edit({
+            await (interaction.message as Message<boolean>).edit({
                 embeds: [embed],
                 components: [row]
             })
@@ -114,7 +114,7 @@ export const NextNekoButton = async (interaction: ButtonInteraction, args: Array
         const embed = new EmbedBuilder()
             .setTitle(entity.title)
             .setImage(entity.image)
-            .setColor("#ff6f61")
+            .setColor(0xFF6F61)
 
         /**
          * Declare the button row
@@ -142,7 +142,7 @@ export const NextNekoButton = async (interaction: ButtonInteraction, args: Array
         /**
          * Edit the orginal message
          */
-        (interaction.message as Message<boolean>).edit({
+        await (interaction.message as Message<boolean>).edit({
             embeds: [ embed ],
             components: [ row ]
         })
@@ -156,7 +156,7 @@ export const NextSFWNekoButton = async (interaction: ButtonInteraction, args: Ar
         const embed = new EmbedBuilder()
             .setTitle("nya~~")
             .setImage(entity)
-            .setColor("#ff6f61");
+            .setColor(0xFF6F61);
         const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
         row.addComponents(
             new ButtonBuilder()
@@ -170,7 +170,7 @@ export const NextSFWNekoButton = async (interaction: ButtonInteraction, args: Ar
                 .setLabel("Next")
                 .setStyle(ButtonStyle.Success)
         );
-        (interaction.message as Message<boolean>).edit({
+        await (interaction.message as Message<boolean>).edit({
             embeds: [embed],
             components: [row]
         })

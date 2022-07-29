@@ -23,7 +23,7 @@ export const YuriCommand = async (interaction: CommandInteraction): Promise<void
                 .setTitle("Horni bonk")
                 .setImage(process.env.NO_NSFW)
                 .setColor(Colors.Red)
-            interaction.editReply({
+            await interaction.editReply({
                 embeds: [emb]
             })
             return;
@@ -37,7 +37,7 @@ export const YuriCommand = async (interaction: CommandInteraction): Promise<void
             const data = await getMetaData(entity.image)
             const embed = new EmbedBuilder()
                 .setTitle(entity.title)
-                .setColor("#ff6f61")
+                .setColor(0xFF6F61)
                 .setDescription("This is a video")
                 .setImage(data.image)
             const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
@@ -53,7 +53,7 @@ export const YuriCommand = async (interaction: CommandInteraction): Promise<void
                     .setLabel("Next")
                     .setStyle(ButtonStyle.Success)
             )
-            interaction.editReply({
+            await interaction.editReply({
                 embeds: [embed],
                 components: [row],
             })
@@ -63,7 +63,7 @@ export const YuriCommand = async (interaction: CommandInteraction): Promise<void
         const embed = new EmbedBuilder()
             .setTitle(entity.title)
             .setImage(entity.image)
-            .setColor("#ff6f61")
+            .setColor(0xFF6F61)
         
         const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
         row.addComponents(
@@ -100,7 +100,7 @@ export const NextYuriButton = async (interaction: ButtonInteraction, args: Array
                 .setTitle("Horni bonk")
                 .setImage(process.env.NO_NSFW)
                 .setColor(Colors.Red)
-            interaction.editReply({
+            await interaction.editReply({
                 embeds: [emb]
             })
             return;
@@ -114,7 +114,7 @@ export const NextYuriButton = async (interaction: ButtonInteraction, args: Array
             const data = await getMetaData(entity.image)
             const embed = new EmbedBuilder()
                 .setTitle(entity.title)
-                .setColor("#ff6f61")
+                .setColor(0xFF6F61)
                 .setDescription("[This is a video]")
                 .setImage(data.image)
             const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
@@ -130,7 +130,7 @@ export const NextYuriButton = async (interaction: ButtonInteraction, args: Array
                     .setLabel("Next")
                     .setStyle(ButtonStyle.Success)
             );
-            (interaction.message as Message<boolean>).edit({
+            await (interaction.message as Message<boolean>).edit({
                 embeds: [embed],
                 components: [row]
             })
@@ -140,7 +140,7 @@ export const NextYuriButton = async (interaction: ButtonInteraction, args: Array
         const embed = new EmbedBuilder()
             .setTitle(entity.title)
             .setImage(entity.image)
-            .setColor("#ff6f61")
+            .setColor(0xFF6F61)
 
         /**
          * Declare the button row
@@ -168,7 +168,7 @@ export const NextYuriButton = async (interaction: ButtonInteraction, args: Array
         /**
          * Edit the orginal message
          */
-        (interaction.message as Message<boolean>).edit({
+        await (interaction.message as Message<boolean>).edit({
             embeds: [ embed ],
             components: [ row ]
         })
