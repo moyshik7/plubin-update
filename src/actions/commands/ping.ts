@@ -24,11 +24,11 @@ export const Ping = async (interaction: CommandInteraction): Promise<void> => {
                 inline: true
             }, {
                 name: "Memory Usage:",
-                value: `${process.memoryUsage().heapUsed}`,
+                value: `${Math.floor(process.memoryUsage().heapUsed / 1000)}`,
                 inline: true
             }, {
                 name: "Total Memory (for this shard):",
-                value: `${process.memoryUsage().heapTotal}`,
+                value: `${Math.floor(process.memoryUsage().heapTotal / 1000)}`,
                 inline: true
             }])
             .setColor(0xFF6F61)
