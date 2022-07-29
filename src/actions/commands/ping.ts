@@ -38,6 +38,10 @@ export const Ping = async (interaction: CommandInteraction): Promise<void> => {
                 name: "Last reboot:",
                 value: `<t:${Date.now() - interaction.client.uptime}:R>`,
                 inline: true
+            }, {
+                name: "Random number:",
+                value:`${Math.floor(Math.random() * 10000)}`,
+                inline: true
             }])
             .setColor(0xFF6F61)
 
