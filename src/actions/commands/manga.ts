@@ -1,9 +1,10 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { 
     ColorResolvable, 
     CommandInteraction, 
     EmbedBuilder 
 } from "discord.js";
+import { Sentry } from "../../sentry";
 import { AnilistMangaResult } from "../../types";
 
 const Search = (searchString: string): Promise<AnilistMangaResult> => {
@@ -66,10 +67,13 @@ const Search = (searchString: string): Promise<AnilistMangaResult> => {
                     medium: r.data.data.Media.coverImage.large,
                 }
             }
-
             resolve(result)
             return;
-        }).catch(reject)
+        }).catch(err => {
+            Sentry.captureMessage(`[Anilist] Error when fetching manga with search term ${searchString}\nMessage: ${(err as AxiosError).message}\nCode: ${(err as AxiosError).code}`)
+            Sentry.captureException(err)
+            reject(err)
+        })
     })
 }
 

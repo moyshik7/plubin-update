@@ -39,10 +39,10 @@ export const DankMemeCommand = async (interaction: CommandInteraction): Promise<
                 .setStyle(ButtonStyle.Success)
         )
 
-        interaction.editReply({
+        await interaction.editReply({
             embeds: [ embed ],
             components: [ row ]
-        })
+        }).catch(console.log)
         return;
     } catch(err){ console.log(err) }
 }
@@ -88,7 +88,7 @@ export const NextDankMemeButton = async (interaction: ButtonInteraction, args: A
         /**
          * Edit the orginal message
          */
-        (interaction.message as Message<boolean>).edit({
+        await (interaction.message as Message<boolean>).edit({
             embeds: [ embed ],
             components: [ row ]
         })

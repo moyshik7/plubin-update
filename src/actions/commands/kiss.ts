@@ -27,7 +27,7 @@ export const KissCommand = async (interaction: CommandInteraction): Promise<void
             .setImage(image)
             .setColor("#ff6f61")
 
-        interaction.editReply({
+        await interaction.editReply({
             embeds: [ embed ]
         })
         return;

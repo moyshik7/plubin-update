@@ -39,7 +39,7 @@ export const AniMemeCommand = async (interaction: CommandInteraction): Promise<v
                 .setStyle(ButtonStyle.Success)
         )
 
-        interaction.editReply({
+        await interaction.editReply({
             embeds: [ embed ],
             components: [ row ]
         })
@@ -88,7 +88,7 @@ export const NextAniMemeButton = async (interaction: ButtonInteraction, args: Ar
         /**
          * Edit the orginal message
          */
-        (interaction.message as Message<boolean>).edit({
+        await (interaction.message as Message<boolean>).edit({
             embeds: [ embed ],
             components: [ row ]
         })

@@ -39,7 +39,7 @@ export const GoodAniMemeCommand = async (interaction: CommandInteraction): Promi
                 .setStyle(ButtonStyle.Success)
         )
 
-        interaction.editReply({
+        await interaction.editReply({
             embeds: [ embed ],
             components: [ row ]
         })

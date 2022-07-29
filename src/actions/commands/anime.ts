@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { 
     ActionRowBuilder,
     ButtonBuilder,
@@ -7,6 +7,7 @@ import {
     CommandInteraction, 
     EmbedBuilder 
 } from "discord.js";
+import { Sentry } from "../../sentry";
 import { AnilistAnimeResult } from "../../types";
 
 const Search = (searchString: string): Promise<AnilistAnimeResult> => {
@@ -78,7 +79,11 @@ const Search = (searchString: string): Promise<AnilistAnimeResult> => {
 
             resolve(result)
             return;
-        }).catch(reject)
+        }).catch(err => {
+            Sentry.captureMessage(`[Anilist] Error when fetching anime with search term ${searchString}\nMessage: ${(err as AxiosError).message}\nCode: ${(err as AxiosError).code}`)
+            Sentry.captureException(err)
+            reject(err)
+        })
     })
 }
 
