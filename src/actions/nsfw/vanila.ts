@@ -36,7 +36,7 @@ export const VanilaCommand = async (interaction: CommandInteraction): Promise<vo
         const embed = new EmbedBuilder()
             .setTitle(entity.title)
             .setImage(entity.image)
-            .setColor("#ff6f61")
+            .setColor(0xFF6F61)
         
         const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
         row.addComponents(
@@ -86,7 +86,7 @@ export const NextVanilaButton = async (interaction: ButtonInteraction, args: Arr
         const embed = new EmbedBuilder()
             .setTitle(entity.title)
             .setImage(entity.image)
-            .setColor("#ff6f61")
+            .setColor(0xFF6F61)
 
         /**
          * Declare the button row

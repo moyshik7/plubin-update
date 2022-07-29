@@ -40,7 +40,7 @@ export const JapaneseCommand = async (interaction: CommandInteraction): Promise<
             const data = await getMetaData(entity.image)
             const embed = new EmbedBuilder()
                 .setTitle(entity.title)
-                .setColor("#ff6f61")
+                .setColor(0xFF6F61)
                 .setDescription("This is a video")
                 .setImage(data.image)
             const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
@@ -66,7 +66,7 @@ export const JapaneseCommand = async (interaction: CommandInteraction): Promise<
         const embed = new EmbedBuilder()
             .setTitle(entity.title)
             .setImage(entity.image)
-            .setColor("#ff6f61")
+            .setColor(0xFF6F61)
         
         const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
         row.addComponents(
@@ -117,7 +117,7 @@ export const NextJapaneseButton = async (interaction: ButtonInteraction, args: A
             const data = await getMetaData(entity.image)
             const embed = new EmbedBuilder()
                 .setTitle(entity.title)
-                .setColor("#ff6f61")
+                .setColor(0xFF6F61)
                 .setDescription("[This is a video]")
                 .setImage(data.image)
             const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
@@ -143,7 +143,7 @@ export const NextJapaneseButton = async (interaction: ButtonInteraction, args: A
         const embed = new EmbedBuilder()
             .setTitle(entity.title)
             .setImage(entity.image)
-            .setColor("#ff6f61")
+            .setColor(0xFF6F61)
 
         /**
          * Declare the button row

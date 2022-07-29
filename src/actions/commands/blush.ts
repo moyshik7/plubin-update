@@ -14,7 +14,7 @@ export const BlushCommand = async (interaction: CommandInteraction): Promise<voi
         const embed = new EmbedBuilder()
             .setTitle(`${interaction.user.username}`)
             .setImage(image)
-            .setColor("#ff6f61")
+            .setColor(0xFF6F61)
 
         await interaction.editReply({
             embeds: [ embed ]

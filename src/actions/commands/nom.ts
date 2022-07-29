@@ -14,7 +14,7 @@ export const NomCommand = async (interaction: CommandInteraction): Promise<void>
         const embed = new EmbedBuilder()
             .setTitle(`nom nom`)
             .setImage(image)
-            .setColor("#ff6f61")
+            .setColor(0xFF6F61)
 
         await interaction.editReply({
             embeds: [ embed ]

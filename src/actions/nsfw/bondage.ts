@@ -36,7 +36,7 @@ export const BondageCommand = async (interaction: CommandInteraction): Promise<v
         const embed = new EmbedBuilder()
             .setTitle(entity.title)
             .setImage(entity.image)
-            .setColor("#ff6f61")
+            .setColor(0xFF6F61)
         
         const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
         row.addComponents(
@@ -86,7 +86,7 @@ export const NextBondageButton = async (interaction: ButtonInteraction, args: Ar
         const embed = new EmbedBuilder()
             .setTitle(entity.title)
             .setImage(entity.image)
-            .setColor("#ff6f61");
+            .setColor(0xFF6F61);
 
         /**
          * Declare the button row

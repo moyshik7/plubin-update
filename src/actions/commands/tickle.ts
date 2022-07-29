@@ -25,9 +25,9 @@ export const TickleCommand = async (interaction: CommandInteraction): Promise<vo
         const embed = new EmbedBuilder()
             .setDescription(message)
             .setImage(image)
-            .setColor("#ff6f61")
+            .setColor(0xFF6F61)
 
-        interaction.editReply({
+        await interaction.editReply({
             embeds: [ embed ]
         })
         return;

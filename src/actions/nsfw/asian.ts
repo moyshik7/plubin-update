@@ -41,7 +41,7 @@ export const AsianCommand = async (interaction: CommandInteraction): Promise<voi
             const data = await getMetaData(entity.image)
             const embed = new EmbedBuilder()
                 .setTitle(entity.title)
-                .setColor("#ff6f61")
+                .setColor(0xFF6F61)
                 .setDescription("This is a video")
                 .setImage(data.image)
             const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
@@ -68,7 +68,7 @@ export const AsianCommand = async (interaction: CommandInteraction): Promise<voi
         const embed = new EmbedBuilder()
             .setTitle(entity.title)
             .setImage(entity.image)
-            .setColor("#ff6f61")
+            .setColor(0xFF6F61)
         
         const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
         row.addComponents(
@@ -120,7 +120,7 @@ export const NextAsianButton = async (interaction: ButtonInteraction, args: Arra
             const data = await getMetaData(entity.image)
             const embed = new EmbedBuilder()
                 .setTitle(entity.title)
-                .setColor("#ff6f61")
+                .setColor(0xFF6F61)
                 .setDescription("[This is a video]")
                 .setImage(data.image)
             const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
@@ -147,7 +147,7 @@ export const NextAsianButton = async (interaction: ButtonInteraction, args: Arra
         const embed = new EmbedBuilder()
             .setTitle(entity.title)
             .setImage(entity.image)
-            .setColor("#ff6f61")
+            .setColor(0xFF6F61)
 
         /**
          * Declare the button row

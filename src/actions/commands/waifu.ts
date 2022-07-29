@@ -18,7 +18,7 @@ export const WaifuCommand = async (interaction: CommandInteraction): Promise<voi
         const embed = new EmbedBuilder()
             .setTitle("Your Waifu")
             .setImage(entity)
-            .setColor("#ff6f61");
+            .setColor(0xFF6F61);
 
         const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder()
         row.addComponents(
@@ -34,7 +34,7 @@ export const WaifuCommand = async (interaction: CommandInteraction): Promise<voi
                 .setStyle(ButtonStyle.Success)
         )
 
-        interaction.editReply({
+        await interaction.editReply({
             embeds: [ embed ],
             components: [ row ]
         })
@@ -51,7 +51,7 @@ export const NextWaifuButton = async (interaction: ButtonInteraction, args: Arra
         const embed = new EmbedBuilder()
             .setTitle("Your Waifu")
             .setImage(entity)
-            .setColor("#ff6f61")
+            .setColor(0xFF6F61)
         
         /**
          * Declare the button row
@@ -79,7 +79,7 @@ export const NextWaifuButton = async (interaction: ButtonInteraction, args: Arra
         /**
          * Edit the orginal message
          */
-        (interaction.message as Message<boolean>).edit({
+        await (interaction.message as Message<boolean>).edit({
             embeds: [ embed ],
             components: [ row ]
         })
