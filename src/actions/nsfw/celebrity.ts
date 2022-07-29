@@ -23,7 +23,7 @@ export const CelebrityCommand = async (interaction: CommandInteraction): Promise
                 .setTitle("Horni bonk")
                 .setImage(process.env.NO_NSFW)
                 .setColor(Colors.Red)
-            interaction.editReply({
+            await interaction.editReply({
                 embeds: [emb]
             })
             return;
@@ -73,7 +73,7 @@ export const NextCelebrityButton = async (interaction: ButtonInteraction, args: 
                 .setTitle("Horni bonk")
                 .setImage(process.env.NO_NSFW)
                 .setColor(Colors.Red)
-            interaction.editReply({
+            await interaction.editReply({
                 embeds: [emb]
             })
             return;
@@ -114,7 +114,7 @@ export const NextCelebrityButton = async (interaction: ButtonInteraction, args: 
         /**
          * Edit the orginal message
          */
-        (interaction.message as Message<boolean>).edit({
+        await (interaction.message as Message<boolean>).edit({
             embeds: [ embed ],
             components: [ row ]
         })

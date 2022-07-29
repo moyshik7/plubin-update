@@ -88,7 +88,7 @@ export const NextGoodAniMemeButton = async (interaction: ButtonInteraction, args
         /**
          * Edit the orginal message
          */
-        (interaction.message as Message<boolean>).edit({
+        await (interaction.message as Message<boolean>).edit({
             embeds: [ embed ],
             components: [ row ]
         })

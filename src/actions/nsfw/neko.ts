@@ -36,7 +36,7 @@ export const NekoCommand = async (interaction: CommandInteraction): Promise<void
                     .setLabel("Next")
                     .setStyle(ButtonStyle.Success)
             )
-            interaction.editReply({
+            await interaction.editReply({
                 embeds: [embed],
                 components: [row]
             })
@@ -97,7 +97,7 @@ export const NextNekoButton = async (interaction: ButtonInteraction, args: Array
                     .setLabel("Next")
                     .setStyle(ButtonStyle.Success)
             );
-            (interaction.message as Message<boolean>).edit({
+            await (interaction.message as Message<boolean>).edit({
                 embeds: [embed],
                 components: [row]
             })
@@ -142,7 +142,7 @@ export const NextNekoButton = async (interaction: ButtonInteraction, args: Array
         /**
          * Edit the orginal message
          */
-        (interaction.message as Message<boolean>).edit({
+        await (interaction.message as Message<boolean>).edit({
             embeds: [ embed ],
             components: [ row ]
         })
@@ -170,7 +170,7 @@ export const NextSFWNekoButton = async (interaction: ButtonInteraction, args: Ar
                 .setLabel("Next")
                 .setStyle(ButtonStyle.Success)
         );
-        (interaction.message as Message<boolean>).edit({
+        await (interaction.message as Message<boolean>).edit({
             embeds: [embed],
             components: [row]
         })

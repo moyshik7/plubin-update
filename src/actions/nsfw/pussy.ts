@@ -23,7 +23,7 @@ export const PussyCommand = async (interaction: CommandInteraction): Promise<voi
                 .setTitle("Horni bonk")
                 .setImage(process.env.NO_NSFW)
                 .setColor(Colors.Red)
-            interaction.editReply({
+            await interaction.editReply({
                 embeds: [emb]
             })
             return;
@@ -53,7 +53,7 @@ export const PussyCommand = async (interaction: CommandInteraction): Promise<voi
                     .setLabel("Next")
                     .setStyle(ButtonStyle.Success)
             )
-            interaction.editReply({
+            await interaction.editReply({
                 embeds: [embed],
                 components: [row],
                 files: []
@@ -102,7 +102,7 @@ export const NextPussyButton = async (interaction: ButtonInteraction, args: Arra
                 .setTitle("Horni bonk")
                 .setImage(process.env.NO_NSFW)
                 .setColor(Colors.Red)
-            interaction.editReply({
+            await interaction.editReply({
                 embeds: [emb]
             })
             return;
@@ -132,7 +132,7 @@ export const NextPussyButton = async (interaction: ButtonInteraction, args: Arra
                     .setLabel("Next")
                     .setStyle(ButtonStyle.Success)
             );
-            (interaction.message as Message<boolean>).edit({
+            await (interaction.message as Message<boolean>).edit({
                 embeds: [embed],
                 components: [row],
                 files: []
@@ -171,7 +171,7 @@ export const NextPussyButton = async (interaction: ButtonInteraction, args: Arra
         /**
          * Edit the orginal message
          */
-        (interaction.message as Message<boolean>).edit({
+        await (interaction.message as Message<boolean>).edit({
             embeds: [ embed ],
             components: [ row ],
             files: []

@@ -23,7 +23,7 @@ export const BlondeCommand = async (interaction: CommandInteraction): Promise<vo
                 .setTitle("Horni bonk")
                 .setImage(process.env.NO_NSFW)
                 .setColor(Colors.Red)
-            interaction.editReply({
+            await interaction.editReply({
                 embeds: [emb]
             })
             return;
@@ -53,7 +53,7 @@ export const BlondeCommand = async (interaction: CommandInteraction): Promise<vo
                     .setLabel("Next")
                     .setStyle(ButtonStyle.Success)
             )
-            interaction.editReply({
+            await interaction.editReply({
                 embeds: [embed],
                 components: [row],
                 files: []
@@ -80,7 +80,7 @@ export const BlondeCommand = async (interaction: CommandInteraction): Promise<vo
                 .setStyle(ButtonStyle.Success)
         )
 
-        interaction.editReply({
+        await interaction.editReply({
             embeds: [ embed ],
             components: [ row ],
             files: []
@@ -102,7 +102,7 @@ export const NextBlondeButton = async (interaction: ButtonInteraction, args: Arr
                 .setTitle("Horni bonk")
                 .setImage(process.env.NO_NSFW)
                 .setColor(Colors.Red)
-            interaction.editReply({
+            await interaction.editReply({
                 embeds: [emb]
             })
             return;
@@ -132,7 +132,7 @@ export const NextBlondeButton = async (interaction: ButtonInteraction, args: Arr
                     .setLabel("Next")
                     .setStyle(ButtonStyle.Success)
             );
-            (interaction.message as Message<boolean>).edit({
+            await (interaction.message as Message<boolean>).edit({
                 embeds: [embed],
                 components: [row],
                 files: []
@@ -171,7 +171,7 @@ export const NextBlondeButton = async (interaction: ButtonInteraction, args: Arr
         /**
          * Edit the orginal message
          */
-        (interaction.message as Message<boolean>).edit({
+        await (interaction.message as Message<boolean>).edit({
             embeds: [ embed ],
             components: [ row ],
             files: []

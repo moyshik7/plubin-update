@@ -23,7 +23,7 @@ export const YuriCommand = async (interaction: CommandInteraction): Promise<void
                 .setTitle("Horni bonk")
                 .setImage(process.env.NO_NSFW)
                 .setColor(Colors.Red)
-            interaction.editReply({
+            await interaction.editReply({
                 embeds: [emb]
             })
             return;
@@ -53,7 +53,7 @@ export const YuriCommand = async (interaction: CommandInteraction): Promise<void
                     .setLabel("Next")
                     .setStyle(ButtonStyle.Success)
             )
-            interaction.editReply({
+            await interaction.editReply({
                 embeds: [embed],
                 components: [row],
             })
@@ -100,7 +100,7 @@ export const NextYuriButton = async (interaction: ButtonInteraction, args: Array
                 .setTitle("Horni bonk")
                 .setImage(process.env.NO_NSFW)
                 .setColor(Colors.Red)
-            interaction.editReply({
+            await interaction.editReply({
                 embeds: [emb]
             })
             return;
@@ -130,7 +130,7 @@ export const NextYuriButton = async (interaction: ButtonInteraction, args: Array
                     .setLabel("Next")
                     .setStyle(ButtonStyle.Success)
             );
-            (interaction.message as Message<boolean>).edit({
+            await (interaction.message as Message<boolean>).edit({
                 embeds: [embed],
                 components: [row]
             })
@@ -168,7 +168,7 @@ export const NextYuriButton = async (interaction: ButtonInteraction, args: Array
         /**
          * Edit the orginal message
          */
-        (interaction.message as Message<boolean>).edit({
+        await (interaction.message as Message<boolean>).edit({
             embeds: [ embed ],
             components: [ row ]
         })

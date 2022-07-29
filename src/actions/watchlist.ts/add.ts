@@ -10,13 +10,13 @@ export const WatchlistAdd = async (interaction: ButtonInteraction, db: Database,
         await interaction.deferReply({ ephemeral: true })
 
         if(args.length < 2){
-            interaction.editReply({
+            await interaction.editReply({
                 content: "Something went wrong\nmessage: ID not found"
             }).catch(console.log)
             return;
         }
         if(!parseInt(args[0])){
-            interaction.editReply({
+            await interaction.editReply({
                 content: "Something went wrong\nmessage: Invalid ID"
             }).catch(console.log)
             return;
@@ -34,7 +34,7 @@ export const WatchlistAdd = async (interaction: ButtonInteraction, db: Database,
                 .setTitle("Anime is already in watchlist")
                 .setDescription(`Use \`/watchlist\` to view your watchlist`)
                 .setColor(0xFF6F61);
-            interaction.editReply({
+            await interaction.editReply({
                 embeds: [emb]
             }).catch(console.log)
             return;
@@ -42,7 +42,7 @@ export const WatchlistAdd = async (interaction: ButtonInteraction, db: Database,
 
         const anime = await FetchAnimeByID(animeID)
         if(!anime){
-            interaction.editReply({
+            await interaction.editReply({
                 content: "Something went wrong\nmessage: Anime not found"
             }).catch(console.log)
             return;

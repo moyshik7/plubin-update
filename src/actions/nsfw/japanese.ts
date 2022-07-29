@@ -22,7 +22,7 @@ export const JapaneseCommand = async (interaction: CommandInteraction): Promise<
                 .setTitle("Horni bonk")
                 .setImage(process.env.NO_NSFW)
                 .setColor(Colors.Red)
-            interaction.editReply({
+            await interaction.editReply({
                 embeds: [emb]
             })
             return;
@@ -56,7 +56,7 @@ export const JapaneseCommand = async (interaction: CommandInteraction): Promise<
                     .setLabel("Next")
                     .setStyle(ButtonStyle.Success)
             )
-            interaction.editReply({
+            await interaction.editReply({
                 embeds: [embed],
                 components: [row]
             })
@@ -103,7 +103,7 @@ export const NextJapaneseButton = async (interaction: ButtonInteraction, args: A
                 .setTitle("Horni bonk")
                 .setImage(process.env.NO_NSFW)
                 .setColor(Colors.Red)
-            interaction.editReply({
+            await interaction.editReply({
                 embeds: [emb]
             })
             return;
@@ -133,7 +133,7 @@ export const NextJapaneseButton = async (interaction: ButtonInteraction, args: A
                     .setLabel("Next")
                     .setStyle(ButtonStyle.Success)
             );
-            (interaction.message as Message<boolean>).edit({
+            await (interaction.message as Message<boolean>).edit({
                 embeds: [embed],
                 components: [row]
             })
@@ -171,7 +171,7 @@ export const NextJapaneseButton = async (interaction: ButtonInteraction, args: A
         /**
          * Edit the orginal message
          */
-        (interaction.message as Message<boolean>).edit({
+        await (interaction.message as Message<boolean>).edit({
             embeds: [ embed ],
             components: [ row ]
         })

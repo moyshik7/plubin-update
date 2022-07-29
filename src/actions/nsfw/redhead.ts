@@ -21,7 +21,7 @@ export const RedheadCommand = async (interaction: CommandInteraction): Promise<v
                 .setTitle("Horni bonk")
                 .setImage(process.env.NO_NSFW)
                 .setColor(Colors.Red)
-            interaction.editReply({
+            await interaction.editReply({
                 embeds: [emb]
             })
             return;
@@ -71,7 +71,7 @@ export const NextRedheadButton = async (interaction: ButtonInteraction, args: Ar
                 .setTitle("Horni bonk")
                 .setImage(process.env.NO_NSFW)
                 .setColor(Colors.Red)
-            interaction.editReply({
+            await interaction.editReply({
                 embeds: [emb]
             })
             return;
@@ -112,7 +112,7 @@ export const NextRedheadButton = async (interaction: ButtonInteraction, args: Ar
         /**
          * Edit the orginal message
          */
-        (interaction.message as Message<boolean>).edit({
+        await (interaction.message as Message<boolean>).edit({
             embeds: [ embed ],
             components: [ row ]
         })
